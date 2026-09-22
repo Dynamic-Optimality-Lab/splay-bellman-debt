@@ -1,52 +1,54 @@
-# threat_control_matrix.yaml — T01–T50 → controls (machine-checked; WP-6 asserts count==50)
-# Each threat maps to ≥1 test / invariant / manual audit + owning phase.
-T01: {controls: [PARENT-01, PARENT-02, INV-001, BOOTSTRAP_PARENT_IMPORT], phase: WP-1}
-T02: {controls: [PARENT-02, PARENT-06, INV-003], phase: WP-1}
-T03: {controls: [PARENT-03, import_ledger, INV-003], phase: WP-1}
-T04: {controls: [PARENT-05, HLD-01, INV-026], phase: WP-1}
-T05: {controls: [PARENT-04, HLD-02, HLD-03, INV-027], phase: WP-1}
-T06: {controls: [HLD-02, HLD-07, INV-027], phase: WP-5}
-T07: {controls: [HLD-05, HLD-06, INV-028], phase: WP-4}
-T08: {controls: [HLD-04, HLD-06, stop_matrix], phase: WP-4}
-T09: {controls: [ST-01, INV-012], phase: WP-3}
-T10: {controls: [K-10, INV-013], phase: WP-3}
-T11: {controls: [K-02, INV-013], phase: WP-3}
-T12: {controls: [K-01, K-02, INV-014, INV-015], phase: WP-3}
-T13: {controls: [K-07, K-08, INV-014], phase: WP-3}
-T14: {controls: [R-07, R-09, BD0-06, BD0-07], phase: WP-4}
-T15: {controls: [R-11, INV-019], phase: WP-4}
-T16: {controls: [R-11, INV-016, STOP-16], phase: WP-4}
-T17: {controls: [BD-10, D-07, INV-011], phase: WP-2}
-T18: {controls: [HLD-07, HLD-08, INV-023, INV-024], phase: WP-5}
-T19: {controls: [D-07, INV-011], phase: WP-5}
-T20: {controls: [D-02, D-03, INV-031, INV-032], phase: WP-5}
-T21: {controls: [PR-01, certified_sign_policy, INV-021, INV-022], phase: WP-5}
-T22: {controls: [INV-043, ontology_version_gate], phase: WP-3}
-T23: {controls: [D-05, INV-044], phase: WP-5}
-T24: {controls: [D-02, scale_audit, INV-044], phase: WP-4}
-T25: {controls: [D-05, PHI-GATE-2, INV-038], phase: WP-5}
-T26: {controls: [D-05, PHI-GATE-2, PR-02], phase: WP-6}
-T27: {controls: [PR-04, BD0-08, INV-038], phase: WP-6}
-T28: {controls: [HLD-02, HLD-05, PHI-GATE-6S, PHI-GATE-6R, PHI-GATE-7S], phase: WP-5}
-T29: {controls: [NEG-01, interpretation_rules], phase: WP-6}
-T30: {controls: [NEG-01, PR-01], phase: WP-6}
-T31: {controls: [NEG-02, NEG-03], phase: WP-6}
-T32: {controls: [PR-02], phase: WP-6}
-T33: {controls: [PR-06, INV-036], phase: WP-6}
-T34: {controls: [PR-05, INV-039], phase: WP-6}
-T35: {controls: [PR-05, INV-039], phase: WP-6}
-T36: {controls: [CITATIONS, MANIFEST, INV-040], phase: WP-1}
-T37: {controls: [independent_verifier, SEP-AUDIT], phase: WP-5}
-T38: {controls: [mutation_controls, D-08, D-09, D-10], phase: WP-5}
-T39: {controls: [INV-046, deterministic_reduction], phase: WP-2}
-T40: {controls: [RESOURCE_LIMIT_NO_CLAIM, INV-047], phase: WP-6}
-T41: {controls: [INV-029, INV-030, append_only], phase: WP-5}
-T42: {controls: [INV-029, counterexample_schema], phase: WP-5}
-T43: {controls: [AI_USE, INV-041], phase: WP-6}
-T44: {controls: [SEAL-02, INV-049], phase: WP-6}
-T45: {controls: [SEAL-05, INV-050], phase: WP-6}
-T46: {controls: [K-06, INV-015], phase: WP-3}
-T47: {controls: [K-08, INV-015], phase: WP-3}
-T48: {controls: [INV-020, INV-042, track_label_gate], phase: WP-4}
-T49: {controls: [robustness_panel_gate, INV-008], phase: WP-2}
-T50: {controls: [HLD-08, POST_HOLDOUT_gate, INV-025], phase: WP-5}
+# threat_control_matrix.yaml — T01–T50 → controls (machine-checked)
+# Schema per entry: phases: [>=1 owning WP], controls: [>=1 test/invariant/audit].
+# WP-6 seal asserts: set(threat_ids)=={T01..T50}, every threat has >=1 valid control,
+#   every referenced control exists (else seal fails). Multi-owner threats list several WPs.
+T01: {phases: [WP-1], controls: [PARENT-01, PARENT-02, INV-001, BOOTSTRAP_PARENT_IMPORT]}
+T02: {phases: [WP-1], controls: [PARENT-02, PARENT-06, INV-003]}
+T03: {phases: [WP-1], controls: [PARENT-03, import_ledger, INV-003]}
+T04: {phases: [WP-1], controls: [PARENT-05, HLD-01, INV-026]}
+T05: {phases: [WP-1], controls: [PARENT-04, HLD-02, HLD-03, INV-027]}
+T06: {phases: [WP-5], controls: [HLD-02, HLD-07, INV-027]}
+T07: {phases: [WP-4], controls: [HLD-05, HLD-06, INV-028]}
+T08: {phases: [WP-4], controls: [HLD-04, HLD-06, stop_matrix]}
+T09: {phases: [WP-3], controls: [ST-01, INV-012]}
+T10: {phases: [WP-3], controls: [K-10, INV-013]}
+T11: {phases: [WP-3], controls: [K-02, INV-013]}
+T12: {phases: [WP-3], controls: [K-01, K-02, INV-014, INV-015]}
+T13: {phases: [WP-3], controls: [K-07, K-08, INV-014]}
+T14: {phases: [WP-4], controls: [R-07, R-09, BD0-06, BD0-07]}
+T15: {phases: [WP-4], controls: [R-11, INV-019]}
+T16: {phases: [WP-4], controls: [R-11, INV-016, STOP-16]}
+T17: {phases: [WP-2, WP-5], controls: [BD-10, D-07, INV-011]}
+T18: {phases: [WP-5], controls: [HLD-07, HLD-08, INV-023, INV-024]}
+T19: {phases: [WP-5], controls: [D-07, INV-011]}
+T20: {phases: [WP-5], controls: [D-02, D-03, INV-031, INV-032]}
+T21: {phases: [WP-5], controls: [PR-01, certified_sign_policy, INV-021, INV-022]}
+T22: {phases: [WP-3], controls: [INV-043, ontology_version_gate]}
+T23: {phases: [WP-5], controls: [D-05, INV-044]}
+T24: {phases: [WP-4], controls: [D-02, scale_audit, INV-044]}
+T25: {phases: [WP-5], controls: [D-05, PHI-GATE-2, INV-038]}
+T26: {phases: [WP-6], controls: [D-05, PHI-GATE-2, PR-02]}
+T27: {phases: [WP-6], controls: [PR-04, BD0-08, INV-038]}
+T28: {phases: [WP-5], controls: [HLD-02, HLD-05, PHI-GATE-6S, PHI-GATE-6R, PHI-GATE-7S]}
+T29: {phases: [WP-6], controls: [NEG-01, interpretation_rules]}
+T30: {phases: [WP-6], controls: [NEG-01, PR-01]}
+T31: {phases: [WP-6], controls: [NEG-02, NEG-03]}
+T32: {phases: [WP-6], controls: [PR-02]}
+T33: {phases: [WP-6], controls: [PR-06, INV-036]}
+T34: {phases: [WP-6], controls: [PR-05, INV-039]}
+T35: {phases: [WP-6], controls: [PR-05, INV-039]}
+T36: {phases: [WP-1], controls: [CITATIONS, MANIFEST, INV-040]}
+T37: {phases: [WP-5], controls: [independent_verifier, SEP-AUDIT]}
+T38: {phases: [WP-5], controls: [mutation_controls, D-08, D-09, D-10]}
+T39: {phases: [WP-2], controls: [INV-046, deterministic_reduction]}
+T40: {phases: [WP-6], controls: [RESOURCE_LIMIT_NO_CLAIM, INV-047]}
+T41: {phases: [WP-5], controls: [INV-029, INV-030, append_only]}
+T42: {phases: [WP-5], controls: [INV-029, counterexample_schema]}
+T43: {phases: [WP-6], controls: [AI_USE, INV-041]}
+T44: {phases: [WP-6], controls: [SEAL-02, INV-049]}
+T45: {phases: [WP-6], controls: [SEAL-05, INV-050]}
+T46: {phases: [WP-3], controls: [K-06, INV-015]}
+T47: {phases: [WP-3], controls: [K-08, INV-015]}
+T48: {phases: [WP-4], controls: [INV-020, INV-042, track_label_gate]}
+T49: {phases: [WP-2], controls: [robustness_panel_gate, INV-008]}
+T50: {phases: [WP-5], controls: [HLD-08, POST_HOLDOUT_gate, INV-025]}

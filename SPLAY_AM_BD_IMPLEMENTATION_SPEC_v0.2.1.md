@@ -7,13 +7,7 @@
 
 ## SA-01.1 Recency-`V` blindness theorem (amends §8.4)
 
-Recency updates `ρX,ρY` change neither the enabled action set, the `(A,B)→(A′,B′)` Splay transitions, nor costs `w_b(e)=y−b·a`. Hence for fixed `(A,B)`:
-
-```text
-z1 ∼ z2 ⟺ π(z1) = π(z2) = (A,B)
-```
-
-is a cost-preserving bisimulation. Therefore for every fixed `b`:
+Recency updates `ρX,ρY` change neither the enabled action set, the `(A,B)→(A′,B′)` Splay transitions, nor costs `w_b(e)=y−b·a`. Define `R_π` by `z1 R_π z2 ⟺ π(z1)=π(z2)` where `π(A,B,ρX,ρY)=(A,B)`. Then `R_π` is a cost-preserving bisimulation (one-way: `π(z1)=π(z2) ⟹ z1∼z2`; the converse is not claimed — two different `(A,B)` states could still be behaviorally bisimilar, which is what the behavioral-quotient machinery investigates). Therefore for every fixed `b`:
 
 ```text
 V_b^R(A,B,ρX,ρY) = V_b^R(A,B,ρ′X,ρ′Y)
@@ -25,7 +19,7 @@ necessarily. Phase 08.4 is replaced by:
 same (A,B) ⟹ same V_b^R (assert; any nonzero spread ⇒ RECENCY_V_CANARY_FAIL, implementation failure)
 ```
 
-Recency remains scientifically valuable as a history-dependent accounting representation: `U_b^R`, path-specific creation, candidate-`Φ` deltas, and structural simplicity. Adds theorem obligation BD0-15 (projection `π` is a cost-preserving bisimulation ⇒ same-`(A,B)` same `V_b^R`) as PROVED+REVIEWED gate for the WP-4 canary.
+Recency remains scientifically valuable as a history-dependent accounting representation: `U_b^R`, path-specific creation, candidate-`Φ` deltas, and structural simplicity. Adds theorem obligation BD0-15 (one-way `R_π` bisimulation ⇒ same-`(A,B)` same `V_b^R`; full proof in `math/theorem_BD9_recency_v_blindness.md`) initialized as UNPROVED, transitioning UNPROVED→PROVED→REVIEWED during WP-1; the WP-4 canary is gated on PROVED+REVIEWED.
 
 ## SA-01.2 `parent/` bootstrap clarification (amends §13 separation)
 

@@ -47,6 +47,23 @@
 
 ---
 
+## Audit follow-up — iff→implies + multi-phase matrices + BD0-15 artifact (2026-09-22) ✅ DONE
+
+**Audit in:** 3 refinements (no experiment to discard — none started). All fixed, committed, pushed. Stamp stays `WORKPLAN_v0.2.1_COMPLIANT_FROZEN` (amended, not bumped).
+
+**What was done (deep detail, mirrors WorkPlan.md §§1/3/6/10 + SA-01 + matrices + `math/`):**
+
+1. **iff→one-way (`WorkPlan.md §1` + `SPLAY_AM_BD_IMPLEMENTATION_SPEC_v0.2.1.md` SA-01.1):** replaced `z1∼z2 ⟺ π(z1)=π(z2)=(A,B)` with: define `R_π` by `z1 R_π z2 ⟺ π(z1)=π(z2)`; then `R_π` is a cost-preserving bisimulation one-way (`π(z1)=π(z2) ⟹ z1∼z2`; converse not claimed — different `(A,B)` may still be bisimilar, which the quotient machinery investigates). Conclusion unchanged: `same (A,B) ⟹ same V_b^R`; inverted canary stands.
+2. **Multi-phase matrices (`prereg/stop_control_matrix.yaml` + `prereg/threat_control_matrix.yaml` + `WorkPlan.md §§3/10/11`):** schema is now `STOP-xx: {phases:[>=1 WP], controls:[>=1], ...}` / `Txx: {phases:[...], controls:[...]}`. STOP-15 → `[WP-2, WP-5]`, STOP-19/20 → `[WP-4, WP-5]`, T17 → `[WP-2, WP-5]`; all others single-owner but same array schema. WP-6 seal now asserts fail-closed: `set(threat_ids)=={T01..T50}` + every threat `>=1` valid control + every referenced control exists; `set(stop_ids)=={STOP-01..STOP-30}` + every stop `>=1` owning phase + every handler/test exists (never a mere count).
+3. **BD0-15 artifact (`math/theorem_BD9_recency_v_blindness.md` + `WorkPlan.md §3` + SA-01.1):** auditor had not seen the amendment proof, so BD0-15 is now initialized UNPROVED with a full proof-sketch + review-record template (`UNPROVED → PROVED → REVIEWED` during WP-1); WP-4 canary gated on PROVED+REVIEWED (fail-closed). `math/` files list now includes `theorem_BD9`.
+
+**Files:** `WorkPlan.md` (R_π wording, BD0-15 UNPROVED, `theorem_BD9` listing, multi-phase map, set-based seal), `SPLAY_AM_BD_IMPLEMENTATION_SPEC_v0.2.1.md` (SA-01.1 one-way + BD0-15 lifecycle), `prereg/stop_control_matrix.yaml` (phases-arrays + controls), `prereg/threat_control_matrix.yaml` (phases-arrays), `math/theorem_BD9_recency_v_blindness.md` (new), `Path.md` (this entry).
+**Code/models/benchmarks:** NONE trained/run (plan-level only); gates are the canary, bootstrap-lock, two-branch residuals, set-based matrix asserts, BD0-15 lifecycle.
+
+**Follows WorkPlan.md?** YES — this follow-up *is* amended `WorkPlan.md` v0.2.1 + SA-01 executed verbatim. No deviation. Next: WP-1 under v0.2.1 (BD0-15 UNPROVED at entry, must be PROVED+REVIEWED before WP-4 canary).
+
+---
+
 ## WP-1 — Foundation: parent seal, literature, contract, prereg, theorem ledger (SPEC PHASE 00) — status: `PENDING`
 
 **Scope per WorkPlan.md §3:** parent clone @ `6de1ca2` + seal verify + history preserve; spec freeze + hash; literature L0–L4 ledger; BD0-01..14 ledger; H1 EMPTY + n8 contaminated; no pre-prereg output. Out: no Bellman/features/kernels/candidates/holdout-reads.
@@ -76,7 +93,7 @@
 
 ## WP-4 — Recency track, augmented geometry, H2R holdout, recency ontology, debt atoms (SPEC PHASE 08, 09, 10) — status: `PENDING` ⭐ MODEL-TRAINING
 
-**Scope per WorkPlan.md §6:** BD0-06/07 proved first; augmented reachability n=2,3,4 (+5 stretch) with parent-witness/closure; augmented b=2 geometry; same-pair/different-recency separation table (finite only); H2R generation+quarantine BEFORE synthesis (120k / 4,080,000, stratified, commitment, firewall EMPTY→COMMITTED→FROZEN→UNLOCKED_ONCE); blind recency ontology (heap/crossing/nested/rank/inversion/heavy/multiscale, tie audit, S-vs-R ablation); atom discovery (eligibility, creation/repayment, V-tight diagnostics, scale audit, exhaustion).
+**Scope per WorkPlan.md §6:** BD0-06/07 + BD0-15 (one-way R_π; UNPROVED→PROVED→REVIEWED in WP-1) proved first; augmented reachability n=2,3,4 (+5 stretch) with parent-witness/closure; augmented b=2 geometry; SA-01 canary (same-(A,B) zero-V-spread assert; nonzero ⇒ RECENCY_V_CANARY_FAIL); H2R generation+quarantine BEFORE synthesis (120k / 4,080,000, stratified, commitment, firewall EMPTY→COMMITTED→FROZEN→UNLOCKED_ONCE); blind recency ontology (heap/crossing/nested/rank/inversion/heavy/multiscale, tie audit, S-vs-R ablation); atom discovery (eligibility, creation/repayment, V-tight diagnostics, scale audit, exhaustion).
 **What was implemented:** _nothing yet — entry will record files (`python/recency/`, `python/holdout/h2r_*`, recency ontology, `python/mining/atoms.py`, schemas, `artifacts/v02/{recency,holdouts/H2R,debt_atoms,audits}`, scripts, tests), code (ρ state/updates, BFS, H2R sampler, firewall) + how, **model specifics (recency atoms D1–D9; training = augmented n≤4(+5); resultant benchmarks = creation/repayment/V-tight/scale/stability) + brutal testing (stretch-5, H2R-scale regimes, recency splits, different b/code/target) + anti-overfitting (pre-synthesis commitment, blind firewall, new-ID rules, tie mutants)**, gates (R/D/HLD), and follows-WorkPlan verdict._
 **Follows WorkPlan.md?** _TO BE RECORDED._
 **Next action:** needs WP-2/WP-3 + BD0-06/07; H2R must precede WP-5 synthesis.
