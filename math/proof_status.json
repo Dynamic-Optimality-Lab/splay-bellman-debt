@@ -164,9 +164,26 @@
    "status": "UNPROVED"
   },
   {
+   "history": [
+    {
+     "status": "UNPROVED",
+     "utc": "2026-09-22T16:00:00Z"
+    },
+    {
+     "status": "PROVED",
+     "utc": "2026-09-22T17:30:00Z"
+    },
+    {
+     "status": "REVIEWED",
+     "utc": "2026-09-22T17:35:00Z"
+    }
+   ],
    "id": "BD0-13",
+   "proof": "math/theorem_BD13_pair_corridor_scope.md",
+   "proof_sha256": "E6F43762C3850D602FF4921B0FF2AEC8C467DC01906BD0CBA3F4786C2D61771D",
+   "review": "tests/test_bd013_corridor_scope.py",
    "statement": "pair-state corridor V<=H<=U does not constrain arbitrary augmented-state potentials",
-   "status": "UNPROVED"
+   "status": "REVIEWED"
   },
   {
    "id": "BD0-14",

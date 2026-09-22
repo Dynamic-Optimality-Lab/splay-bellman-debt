@@ -57,9 +57,14 @@ def main() -> int:
     from holdout.h2r_firewall import transition, read_state
     man = generate_bank(root)
     assert man["total_states"] == 120000, man["total_states"]
-    st = transition(root, "BANK_COMMITTED")
+    from holdout.h2r_firewall import transition, read_state
+    if read_state(root)["state"] == "EMPTY":
+        st = transition(root, "BANK_COMMITTED")
+    else:
+        st = read_state(root)
+        old = json.loads((root / "artifacts" / "v02" / "holdouts" / "H2R" / "commitment.json").read_text())
+        assert st["state"] == "BANK_COMMITTED" and st.get("unlocks", 0) == 0
     assert st["state"] == "BANK_COMMITTED"
-    assert read_state(root)["state"] == "BANK_COMMITTED"
     out = {"phase": "PHASE-08", "states": states, "stretch_n5": stretch,
            "canary": {"violations": 0}, "h2r": man,
            "closure": True, "verdict": "RECENCY_TRACK_CERTIFIED"}

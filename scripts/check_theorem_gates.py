@@ -26,10 +26,11 @@ def main() -> int:
     # consumers fail-closed: WP-3 needs BD0-02/03 REVIEWED
     assert by_id["BD0-02"]["status"] == "REVIEWED", "WP-3 gate BD0-02"
     assert by_id["BD0-03"]["status"] == "REVIEWED", "WP-3 gate BD0-03"
-    # BD0-04/05 REVIEWED by WP-3 theorem closure; BD0-06..14 not promoted
-    assert by_id["BD0-04"]["status"] == "REVIEWED", "BD0-04"
-    assert by_id["BD0-05"]["status"] == "REVIEWED", "BD0-05"
-    for bid in [f"BD0-{i:02d}" for i in range(6, 15)]:
+    # BD0-04/05 REVIEWED by WP-3 closure; BD0-06/07 REVIEWED by WP-4; BD0-13 REVIEWED by WP-4 seal.
+    # BD0-08/09/10/11/12/14 remain UNPROVED for their owning phases (no opportunistic promotion).
+    for bid in ("BD0-04", "BD0-05", "BD0-06", "BD0-07", "BD0-13"):
+        assert by_id[bid]["status"] == "REVIEWED", bid
+    for bid in [f"BD0-{i:02d}" for i in (8, 9, 10, 11, 12, 14)]:
         assert by_id[bid]["status"] == "UNPROVED", f"{bid} must remain UNPROVED (owning phase)"
     assert by_id["BD0-15"]["status"] == "REVIEWED"
     out = {"verdict": "GATE_MATRIX_PASS", "n": len(rows)}

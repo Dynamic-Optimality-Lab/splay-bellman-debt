@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## WP-4 theorem seal (2026-09-22)
+- BD0-13 REVIEWED (SHA E6F43762...D61771D): pair corridor binds pair-state hypotheses only; Track-R evaluator barred from pair-envelope rejection without lifting theorem; no existence/necessity overclaims.
+- BD0-14 audited, left UNPROVED (owner WP-5; syntactic n-independence at synthesis, theorem consumed at promotion).
+- Review 6/6 + byte audit green; gates re-ran PASS; pytest 76/76; H1 EMPTY; H2R BANK_COMMITTED/0; no WP-5 outputs.
+
 ## WP-4 (2026-09-22)
 - GATED_PASS: BD0-06/07 REVIEWED (SHA 2E4ED189.../866C4E56...); augmented n2/3/4 (20/235/8764) + n5 stretch (496264); b=2 geometry + canary GREEN (4/19/196 groups); H2R 120k/4.08M committed, BANK_COMMITTED, discovery-blind; 14-stat recency ontology; atoms D1-D7 all INCONSISTENT (D5 repay 99.5% near-miss); R/D/HLD 21/21 + full 70/70 + STRESS_PASS. Bugs closed: heap key mismatch, markdown-normalize in review checks.
 
