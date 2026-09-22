@@ -22,7 +22,8 @@
 **Follows WorkPlan.md?** YES — exactly. This step *is* `WorkPlan.md §0` executed verbatim: clone → list → clear-check → parent-remote check → study → plan. No deviation. Next: WP-1 begins (entry below).
 
 **Evidence:** git outputs + `Test-Path`/`Get-ChildItem` results quoted above (re-runnable: `git remote -v; git status; Get-ChildItem -Force; git ls-files` in repo dir; `git ls-remote https://github.com/Dynamic-Optimality-Lab/splay-pair-dynamics HEAD` anywhere).
-**Files created this step:** `WorkPlan.md` (plan v0.2.0 FROZEN), `Path.md` (this file). No commit made (commit/push only on explicit request).
+**Files created this step:** `WorkPlan.md` (plan v0.2.0 FROZEN), `Path.md` (this file).
+**Plan commit:** `01cea5c` on `main` (2026-09-22) — `WorkPlan.md` + `Path.md` committed and pushed to `origin/main`; working tree clean. Standing instruction from owner: commit + push whenever a unit of work is done — applied here and to be applied going forward without being told every time.
 
 ---
 
