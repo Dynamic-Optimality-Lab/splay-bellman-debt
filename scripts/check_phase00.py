@@ -56,8 +56,41 @@ def main() -> int:
     if ids != [f"BD0-{i:02d}" for i in range(1, 16)]:
         raise RuntimeError(f"FOUNDATION_NOT_FROZEN: BD0 ledger ids mismatch {ids}")
     bd15 = [o for o in ledger["obligations"] if o["id"] == "BD0-15"][0]
-    if bd15["status"] != "UNPROVED":
-        raise RuntimeError("FOUNDATION_NOT_FROZEN: BD0-15 must be UNPROVED at WP-1 entry")
+    if bd15["status"] != "REVIEWED":
+        raise RuntimeError("FOUNDATION_NOT_FROZEN: BD0-15 must be REVIEWED at WP-1 reseal")
+    if [h["status"] for h in bd15.get("history", [])] != ["UNPROVED", "PROVED", "REVIEWED"]:
+        raise RuntimeError("FOUNDATION_NOT_FROZEN: BD0-15 lifecycle broken")
+    theorem_path = root / bd15["proof"]
+    if not theorem_path.is_file():
+        raise RuntimeError("FOUNDATION_NOT_FROZEN: BD0-15 theorem file missing")
+    if sha256_file(theorem_path) != bd15["proof_sha256"]:
+        raise RuntimeError("FOUNDATION_NOT_FROZEN: BD0-15 theorem SHA mismatch")
+    text = theorem_path.read_text(encoding="utf-8")
+    if "same-(A,B)" not in text:
+        raise RuntimeError("FOUNDATION_NOT_FROZEN: BD0-15 implication missing")
+    if "z1∼z2 ⟺" in text:
+        raise RuntimeError("FOUNDATION_NOT_FROZEN: forbidden converse present")
+    # console.log equivalent [WP1-CHK-05]: literature freeze checks
+    console_log("[WP1-CHK-05] checking literature freeze")
+    man = json.loads((root / "external" / "MANIFEST.json").read_text(encoding="utf-8"))
+    by_id = {s["source_id"]: s for s in man["sources"]}
+    if set(by_id) != {"L0", "L1", "L2", "L3", "L4"}:
+        raise RuntimeError("FOUNDATION_NOT_FROZEN: literature source set mismatch")
+    for sid, src in by_id.items():
+        if src.get("status") != "FROZEN":
+            raise RuntimeError(f"FOUNDATION_NOT_FROZEN: {sid} not FROZEN")
+        if src.get("freeze_method") not in ("LOCAL_BYTES", "BIBLIOGRAPHIC_IDENTITY", "PARENT_INHERITED_BYTES"):
+            raise RuntimeError(f"FOUNDATION_NOT_FROZEN: {sid} freeze_method invalid")
+    if by_id["L1"]["freeze_method"] != "BIBLIOGRAPHIC_IDENTITY" or by_id["L1"].get("local_bytes_present") is not False:
+        raise RuntimeError("FOUNDATION_NOT_FROZEN: L1 freeze invalid")
+    if by_id["L4"]["freeze_method"] != "LOCAL_BYTES":
+        raise RuntimeError("FOUNDATION_NOT_FROZEN: L4 freeze invalid")
+    if sha256_file(root / "external" / "papers" / "L4_geometric_inversions_2020.pdf") != by_id["L4"]["sha256"]:
+        raise RuntimeError("FOUNDATION_NOT_FROZEN: L4 SHA mismatch")
+    if sha256_file(root / "external" / "papers" / "L2_levy_tarjan.pdf") != by_id["L2"]["sha256"]:
+        raise RuntimeError("FOUNDATION_NOT_FROZEN: L2 SHA mismatch")
+    if sha256_file(root / "external" / "papers" / "L3_chmel_et_al_2026.pdf") != by_id["L3"]["sha256"]:
+        raise RuntimeError("FOUNDATION_NOT_FROZEN: L3 SHA mismatch")
     threat_ids = set()
     for line in (prereg / "threat_control_matrix.yaml").read_text(encoding="utf-8").splitlines():
         if line.startswith("T"):
@@ -74,15 +107,16 @@ def main() -> int:
         "experiment_id": "SPLAY-AM-BD-v0.2",
         "phase": "PHASE-00",
         "adapter": adapter_results,
-        "bd0_15_status": "UNPROVED",
+        "bd0_15_status": "REVIEWED",
+        "literature": {sid: {"freeze_method": s["freeze_method"], "status": s["status"]} for sid, s in by_id.items()},
         "threat_set_ok": True,
         "stop_set_ok": True,
         "verdict": "FOUNDATION_SEALED",
     }
     (root / "artifacts" / "v02" / "logs" / "phase00_gate.json").write_text(
         json.dumps(out, indent=2, sort_keys=True) + "\n", encoding="utf-8")
-    # console.log equivalent [WP1-CHK-05]: gate pass
-    console_log("[WP1-CHK-05] FOUNDATION_SEALED")
+    # console.log equivalent [WP1-CHK-06]: gate pass
+    console_log("[WP1-CHK-06] FOUNDATION_SEALED")
     return 0
 
 

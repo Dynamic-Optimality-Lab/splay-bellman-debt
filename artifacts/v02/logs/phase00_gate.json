@@ -7,8 +7,30 @@
     "PARENT-05": true,
     "PARENT-06": true
   },
-  "bd0_15_status": "UNPROVED",
+  "bd0_15_status": "REVIEWED",
   "experiment_id": "SPLAY-AM-BD-v0.2",
+  "literature": {
+    "L0": {
+      "freeze_method": "PARENT_INHERITED_BYTES",
+      "status": "FROZEN"
+    },
+    "L1": {
+      "freeze_method": "BIBLIOGRAPHIC_IDENTITY",
+      "status": "FROZEN"
+    },
+    "L2": {
+      "freeze_method": "PARENT_INHERITED_BYTES",
+      "status": "FROZEN"
+    },
+    "L3": {
+      "freeze_method": "PARENT_INHERITED_BYTES",
+      "status": "FROZEN"
+    },
+    "L4": {
+      "freeze_method": "LOCAL_BYTES",
+      "status": "FROZEN"
+    }
+  },
   "phase": "PHASE-00",
   "stop_set_ok": true,
   "threat_set_ok": true,
