@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## WP-3 (2026-09-22)
+- GATED_PASS: blind 39-scalar ontology n=2..7; quotient KERNEL_NO_COMPRESSION (classes==R, dual-agreement, transport BLOCKED on BD0-04/05); K0 ablation (all TRANSITION_INSUFFICIENT, diagonal-collapse lesson); delta mining winner (rank_sign_neg,+1) with n6/n7 streamed validation (35-45%); ST/K 16/16 + BD 10/10 + STRESS_PASS. Bugs closed: docstrip audit, report keys, test shadowing, one real symmetry bug (one-sided nesting fixed, rebuild stable).
+
 ## WP-2 theorem closure (2026-09-22)
 - BD0-02 REVIEWED (theorem_BD2 SHA B3AD40D8...FA48F9) + BD0-03 REVIEWED (theorem_BD3_past_slack SHA 95A15388...99D278), lifecycles preserved; corridor corollary joint in BD0-02 (upper) + BD0-03 (past), pair-state-only with BD0-13 guard.
 - Independent review 6/6 + byte audit green; gate matrix prereg/theorem_gate_matrix.yaml (BD0-01..15, fail-closed consumers); BD0-04..14 remain UNPROVED.

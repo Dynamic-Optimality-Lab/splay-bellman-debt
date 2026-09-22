@@ -1,0 +1,37 @@
+{
+  "ontology": "ONTOLOGY-v0.2",
+  "phase": "PHASE-04",
+  "results": {
+    "2": {
+      "n": 2,
+      "rows": 4,
+      "sha": "B0D9A002C0E6AC7D2503B0DCBF9B01AAC165825CE573AC97AD88B30B62C93BD7"
+    },
+    "3": {
+      "n": 3,
+      "rows": 19,
+      "sha": "BF58856B792A03A17270B2E1DF4B583656D32C33264C17233702DA7DB4FE8B31"
+    },
+    "4": {
+      "n": 4,
+      "rows": 196,
+      "sha": "F631A038D76D5D4D86F14141CBE0C6A5CEE02DC2F99000B1E00E3EBE1E36E737"
+    },
+    "5": {
+      "n": 5,
+      "rows": 1764,
+      "sha": "B46634D74DB8830C0753EE0BF266416D4E93041434B91A281AAC0CFC5E493123"
+    },
+    "6": {
+      "n": 6,
+      "rows": 17424,
+      "sha": "AA8558B383809413A6227ED4BE0C8856DDCD0492E3FA9A8592BC1E537570B32E"
+    },
+    "7": {
+      "n": 7,
+      "rows": 184041,
+      "sha": "BB0A5A6CB7E928276D1FDC8D1F1317FDE7D312A8FA2FED5A52A09B3E2E9B183C"
+    }
+  },
+  "verdict": "STRUCTURAL_ONTOLOGY_COMPLETE"
+}

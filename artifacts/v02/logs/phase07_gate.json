@@ -1,0 +1,32 @@
+{
+  "combo": [
+    [
+      18,
+      1
+    ]
+  ],
+  "phase": "PHASE-07",
+  "validation": {
+    "6": {
+      "create": [
+        47154,
+        104544
+      ],
+      "repay": [
+        4710,
+        11768
+      ]
+    },
+    "7": {
+      "create": [
+        514335,
+        1288287
+      ],
+      "repay": [
+        53832,
+        151534
+      ]
+    }
+  },
+  "verdict": "DEBT_MINING_COMPLETE"
+}

@@ -1,0 +1,69 @@
+{
+  "2": {
+    "R": 4,
+    "classes": 4,
+    "largest": 1,
+    "ratio": 1.0,
+    "rounds": [
+      1,
+      1
+    ],
+    "singletons": 4
+  },
+  "3": {
+    "R": 19,
+    "classes": 19,
+    "largest": 1,
+    "ratio": 1.0,
+    "rounds": [
+      1,
+      1
+    ],
+    "singletons": 19
+  },
+  "4": {
+    "R": 196,
+    "classes": 196,
+    "largest": 1,
+    "ratio": 1.0,
+    "rounds": [
+      1,
+      1
+    ],
+    "singletons": 196
+  },
+  "5": {
+    "R": 1764,
+    "classes": 1764,
+    "largest": 1,
+    "ratio": 1.0,
+    "rounds": [
+      1,
+      1
+    ],
+    "singletons": 1764
+  },
+  "6": {
+    "R": 17424,
+    "classes": 17424,
+    "largest": 1,
+    "ratio": 1.0,
+    "rounds": [
+      1,
+      1
+    ],
+    "singletons": 17424
+  },
+  "7": {
+    "R": 184041,
+    "classes": 184041,
+    "largest": 1,
+    "ratio": 1.0,
+    "rounds": [
+      1,
+      1
+    ],
+    "singletons": 184041
+  },
+  "transport": "BLOCKED_BD0_04_05_UNPROVED"
+}

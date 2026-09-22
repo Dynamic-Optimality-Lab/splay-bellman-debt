@@ -1,0 +1,590 @@
+{
+  "2": {
+    "K0_full": {
+      "note": "COMPONENTWISE_NECESSARY_FINITE",
+      "type": "KERNEL_TRANSITION_INSUFFICIENT",
+      "witness": [
+        0,
+        3
+      ]
+    },
+    "accesspath": {
+      "note": "COMPONENTWISE_NECESSARY_FINITE",
+      "type": "KERNEL_TRANSITION_INSUFFICIENT",
+      "witness": [
+        0,
+        3
+      ]
+    },
+    "ancestor": {
+      "note": "COMPONENTWISE_NECESSARY_FINITE",
+      "type": "KERNEL_TRANSITION_INSUFFICIENT",
+      "witness": [
+        0,
+        3
+      ]
+    },
+    "crossing": {
+      "note": "COMPONENTWISE_NECESSARY_FINITE",
+      "type": "KERNEL_TRANSITION_INSUFFICIENT",
+      "witness": [
+        0,
+        3
+      ]
+    },
+    "depth": {
+      "note": "COMPONENTWISE_NECESSARY_FINITE",
+      "type": "KERNEL_TRANSITION_INSUFFICIENT",
+      "witness": [
+        0,
+        3
+      ]
+    },
+    "heavy": {
+      "note": "COMPONENTWISE_NECESSARY_FINITE",
+      "type": "KERNEL_TRANSITION_INSUFFICIENT",
+      "witness": [
+        0,
+        3
+      ]
+    },
+    "interval": {
+      "note": "COMPONENTWISE_NECESSARY_FINITE",
+      "type": "KERNEL_TRANSITION_INSUFFICIENT",
+      "witness": [
+        0,
+        3
+      ]
+    },
+    "inversion": {
+      "note": "COMPONENTWISE_NECESSARY_FINITE",
+      "type": "KERNEL_TRANSITION_INSUFFICIENT",
+      "witness": [
+        0,
+        3
+      ]
+    },
+    "multiscale": {
+      "note": "COMPONENTWISE_NECESSARY_FINITE",
+      "type": "KERNEL_TRANSITION_INSUFFICIENT",
+      "witness": [
+        0,
+        3
+      ]
+    },
+    "parent": {
+      "note": "COMPONENTWISE_NECESSARY_FINITE",
+      "type": "KERNEL_TRANSITION_INSUFFICIENT",
+      "witness": [
+        0,
+        3
+      ]
+    },
+    "rank": {
+      "note": "COMPONENTWISE_NECESSARY_FINITE",
+      "type": "KERNEL_TRANSITION_INSUFFICIENT",
+      "witness": [
+        0,
+        3
+      ]
+    },
+    "subtree": {
+      "note": "COMPONENTWISE_NECESSARY_FINITE",
+      "type": "KERNEL_TRANSITION_INSUFFICIENT",
+      "witness": [
+        0,
+        3
+      ]
+    }
+  },
+  "3": {
+    "K0_full": {
+      "note": "COMPONENTWISE_NECESSARY_FINITE",
+      "type": "KERNEL_TRANSITION_INSUFFICIENT",
+      "witness": [
+        0,
+        6
+      ]
+    },
+    "accesspath": {
+      "note": "COMPONENTWISE_NECESSARY_FINITE",
+      "type": "KERNEL_TRANSITION_INSUFFICIENT",
+      "witness": [
+        0,
+        6
+      ]
+    },
+    "ancestor": {
+      "note": "COMPONENTWISE_NECESSARY_FINITE",
+      "type": "KERNEL_TRANSITION_INSUFFICIENT",
+      "witness": [
+        0,
+        6
+      ]
+    },
+    "crossing": {
+      "note": "COMPONENTWISE_NECESSARY_FINITE",
+      "type": "KERNEL_TRANSITION_INSUFFICIENT",
+      "witness": [
+        0,
+        6
+      ]
+    },
+    "depth": {
+      "note": "COMPONENTWISE_NECESSARY_FINITE",
+      "type": "KERNEL_TRANSITION_INSUFFICIENT",
+      "witness": [
+        0,
+        6
+      ]
+    },
+    "heavy": {
+      "note": "COMPONENTWISE_NECESSARY_FINITE",
+      "type": "KERNEL_TRANSITION_INSUFFICIENT",
+      "witness": [
+        0,
+        6
+      ]
+    },
+    "interval": {
+      "note": "COMPONENTWISE_NECESSARY_FINITE",
+      "type": "KERNEL_TRANSITION_INSUFFICIENT",
+      "witness": [
+        0,
+        6
+      ]
+    },
+    "inversion": {
+      "note": "COMPONENTWISE_NECESSARY_FINITE",
+      "type": "KERNEL_TRANSITION_INSUFFICIENT",
+      "witness": [
+        0,
+        6
+      ]
+    },
+    "multiscale": {
+      "note": "COMPONENTWISE_NECESSARY_FINITE",
+      "type": "KERNEL_TRANSITION_INSUFFICIENT",
+      "witness": [
+        0,
+        6
+      ]
+    },
+    "parent": {
+      "note": "COMPONENTWISE_NECESSARY_FINITE",
+      "type": "KERNEL_TRANSITION_INSUFFICIENT",
+      "witness": [
+        0,
+        6
+      ]
+    },
+    "rank": {
+      "note": "COMPONENTWISE_NECESSARY_FINITE",
+      "type": "KERNEL_TRANSITION_INSUFFICIENT",
+      "witness": [
+        0,
+        6
+      ]
+    },
+    "subtree": {
+      "note": "COMPONENTWISE_NECESSARY_FINITE",
+      "type": "KERNEL_TRANSITION_INSUFFICIENT",
+      "witness": [
+        0,
+        6
+      ]
+    }
+  },
+  "4": {
+    "K0_full": {
+      "note": "COMPONENTWISE_NECESSARY_FINITE",
+      "type": "KERNEL_TRANSITION_INSUFFICIENT",
+      "witness": [
+        0,
+        15
+      ]
+    },
+    "accesspath": {
+      "note": "COMPONENTWISE_NECESSARY_FINITE",
+      "type": "KERNEL_TRANSITION_INSUFFICIENT",
+      "witness": [
+        0,
+        15
+      ]
+    },
+    "ancestor": {
+      "note": "COMPONENTWISE_NECESSARY_FINITE",
+      "type": "KERNEL_TRANSITION_INSUFFICIENT",
+      "witness": [
+        0,
+        15
+      ]
+    },
+    "crossing": {
+      "note": "COMPONENTWISE_NECESSARY_FINITE",
+      "type": "KERNEL_TRANSITION_INSUFFICIENT",
+      "witness": [
+        0,
+        15
+      ]
+    },
+    "depth": {
+      "note": "COMPONENTWISE_NECESSARY_FINITE",
+      "type": "KERNEL_TRANSITION_INSUFFICIENT",
+      "witness": [
+        0,
+        15
+      ]
+    },
+    "heavy": {
+      "note": "COMPONENTWISE_NECESSARY_FINITE",
+      "type": "KERNEL_TRANSITION_INSUFFICIENT",
+      "witness": [
+        0,
+        15
+      ]
+    },
+    "interval": {
+      "note": "COMPONENTWISE_NECESSARY_FINITE",
+      "type": "KERNEL_TRANSITION_INSUFFICIENT",
+      "witness": [
+        0,
+        15
+      ]
+    },
+    "inversion": {
+      "note": "COMPONENTWISE_NECESSARY_FINITE",
+      "type": "KERNEL_TRANSITION_INSUFFICIENT",
+      "witness": [
+        0,
+        15
+      ]
+    },
+    "multiscale": {
+      "note": "COMPONENTWISE_NECESSARY_FINITE",
+      "type": "KERNEL_TRANSITION_INSUFFICIENT",
+      "witness": [
+        0,
+        15
+      ]
+    },
+    "parent": {
+      "note": "COMPONENTWISE_NECESSARY_FINITE",
+      "type": "KERNEL_TRANSITION_INSUFFICIENT",
+      "witness": [
+        0,
+        15
+      ]
+    },
+    "rank": {
+      "note": "COMPONENTWISE_NECESSARY_FINITE",
+      "type": "KERNEL_TRANSITION_INSUFFICIENT",
+      "witness": [
+        0,
+        15
+      ]
+    },
+    "subtree": {
+      "note": "COMPONENTWISE_NECESSARY_FINITE",
+      "type": "KERNEL_TRANSITION_INSUFFICIENT",
+      "witness": [
+        0,
+        15
+      ]
+    }
+  },
+  "5": {
+    "K0_full": {
+      "note": "COMPONENTWISE_NECESSARY_FINITE",
+      "type": "KERNEL_TRANSITION_INSUFFICIENT",
+      "witness": [
+        0,
+        43
+      ]
+    },
+    "accesspath": {
+      "note": "COMPONENTWISE_NECESSARY_FINITE",
+      "type": "KERNEL_TRANSITION_INSUFFICIENT",
+      "witness": [
+        0,
+        43
+      ]
+    },
+    "ancestor": {
+      "note": "COMPONENTWISE_NECESSARY_FINITE",
+      "type": "KERNEL_TRANSITION_INSUFFICIENT",
+      "witness": [
+        0,
+        43
+      ]
+    },
+    "crossing": {
+      "note": "COMPONENTWISE_NECESSARY_FINITE",
+      "type": "KERNEL_TRANSITION_INSUFFICIENT",
+      "witness": [
+        0,
+        43
+      ]
+    },
+    "depth": {
+      "note": "COMPONENTWISE_NECESSARY_FINITE",
+      "type": "KERNEL_TRANSITION_INSUFFICIENT",
+      "witness": [
+        0,
+        43
+      ]
+    },
+    "heavy": {
+      "note": "COMPONENTWISE_NECESSARY_FINITE",
+      "type": "KERNEL_TRANSITION_INSUFFICIENT",
+      "witness": [
+        0,
+        43
+      ]
+    },
+    "interval": {
+      "note": "COMPONENTWISE_NECESSARY_FINITE",
+      "type": "KERNEL_TRANSITION_INSUFFICIENT",
+      "witness": [
+        0,
+        43
+      ]
+    },
+    "inversion": {
+      "note": "COMPONENTWISE_NECESSARY_FINITE",
+      "type": "KERNEL_TRANSITION_INSUFFICIENT",
+      "witness": [
+        0,
+        43
+      ]
+    },
+    "multiscale": {
+      "note": "COMPONENTWISE_NECESSARY_FINITE",
+      "type": "KERNEL_TRANSITION_INSUFFICIENT",
+      "witness": [
+        0,
+        43
+      ]
+    },
+    "parent": {
+      "note": "COMPONENTWISE_NECESSARY_FINITE",
+      "type": "KERNEL_TRANSITION_INSUFFICIENT",
+      "witness": [
+        0,
+        43
+      ]
+    },
+    "rank": {
+      "note": "COMPONENTWISE_NECESSARY_FINITE",
+      "type": "KERNEL_TRANSITION_INSUFFICIENT",
+      "witness": [
+        0,
+        43
+      ]
+    },
+    "subtree": {
+      "note": "COMPONENTWISE_NECESSARY_FINITE",
+      "type": "KERNEL_TRANSITION_INSUFFICIENT",
+      "witness": [
+        0,
+        43
+      ]
+    }
+  },
+  "6": {
+    "K0_full": {
+      "note": "COMPONENTWISE_NECESSARY_FINITE",
+      "type": "KERNEL_TRANSITION_INSUFFICIENT",
+      "witness": [
+        0,
+        133
+      ]
+    },
+    "accesspath": {
+      "note": "COMPONENTWISE_NECESSARY_FINITE",
+      "type": "KERNEL_TRANSITION_INSUFFICIENT",
+      "witness": [
+        0,
+        133
+      ]
+    },
+    "ancestor": {
+      "note": "COMPONENTWISE_NECESSARY_FINITE",
+      "type": "KERNEL_TRANSITION_INSUFFICIENT",
+      "witness": [
+        0,
+        133
+      ]
+    },
+    "crossing": {
+      "note": "COMPONENTWISE_NECESSARY_FINITE",
+      "type": "KERNEL_TRANSITION_INSUFFICIENT",
+      "witness": [
+        0,
+        133
+      ]
+    },
+    "depth": {
+      "note": "COMPONENTWISE_NECESSARY_FINITE",
+      "type": "KERNEL_TRANSITION_INSUFFICIENT",
+      "witness": [
+        0,
+        133
+      ]
+    },
+    "heavy": {
+      "note": "COMPONENTWISE_NECESSARY_FINITE",
+      "type": "KERNEL_TRANSITION_INSUFFICIENT",
+      "witness": [
+        0,
+        133
+      ]
+    },
+    "interval": {
+      "note": "COMPONENTWISE_NECESSARY_FINITE",
+      "type": "KERNEL_TRANSITION_INSUFFICIENT",
+      "witness": [
+        0,
+        133
+      ]
+    },
+    "inversion": {
+      "note": "COMPONENTWISE_NECESSARY_FINITE",
+      "type": "KERNEL_TRANSITION_INSUFFICIENT",
+      "witness": [
+        0,
+        133
+      ]
+    },
+    "multiscale": {
+      "note": "COMPONENTWISE_NECESSARY_FINITE",
+      "type": "KERNEL_TRANSITION_INSUFFICIENT",
+      "witness": [
+        0,
+        133
+      ]
+    },
+    "parent": {
+      "note": "COMPONENTWISE_NECESSARY_FINITE",
+      "type": "KERNEL_TRANSITION_INSUFFICIENT",
+      "witness": [
+        0,
+        133
+      ]
+    },
+    "rank": {
+      "note": "COMPONENTWISE_NECESSARY_FINITE",
+      "type": "KERNEL_TRANSITION_INSUFFICIENT",
+      "witness": [
+        0,
+        133
+      ]
+    },
+    "subtree": {
+      "note": "COMPONENTWISE_NECESSARY_FINITE",
+      "type": "KERNEL_TRANSITION_INSUFFICIENT",
+      "witness": [
+        0,
+        133
+      ]
+    }
+  },
+  "7": {
+    "K0_full": {
+      "note": "COMPONENTWISE_NECESSARY_FINITE",
+      "type": "KERNEL_TRANSITION_INSUFFICIENT",
+      "witness": [
+        0,
+        430
+      ]
+    },
+    "accesspath": {
+      "note": "COMPONENTWISE_NECESSARY_FINITE",
+      "type": "KERNEL_TRANSITION_INSUFFICIENT",
+      "witness": [
+        0,
+        430
+      ]
+    },
+    "ancestor": {
+      "note": "COMPONENTWISE_NECESSARY_FINITE",
+      "type": "KERNEL_TRANSITION_INSUFFICIENT",
+      "witness": [
+        0,
+        430
+      ]
+    },
+    "crossing": {
+      "note": "COMPONENTWISE_NECESSARY_FINITE",
+      "type": "KERNEL_TRANSITION_INSUFFICIENT",
+      "witness": [
+        0,
+        430
+      ]
+    },
+    "depth": {
+      "note": "COMPONENTWISE_NECESSARY_FINITE",
+      "type": "KERNEL_TRANSITION_INSUFFICIENT",
+      "witness": [
+        0,
+        430
+      ]
+    },
+    "heavy": {
+      "note": "COMPONENTWISE_NECESSARY_FINITE",
+      "type": "KERNEL_TRANSITION_INSUFFICIENT",
+      "witness": [
+        0,
+        430
+      ]
+    },
+    "interval": {
+      "note": "COMPONENTWISE_NECESSARY_FINITE",
+      "type": "KERNEL_TRANSITION_INSUFFICIENT",
+      "witness": [
+        0,
+        430
+      ]
+    },
+    "inversion": {
+      "note": "COMPONENTWISE_NECESSARY_FINITE",
+      "type": "KERNEL_TRANSITION_INSUFFICIENT",
+      "witness": [
+        0,
+        430
+      ]
+    },
+    "multiscale": {
+      "note": "COMPONENTWISE_NECESSARY_FINITE",
+      "type": "KERNEL_TRANSITION_INSUFFICIENT",
+      "witness": [
+        0,
+        430
+      ]
+    },
+    "parent": {
+      "note": "COMPONENTWISE_NECESSARY_FINITE",
+      "type": "KERNEL_TRANSITION_INSUFFICIENT",
+      "witness": [
+        0,
+        430
+      ]
+    },
+    "rank": {
+      "note": "COMPONENTWISE_NECESSARY_FINITE",
+      "type": "KERNEL_TRANSITION_INSUFFICIENT",
+      "witness": [
+        0,
+        430
+      ]
+    },
+    "subtree": {
+      "note": "COMPONENTWISE_NECESSARY_FINITE",
+      "type": "KERNEL_TRANSITION_INSUFFICIENT",
+      "witness": [
+        0,
+        430
+      ]
+    }
+  }
+}
