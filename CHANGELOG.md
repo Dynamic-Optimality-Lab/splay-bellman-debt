@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## WP-2 (2026-09-22)
+- GATED_PASS: anchor b=2 n=2..7 verified (R exact, maxU/V match, Bellman fixed points green); BELL-SIG 203911 rows + extremal specimens + trajectories; panel 5/2,3,4 solved n=2..6, n=7 skipped (ROBUSTNESS_PANEL_INCOMPLETE); independent dict-core audit PASS n=2..6; BD-01..10 10/10; stress STRESS_PASS. Bugs closed: sparse pair_id sizing, import-scan precision.
+
 ## WP-1 reseal (2026-09-22)
 - BD0-15 UNPROVED -> PROVED -> REVIEWED: full one-way R_pi proof in math/theorem_BD9_recency_v_blindness.md (SHA 51352C45...AFB85A0) + independent test tests/parent/test_bd015_recency_v_blindness.py (5/5).
 - Literature: SA-02 (SPLAY_AM_BD_IMPLEMENTATION_SPEC_v0.2.2.md) freeze methods; L1 BIBLIOGRAPHIC_IDENTITY (DOI 10.1145/3828.3835, no paywall bypass); L4 LOCAL_BYTES (CC-BY PDF, SHA 7E97911B...A38458); L2/L3 PARENT_INHERITED_BYTES re-verified; MANIFEST + SHA256SUMS + CITATIONS updated.

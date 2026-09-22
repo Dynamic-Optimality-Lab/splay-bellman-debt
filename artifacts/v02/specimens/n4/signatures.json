@@ -1,0 +1,5197 @@
+{
+  "n": 4,
+  "signatures": [
+    {
+      "G_scaled": "0",
+      "U_scaled": "0",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 2,
+      "max_delete_deltaV_scaled": "2",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "0",
+      "u_tight_actions": [
+        [
+          "DELETE",
+          1
+        ],
+        [
+          "DELETE",
+          2
+        ],
+        [
+          "DELETE",
+          3
+        ]
+      ],
+      "v_tight_actions": []
+    },
+    {
+      "G_scaled": "8",
+      "U_scaled": "8",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 2,
+      "max_delete_deltaV_scaled": "2",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "1",
+      "u_tight_actions": [
+        [
+          "KEEP",
+          1
+        ],
+        [
+          "DELETE",
+          1
+        ],
+        [
+          "DELETE",
+          3
+        ]
+      ],
+      "v_tight_actions": []
+    },
+    {
+      "G_scaled": "8",
+      "U_scaled": "8",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 2,
+      "max_delete_deltaV_scaled": "1",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "2",
+      "u_tight_actions": [
+        [
+          "KEEP",
+          1
+        ],
+        [
+          "DELETE",
+          1
+        ]
+      ],
+      "v_tight_actions": []
+    },
+    {
+      "G_scaled": "4",
+      "U_scaled": "4",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 1,
+      "max_delete_deltaV_scaled": "1",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "3",
+      "u_tight_actions": [
+        [
+          "KEEP",
+          1
+        ],
+        [
+          "DELETE",
+          1
+        ]
+      ],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          4
+        ]
+      ]
+    },
+    {
+      "G_scaled": "6",
+      "U_scaled": "6",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 2,
+      "max_delete_deltaV_scaled": "2",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "4",
+      "u_tight_actions": [
+        [
+          "DELETE",
+          2
+        ],
+        [
+          "DELETE",
+          3
+        ]
+      ],
+      "v_tight_actions": []
+    },
+    {
+      "G_scaled": "11",
+      "U_scaled": "11",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 2,
+      "max_delete_deltaV_scaled": "2",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "5",
+      "u_tight_actions": [],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          3
+        ]
+      ]
+    },
+    {
+      "G_scaled": "10",
+      "U_scaled": "10",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 1,
+      "max_delete_deltaV_scaled": "1",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "6",
+      "u_tight_actions": [
+        [
+          "DELETE",
+          1
+        ]
+      ],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          4
+        ]
+      ]
+    },
+    {
+      "G_scaled": "10",
+      "U_scaled": "10",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 1,
+      "max_delete_deltaV_scaled": "1",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "7",
+      "u_tight_actions": [
+        [
+          "DELETE",
+          1
+        ]
+      ],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          4
+        ]
+      ]
+    },
+    {
+      "G_scaled": "5",
+      "U_scaled": "6",
+      "V_scaled": "1",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 0,
+      "max_delete_deltaV_scaled": "0",
+      "max_keep_excess_scaled": "1",
+      "n": 4,
+      "positive_excess_keep_count": 1,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "8",
+      "u_tight_actions": [
+        [
+          "DELETE",
+          1
+        ]
+      ],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          4
+        ]
+      ]
+    },
+    {
+      "G_scaled": "14",
+      "U_scaled": "14",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 2,
+      "max_delete_deltaV_scaled": "2",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "9",
+      "u_tight_actions": [],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          4
+        ]
+      ]
+    },
+    {
+      "G_scaled": "16",
+      "U_scaled": "16",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 2,
+      "max_delete_deltaV_scaled": "2",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "10",
+      "u_tight_actions": [],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          3
+        ],
+        [
+          "KEEP",
+          4
+        ]
+      ]
+    },
+    {
+      "G_scaled": "11",
+      "U_scaled": "12",
+      "V_scaled": "1",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 0,
+      "max_delete_deltaV_scaled": "0",
+      "max_keep_excess_scaled": "1",
+      "n": 4,
+      "positive_excess_keep_count": 1,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "11",
+      "u_tight_actions": [],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          4
+        ]
+      ]
+    },
+    {
+      "G_scaled": "13",
+      "U_scaled": "14",
+      "V_scaled": "1",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 1,
+      "max_delete_deltaV_scaled": "1",
+      "max_keep_excess_scaled": "1",
+      "n": 4,
+      "positive_excess_keep_count": 1,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "12",
+      "u_tight_actions": [],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          4
+        ]
+      ]
+    },
+    {
+      "G_scaled": "8",
+      "U_scaled": "10",
+      "V_scaled": "2",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 0,
+      "max_delete_deltaV_scaled": "0",
+      "max_keep_excess_scaled": "2",
+      "n": 4,
+      "positive_excess_keep_count": 1,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "13",
+      "u_tight_actions": [],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          4
+        ]
+      ]
+    },
+    {
+      "G_scaled": "10",
+      "U_scaled": "10",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 2,
+      "max_delete_deltaV_scaled": "2",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "14",
+      "u_tight_actions": [
+        [
+          "DELETE",
+          1
+        ],
+        [
+          "DELETE",
+          3
+        ]
+      ],
+      "v_tight_actions": []
+    },
+    {
+      "G_scaled": "0",
+      "U_scaled": "0",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 2,
+      "max_delete_deltaV_scaled": "2",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "15",
+      "u_tight_actions": [
+        [
+          "DELETE",
+          1
+        ],
+        [
+          "DELETE",
+          2
+        ],
+        [
+          "DELETE",
+          3
+        ]
+      ],
+      "v_tight_actions": []
+    },
+    {
+      "G_scaled": "9",
+      "U_scaled": "9",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 2,
+      "max_delete_deltaV_scaled": "1",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "16",
+      "u_tight_actions": [
+        [
+          "DELETE",
+          1
+        ],
+        [
+          "DELETE",
+          3
+        ]
+      ],
+      "v_tight_actions": []
+    },
+    {
+      "G_scaled": "12",
+      "U_scaled": "12",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 1,
+      "max_delete_deltaV_scaled": "1",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "17",
+      "u_tight_actions": [],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          4
+        ]
+      ]
+    },
+    {
+      "G_scaled": "8",
+      "U_scaled": "8",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 2,
+      "max_delete_deltaV_scaled": "2",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "18",
+      "u_tight_actions": [],
+      "v_tight_actions": []
+    },
+    {
+      "G_scaled": "10",
+      "U_scaled": "10",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 2,
+      "max_delete_deltaV_scaled": "2",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "19",
+      "u_tight_actions": [
+        [
+          "DELETE",
+          1
+        ]
+      ],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          3
+        ]
+      ]
+    },
+    {
+      "G_scaled": "4",
+      "U_scaled": "4",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 1,
+      "max_delete_deltaV_scaled": "1",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "20",
+      "u_tight_actions": [
+        [
+          "DELETE",
+          2
+        ]
+      ],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          4
+        ]
+      ]
+    },
+    {
+      "G_scaled": "16",
+      "U_scaled": "16",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 1,
+      "max_delete_deltaV_scaled": "1",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "21",
+      "u_tight_actions": [],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          4
+        ]
+      ]
+    },
+    {
+      "G_scaled": "21",
+      "U_scaled": "22",
+      "V_scaled": "1",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 0,
+      "max_delete_deltaV_scaled": "0",
+      "max_keep_excess_scaled": "1",
+      "n": 4,
+      "positive_excess_keep_count": 1,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "22",
+      "u_tight_actions": [],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          4
+        ]
+      ]
+    },
+    {
+      "G_scaled": "10",
+      "U_scaled": "10",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 2,
+      "max_delete_deltaV_scaled": "2",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "23",
+      "u_tight_actions": [],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          4
+        ]
+      ]
+    },
+    {
+      "G_scaled": "12",
+      "U_scaled": "12",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 2,
+      "max_delete_deltaV_scaled": "2",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "24",
+      "u_tight_actions": [],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          3
+        ],
+        [
+          "KEEP",
+          4
+        ]
+      ]
+    },
+    {
+      "G_scaled": "5",
+      "U_scaled": "6",
+      "V_scaled": "1",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 0,
+      "max_delete_deltaV_scaled": "0",
+      "max_keep_excess_scaled": "1",
+      "n": 4,
+      "positive_excess_keep_count": 1,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "25",
+      "u_tight_actions": [],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          4
+        ]
+      ]
+    },
+    {
+      "G_scaled": "11",
+      "U_scaled": "12",
+      "V_scaled": "1",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 1,
+      "max_delete_deltaV_scaled": "1",
+      "max_keep_excess_scaled": "1",
+      "n": 4,
+      "positive_excess_keep_count": 1,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "26",
+      "u_tight_actions": [],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          4
+        ]
+      ]
+    },
+    {
+      "G_scaled": "13",
+      "U_scaled": "15",
+      "V_scaled": "2",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 0,
+      "max_delete_deltaV_scaled": "0",
+      "max_keep_excess_scaled": "2",
+      "n": 4,
+      "positive_excess_keep_count": 1,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "27",
+      "u_tight_actions": [],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          4
+        ]
+      ]
+    },
+    {
+      "G_scaled": "9",
+      "U_scaled": "9",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 2,
+      "max_delete_deltaV_scaled": "2",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "28",
+      "u_tight_actions": [
+        [
+          "DELETE",
+          1
+        ],
+        [
+          "DELETE",
+          2
+        ]
+      ],
+      "v_tight_actions": []
+    },
+    {
+      "G_scaled": "11",
+      "U_scaled": "11",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 2,
+      "max_delete_deltaV_scaled": "2",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "29",
+      "u_tight_actions": [],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          2
+        ]
+      ]
+    },
+    {
+      "G_scaled": "0",
+      "U_scaled": "0",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 2,
+      "max_delete_deltaV_scaled": "1",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "30",
+      "u_tight_actions": [
+        [
+          "DELETE",
+          1
+        ],
+        [
+          "DELETE",
+          2
+        ],
+        [
+          "DELETE",
+          3
+        ]
+      ],
+      "v_tight_actions": []
+    },
+    {
+      "G_scaled": "22",
+      "U_scaled": "22",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 1,
+      "max_delete_deltaV_scaled": "1",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "31",
+      "u_tight_actions": [],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          4
+        ]
+      ]
+    },
+    {
+      "G_scaled": "11",
+      "U_scaled": "11",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 2,
+      "max_delete_deltaV_scaled": "2",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "32",
+      "u_tight_actions": [],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          2
+        ]
+      ]
+    },
+    {
+      "G_scaled": "8",
+      "U_scaled": "8",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 2,
+      "max_delete_deltaV_scaled": "2",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "33",
+      "u_tight_actions": [],
+      "v_tight_actions": []
+    },
+    {
+      "G_scaled": "16",
+      "U_scaled": "16",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 1,
+      "max_delete_deltaV_scaled": "1",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "34",
+      "u_tight_actions": [],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          4
+        ]
+      ]
+    },
+    {
+      "G_scaled": "4",
+      "U_scaled": "4",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 1,
+      "max_delete_deltaV_scaled": "1",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "35",
+      "u_tight_actions": [],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          4
+        ]
+      ]
+    },
+    {
+      "G_scaled": "11",
+      "U_scaled": "12",
+      "V_scaled": "1",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 0,
+      "max_delete_deltaV_scaled": "0",
+      "max_keep_excess_scaled": "1",
+      "n": 4,
+      "positive_excess_keep_count": 1,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "36",
+      "u_tight_actions": [],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          4
+        ]
+      ]
+    },
+    {
+      "G_scaled": "16",
+      "U_scaled": "16",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 2,
+      "max_delete_deltaV_scaled": "2",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "37",
+      "u_tight_actions": [],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          2
+        ],
+        [
+          "KEEP",
+          4
+        ]
+      ]
+    },
+    {
+      "G_scaled": "10",
+      "U_scaled": "10",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 2,
+      "max_delete_deltaV_scaled": "2",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "38",
+      "u_tight_actions": [],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          4
+        ]
+      ]
+    },
+    {
+      "G_scaled": "14",
+      "U_scaled": "15",
+      "V_scaled": "1",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 0,
+      "max_delete_deltaV_scaled": "0",
+      "max_keep_excess_scaled": "1",
+      "n": 4,
+      "positive_excess_keep_count": 1,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "39",
+      "u_tight_actions": [],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          4
+        ]
+      ]
+    },
+    {
+      "G_scaled": "5",
+      "U_scaled": "6",
+      "V_scaled": "1",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 1,
+      "max_delete_deltaV_scaled": "1",
+      "max_keep_excess_scaled": "1",
+      "n": 4,
+      "positive_excess_keep_count": 1,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "40",
+      "u_tight_actions": [],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          4
+        ]
+      ]
+    },
+    {
+      "G_scaled": "14",
+      "U_scaled": "16",
+      "V_scaled": "2",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 0,
+      "max_delete_deltaV_scaled": "0",
+      "max_keep_excess_scaled": "2",
+      "n": 4,
+      "positive_excess_keep_count": 1,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "41",
+      "u_tight_actions": [],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          4
+        ]
+      ]
+    },
+    {
+      "G_scaled": "4",
+      "U_scaled": "4",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 2,
+      "max_delete_deltaV_scaled": "2",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "42",
+      "u_tight_actions": [
+        [
+          "KEEP",
+          1
+        ],
+        [
+          "DELETE",
+          1
+        ]
+      ],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          3
+        ]
+      ]
+    },
+    {
+      "G_scaled": "12",
+      "U_scaled": "12",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 2,
+      "max_delete_deltaV_scaled": "2",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "43",
+      "u_tight_actions": [],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          2
+        ],
+        [
+          "KEEP",
+          3
+        ]
+      ]
+    },
+    {
+      "G_scaled": "5",
+      "U_scaled": "6",
+      "V_scaled": "1",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 0,
+      "max_delete_deltaV_scaled": "0",
+      "max_keep_excess_scaled": "1",
+      "n": 4,
+      "positive_excess_keep_count": 1,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "44",
+      "u_tight_actions": [
+        [
+          "DELETE",
+          1
+        ],
+        [
+          "DELETE",
+          2
+        ]
+      ],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          3
+        ]
+      ]
+    },
+    {
+      "G_scaled": "0",
+      "U_scaled": "0",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 1,
+      "max_delete_deltaV_scaled": "1",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "45",
+      "u_tight_actions": [
+        [
+          "DELETE",
+          1
+        ],
+        [
+          "DELETE",
+          2
+        ],
+        [
+          "DELETE",
+          4
+        ]
+      ],
+      "v_tight_actions": []
+    },
+    {
+      "G_scaled": "9",
+      "U_scaled": "10",
+      "V_scaled": "1",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 1,
+      "max_delete_deltaV_scaled": "1",
+      "max_keep_excess_scaled": "1",
+      "n": 4,
+      "positive_excess_keep_count": 1,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "46",
+      "u_tight_actions": [
+        [
+          "DELETE",
+          1
+        ]
+      ],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          3
+        ]
+      ]
+    },
+    {
+      "G_scaled": "6",
+      "U_scaled": "8",
+      "V_scaled": "2",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 0,
+      "max_delete_deltaV_scaled": "0",
+      "max_keep_excess_scaled": "2",
+      "n": 4,
+      "positive_excess_keep_count": 1,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "47",
+      "u_tight_actions": [
+        [
+          "DELETE",
+          1
+        ],
+        [
+          "DELETE",
+          2
+        ],
+        [
+          "KEEP",
+          4
+        ]
+      ],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          3
+        ]
+      ]
+    },
+    {
+      "G_scaled": "6",
+      "U_scaled": "6",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 1,
+      "max_delete_deltaV_scaled": "1",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "48",
+      "u_tight_actions": [
+        [
+          "KEEP",
+          4
+        ],
+        [
+          "DELETE",
+          4
+        ]
+      ],
+      "v_tight_actions": []
+    },
+    {
+      "G_scaled": "5",
+      "U_scaled": "6",
+      "V_scaled": "1",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 0,
+      "max_delete_deltaV_scaled": "0",
+      "max_keep_excess_scaled": "1",
+      "n": 4,
+      "positive_excess_keep_count": 1,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "49",
+      "u_tight_actions": [
+        [
+          "KEEP",
+          4
+        ],
+        [
+          "DELETE",
+          4
+        ]
+      ],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          3
+        ]
+      ]
+    },
+    {
+      "G_scaled": "4",
+      "U_scaled": "4",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 1,
+      "max_delete_deltaV_scaled": "1",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "50",
+      "u_tight_actions": [],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          3
+        ]
+      ]
+    },
+    {
+      "G_scaled": "11",
+      "U_scaled": "12",
+      "V_scaled": "1",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 1,
+      "max_delete_deltaV_scaled": "1",
+      "max_keep_excess_scaled": "1",
+      "n": 4,
+      "positive_excess_keep_count": 1,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "51",
+      "u_tight_actions": [],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          3
+        ]
+      ]
+    },
+    {
+      "G_scaled": "10",
+      "U_scaled": "12",
+      "V_scaled": "2",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 0,
+      "max_delete_deltaV_scaled": "0",
+      "max_keep_excess_scaled": "2",
+      "n": 4,
+      "positive_excess_keep_count": 1,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "52",
+      "u_tight_actions": [
+        [
+          "DELETE",
+          4
+        ]
+      ],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          3
+        ]
+      ]
+    },
+    {
+      "G_scaled": "10",
+      "U_scaled": "10",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 2,
+      "max_delete_deltaV_scaled": "1",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "53",
+      "u_tight_actions": [],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          3
+        ]
+      ]
+    },
+    {
+      "G_scaled": "8",
+      "U_scaled": "10",
+      "V_scaled": "2",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 0,
+      "max_delete_deltaV_scaled": "0",
+      "max_keep_excess_scaled": "2",
+      "n": 4,
+      "positive_excess_keep_count": 1,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "54",
+      "u_tight_actions": [
+        [
+          "DELETE",
+          4
+        ]
+      ],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          3
+        ]
+      ]
+    },
+    {
+      "G_scaled": "5",
+      "U_scaled": "6",
+      "V_scaled": "1",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 1,
+      "max_delete_deltaV_scaled": "1",
+      "max_keep_excess_scaled": "1",
+      "n": 4,
+      "positive_excess_keep_count": 1,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "55",
+      "u_tight_actions": [
+        [
+          "KEEP",
+          4
+        ],
+        [
+          "DELETE",
+          4
+        ]
+      ],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          3
+        ]
+      ]
+    },
+    {
+      "G_scaled": "9",
+      "U_scaled": "9",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 2,
+      "max_delete_deltaV_scaled": "2",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "56",
+      "u_tight_actions": [
+        [
+          "KEEP",
+          1
+        ],
+        [
+          "DELETE",
+          1
+        ]
+      ],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          1
+        ]
+      ]
+    },
+    {
+      "G_scaled": "13",
+      "U_scaled": "13",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 2,
+      "max_delete_deltaV_scaled": "2",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "57",
+      "u_tight_actions": [
+        [
+          "KEEP",
+          1
+        ],
+        [
+          "DELETE",
+          1
+        ]
+      ],
+      "v_tight_actions": []
+    },
+    {
+      "G_scaled": "13",
+      "U_scaled": "13",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 2,
+      "max_delete_deltaV_scaled": "1",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "58",
+      "u_tight_actions": [
+        [
+          "KEEP",
+          1
+        ],
+        [
+          "DELETE",
+          1
+        ]
+      ],
+      "v_tight_actions": []
+    },
+    {
+      "G_scaled": "14",
+      "U_scaled": "14",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 1,
+      "max_delete_deltaV_scaled": "1",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "59",
+      "u_tight_actions": [
+        [
+          "DELETE",
+          1
+        ]
+      ],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          4
+        ]
+      ]
+    },
+    {
+      "G_scaled": "0",
+      "U_scaled": "0",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 2,
+      "max_delete_deltaV_scaled": "2",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "60",
+      "u_tight_actions": [
+        [
+          "DELETE",
+          1
+        ],
+        [
+          "DELETE",
+          2
+        ],
+        [
+          "DELETE",
+          3
+        ]
+      ],
+      "v_tight_actions": []
+    },
+    {
+      "G_scaled": "11",
+      "U_scaled": "11",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 2,
+      "max_delete_deltaV_scaled": "2",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "61",
+      "u_tight_actions": [
+        [
+          "DELETE",
+          1
+        ]
+      ],
+      "v_tight_actions": []
+    },
+    {
+      "G_scaled": "18",
+      "U_scaled": "18",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 1,
+      "max_delete_deltaV_scaled": "1",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "62",
+      "u_tight_actions": [
+        [
+          "DELETE",
+          1
+        ]
+      ],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          4
+        ]
+      ]
+    },
+    {
+      "G_scaled": "18",
+      "U_scaled": "18",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 1,
+      "max_delete_deltaV_scaled": "1",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "63",
+      "u_tight_actions": [
+        [
+          "DELETE",
+          1
+        ]
+      ],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          4
+        ]
+      ]
+    },
+    {
+      "G_scaled": "11",
+      "U_scaled": "12",
+      "V_scaled": "1",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 0,
+      "max_delete_deltaV_scaled": "0",
+      "max_keep_excess_scaled": "1",
+      "n": 4,
+      "positive_excess_keep_count": 1,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "64",
+      "u_tight_actions": [
+        [
+          "DELETE",
+          1
+        ],
+        [
+          "DELETE",
+          3
+        ]
+      ],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          4
+        ]
+      ]
+    },
+    {
+      "G_scaled": "4",
+      "U_scaled": "4",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 2,
+      "max_delete_deltaV_scaled": "2",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "65",
+      "u_tight_actions": [
+        [
+          "KEEP",
+          2
+        ],
+        [
+          "DELETE",
+          2
+        ]
+      ],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          4
+        ]
+      ]
+    },
+    {
+      "G_scaled": "13",
+      "U_scaled": "13",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 2,
+      "max_delete_deltaV_scaled": "2",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "66",
+      "u_tight_actions": [],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          4
+        ]
+      ]
+    },
+    {
+      "G_scaled": "15",
+      "U_scaled": "16",
+      "V_scaled": "1",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 0,
+      "max_delete_deltaV_scaled": "0",
+      "max_keep_excess_scaled": "1",
+      "n": 4,
+      "positive_excess_keep_count": 1,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "67",
+      "u_tight_actions": [],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          4
+        ]
+      ]
+    },
+    {
+      "G_scaled": "15",
+      "U_scaled": "16",
+      "V_scaled": "1",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 1,
+      "max_delete_deltaV_scaled": "1",
+      "max_keep_excess_scaled": "1",
+      "n": 4,
+      "positive_excess_keep_count": 1,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "68",
+      "u_tight_actions": [],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          4
+        ]
+      ]
+    },
+    {
+      "G_scaled": "6",
+      "U_scaled": "8",
+      "V_scaled": "2",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 0,
+      "max_delete_deltaV_scaled": "0",
+      "max_keep_excess_scaled": "2",
+      "n": 4,
+      "positive_excess_keep_count": 1,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "69",
+      "u_tight_actions": [
+        [
+          "KEEP",
+          1
+        ]
+      ],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          4
+        ]
+      ]
+    },
+    {
+      "G_scaled": "11",
+      "U_scaled": "11",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 2,
+      "max_delete_deltaV_scaled": "2",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "70",
+      "u_tight_actions": [],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          1
+        ]
+      ]
+    },
+    {
+      "G_scaled": "14",
+      "U_scaled": "14",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 2,
+      "max_delete_deltaV_scaled": "2",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "71",
+      "u_tight_actions": [],
+      "v_tight_actions": []
+    },
+    {
+      "G_scaled": "14",
+      "U_scaled": "14",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 2,
+      "max_delete_deltaV_scaled": "1",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "72",
+      "u_tight_actions": [],
+      "v_tight_actions": []
+    },
+    {
+      "G_scaled": "16",
+      "U_scaled": "16",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 1,
+      "max_delete_deltaV_scaled": "1",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "73",
+      "u_tight_actions": [],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          4
+        ]
+      ]
+    },
+    {
+      "G_scaled": "9",
+      "U_scaled": "9",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 2,
+      "max_delete_deltaV_scaled": "2",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "74",
+      "u_tight_actions": [
+        [
+          "KEEP",
+          1
+        ],
+        [
+          "DELETE",
+          1
+        ]
+      ],
+      "v_tight_actions": []
+    },
+    {
+      "G_scaled": "0",
+      "U_scaled": "0",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 2,
+      "max_delete_deltaV_scaled": "2",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "75",
+      "u_tight_actions": [
+        [
+          "DELETE",
+          1
+        ],
+        [
+          "DELETE",
+          2
+        ],
+        [
+          "DELETE",
+          3
+        ]
+      ],
+      "v_tight_actions": []
+    },
+    {
+      "G_scaled": "22",
+      "U_scaled": "22",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 1,
+      "max_delete_deltaV_scaled": "1",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "76",
+      "u_tight_actions": [],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          4
+        ]
+      ]
+    },
+    {
+      "G_scaled": "22",
+      "U_scaled": "22",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 1,
+      "max_delete_deltaV_scaled": "1",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "77",
+      "u_tight_actions": [],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          4
+        ]
+      ]
+    },
+    {
+      "G_scaled": "17",
+      "U_scaled": "18",
+      "V_scaled": "1",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 0,
+      "max_delete_deltaV_scaled": "0",
+      "max_keep_excess_scaled": "1",
+      "n": 4,
+      "positive_excess_keep_count": 1,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "78",
+      "u_tight_actions": [],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          4
+        ]
+      ]
+    },
+    {
+      "G_scaled": "15",
+      "U_scaled": "15",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 2,
+      "max_delete_deltaV_scaled": "2",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "79",
+      "u_tight_actions": [],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          4
+        ]
+      ]
+    },
+    {
+      "G_scaled": "4",
+      "U_scaled": "4",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 2,
+      "max_delete_deltaV_scaled": "2",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "80",
+      "u_tight_actions": [
+        [
+          "DELETE",
+          3
+        ]
+      ],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          4
+        ]
+      ]
+    },
+    {
+      "G_scaled": "16",
+      "U_scaled": "17",
+      "V_scaled": "1",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 0,
+      "max_delete_deltaV_scaled": "0",
+      "max_keep_excess_scaled": "1",
+      "n": 4,
+      "positive_excess_keep_count": 1,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "81",
+      "u_tight_actions": [],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          4
+        ]
+      ]
+    },
+    {
+      "G_scaled": "16",
+      "U_scaled": "17",
+      "V_scaled": "1",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 1,
+      "max_delete_deltaV_scaled": "1",
+      "max_keep_excess_scaled": "1",
+      "n": 4,
+      "positive_excess_keep_count": 1,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "82",
+      "u_tight_actions": [],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          4
+        ]
+      ]
+    },
+    {
+      "G_scaled": "11",
+      "U_scaled": "13",
+      "V_scaled": "2",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 0,
+      "max_delete_deltaV_scaled": "0",
+      "max_keep_excess_scaled": "2",
+      "n": 4,
+      "positive_excess_keep_count": 1,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "83",
+      "u_tight_actions": [],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          4
+        ]
+      ]
+    },
+    {
+      "G_scaled": "14",
+      "U_scaled": "14",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 2,
+      "max_delete_deltaV_scaled": "2",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "84",
+      "u_tight_actions": [],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          1
+        ],
+        [
+          "KEEP",
+          3
+        ]
+      ]
+    },
+    {
+      "G_scaled": "4",
+      "U_scaled": "4",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 2,
+      "max_delete_deltaV_scaled": "2",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "85",
+      "u_tight_actions": [
+        [
+          "KEEP",
+          2
+        ],
+        [
+          "DELETE",
+          2
+        ]
+      ],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          3
+        ]
+      ]
+    },
+    {
+      "G_scaled": "12",
+      "U_scaled": "13",
+      "V_scaled": "1",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 0,
+      "max_delete_deltaV_scaled": "0",
+      "max_keep_excess_scaled": "1",
+      "n": 4,
+      "positive_excess_keep_count": 1,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "86",
+      "u_tight_actions": [],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          3
+        ]
+      ]
+    },
+    {
+      "G_scaled": "8",
+      "U_scaled": "8",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 1,
+      "max_delete_deltaV_scaled": "1",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "87",
+      "u_tight_actions": [
+        [
+          "KEEP",
+          1
+        ],
+        [
+          "DELETE",
+          1
+        ],
+        [
+          "KEEP",
+          4
+        ],
+        [
+          "DELETE",
+          4
+        ]
+      ],
+      "v_tight_actions": []
+    },
+    {
+      "G_scaled": "5",
+      "U_scaled": "6",
+      "V_scaled": "1",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 1,
+      "max_delete_deltaV_scaled": "1",
+      "max_keep_excess_scaled": "1",
+      "n": 4,
+      "positive_excess_keep_count": 1,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "88",
+      "u_tight_actions": [
+        [
+          "KEEP",
+          1
+        ],
+        [
+          "DELETE",
+          1
+        ],
+        [
+          "DELETE",
+          2
+        ]
+      ],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          3
+        ]
+      ]
+    },
+    {
+      "G_scaled": "10",
+      "U_scaled": "12",
+      "V_scaled": "2",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 0,
+      "max_delete_deltaV_scaled": "0",
+      "max_keep_excess_scaled": "2",
+      "n": 4,
+      "positive_excess_keep_count": 1,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "89",
+      "u_tight_actions": [
+        [
+          "DELETE",
+          1
+        ]
+      ],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          3
+        ]
+      ]
+    },
+    {
+      "G_scaled": "0",
+      "U_scaled": "0",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 1,
+      "max_delete_deltaV_scaled": "1",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "90",
+      "u_tight_actions": [
+        [
+          "DELETE",
+          1
+        ],
+        [
+          "DELETE",
+          2
+        ],
+        [
+          "DELETE",
+          4
+        ]
+      ],
+      "v_tight_actions": []
+    },
+    {
+      "G_scaled": "11",
+      "U_scaled": "12",
+      "V_scaled": "1",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 0,
+      "max_delete_deltaV_scaled": "0",
+      "max_keep_excess_scaled": "1",
+      "n": 4,
+      "positive_excess_keep_count": 1,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "91",
+      "u_tight_actions": [
+        [
+          "DELETE",
+          1
+        ],
+        [
+          "DELETE",
+          4
+        ]
+      ],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          3
+        ]
+      ]
+    },
+    {
+      "G_scaled": "18",
+      "U_scaled": "18",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 1,
+      "max_delete_deltaV_scaled": "1",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "92",
+      "u_tight_actions": [
+        [
+          "DELETE",
+          1
+        ],
+        [
+          "DELETE",
+          4
+        ]
+      ],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          3
+        ]
+      ]
+    },
+    {
+      "G_scaled": "5",
+      "U_scaled": "6",
+      "V_scaled": "1",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 1,
+      "max_delete_deltaV_scaled": "1",
+      "max_keep_excess_scaled": "1",
+      "n": 4,
+      "positive_excess_keep_count": 1,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "93",
+      "u_tight_actions": [
+        [
+          "KEEP",
+          4
+        ],
+        [
+          "DELETE",
+          4
+        ]
+      ],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          3
+        ]
+      ]
+    },
+    {
+      "G_scaled": "6",
+      "U_scaled": "8",
+      "V_scaled": "2",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 0,
+      "max_delete_deltaV_scaled": "0",
+      "max_keep_excess_scaled": "2",
+      "n": 4,
+      "positive_excess_keep_count": 1,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "94",
+      "u_tight_actions": [
+        [
+          "KEEP",
+          1
+        ],
+        [
+          "KEEP",
+          4
+        ],
+        [
+          "DELETE",
+          4
+        ]
+      ],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          3
+        ]
+      ]
+    },
+    {
+      "G_scaled": "4",
+      "U_scaled": "4",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 2,
+      "max_delete_deltaV_scaled": "1",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "95",
+      "u_tight_actions": [],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          3
+        ]
+      ]
+    },
+    {
+      "G_scaled": "6",
+      "U_scaled": "8",
+      "V_scaled": "2",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 0,
+      "max_delete_deltaV_scaled": "0",
+      "max_keep_excess_scaled": "2",
+      "n": 4,
+      "positive_excess_keep_count": 1,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "96",
+      "u_tight_actions": [
+        [
+          "KEEP",
+          1
+        ],
+        [
+          "KEEP",
+          4
+        ],
+        [
+          "DELETE",
+          4
+        ]
+      ],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          3
+        ]
+      ]
+    },
+    {
+      "G_scaled": "12",
+      "U_scaled": "13",
+      "V_scaled": "1",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 1,
+      "max_delete_deltaV_scaled": "1",
+      "max_keep_excess_scaled": "1",
+      "n": 4,
+      "positive_excess_keep_count": 1,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "97",
+      "u_tight_actions": [],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          3
+        ]
+      ]
+    },
+    {
+      "G_scaled": "12",
+      "U_scaled": "13",
+      "V_scaled": "1",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 1,
+      "max_delete_deltaV_scaled": "1",
+      "max_keep_excess_scaled": "1",
+      "n": 4,
+      "positive_excess_keep_count": 1,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "98",
+      "u_tight_actions": [],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          2
+        ]
+      ]
+    },
+    {
+      "G_scaled": "6",
+      "U_scaled": "8",
+      "V_scaled": "2",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 0,
+      "max_delete_deltaV_scaled": "0",
+      "max_keep_excess_scaled": "2",
+      "n": 4,
+      "positive_excess_keep_count": 1,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "99",
+      "u_tight_actions": [
+        [
+          "KEEP",
+          1
+        ],
+        [
+          "DELETE",
+          1
+        ],
+        [
+          "KEEP",
+          4
+        ]
+      ],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          2
+        ]
+      ]
+    },
+    {
+      "G_scaled": "4",
+      "U_scaled": "4",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 2,
+      "max_delete_deltaV_scaled": "1",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "100",
+      "u_tight_actions": [],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          2
+        ]
+      ]
+    },
+    {
+      "G_scaled": "18",
+      "U_scaled": "18",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 1,
+      "max_delete_deltaV_scaled": "1",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "101",
+      "u_tight_actions": [
+        [
+          "DELETE",
+          1
+        ],
+        [
+          "DELETE",
+          4
+        ]
+      ],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          2
+        ]
+      ]
+    },
+    {
+      "G_scaled": "6",
+      "U_scaled": "8",
+      "V_scaled": "2",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 0,
+      "max_delete_deltaV_scaled": "0",
+      "max_keep_excess_scaled": "2",
+      "n": 4,
+      "positive_excess_keep_count": 1,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "102",
+      "u_tight_actions": [
+        [
+          "KEEP",
+          1
+        ],
+        [
+          "DELETE",
+          1
+        ],
+        [
+          "KEEP",
+          4
+        ]
+      ],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          2
+        ]
+      ]
+    },
+    {
+      "G_scaled": "5",
+      "U_scaled": "6",
+      "V_scaled": "1",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 1,
+      "max_delete_deltaV_scaled": "1",
+      "max_keep_excess_scaled": "1",
+      "n": 4,
+      "positive_excess_keep_count": 1,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "103",
+      "u_tight_actions": [
+        [
+          "KEEP",
+          1
+        ],
+        [
+          "DELETE",
+          1
+        ]
+      ],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          2
+        ]
+      ]
+    },
+    {
+      "G_scaled": "11",
+      "U_scaled": "12",
+      "V_scaled": "1",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 0,
+      "max_delete_deltaV_scaled": "0",
+      "max_keep_excess_scaled": "1",
+      "n": 4,
+      "positive_excess_keep_count": 1,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "104",
+      "u_tight_actions": [
+        [
+          "DELETE",
+          1
+        ],
+        [
+          "DELETE",
+          4
+        ]
+      ],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          2
+        ]
+      ]
+    },
+    {
+      "G_scaled": "0",
+      "U_scaled": "0",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 1,
+      "max_delete_deltaV_scaled": "1",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "105",
+      "u_tight_actions": [
+        [
+          "DELETE",
+          1
+        ],
+        [
+          "DELETE",
+          3
+        ],
+        [
+          "DELETE",
+          4
+        ]
+      ],
+      "v_tight_actions": []
+    },
+    {
+      "G_scaled": "8",
+      "U_scaled": "8",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 1,
+      "max_delete_deltaV_scaled": "1",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "106",
+      "u_tight_actions": [
+        [
+          "KEEP",
+          1
+        ],
+        [
+          "DELETE",
+          1
+        ],
+        [
+          "KEEP",
+          4
+        ],
+        [
+          "DELETE",
+          4
+        ]
+      ],
+      "v_tight_actions": []
+    },
+    {
+      "G_scaled": "10",
+      "U_scaled": "12",
+      "V_scaled": "2",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 0,
+      "max_delete_deltaV_scaled": "0",
+      "max_keep_excess_scaled": "2",
+      "n": 4,
+      "positive_excess_keep_count": 1,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "107",
+      "u_tight_actions": [
+        [
+          "DELETE",
+          4
+        ]
+      ],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          2
+        ]
+      ]
+    },
+    {
+      "G_scaled": "5",
+      "U_scaled": "6",
+      "V_scaled": "1",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 1,
+      "max_delete_deltaV_scaled": "1",
+      "max_keep_excess_scaled": "1",
+      "n": 4,
+      "positive_excess_keep_count": 1,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "108",
+      "u_tight_actions": [
+        [
+          "DELETE",
+          3
+        ],
+        [
+          "KEEP",
+          4
+        ],
+        [
+          "DELETE",
+          4
+        ]
+      ],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          2
+        ]
+      ]
+    },
+    {
+      "G_scaled": "12",
+      "U_scaled": "13",
+      "V_scaled": "1",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 0,
+      "max_delete_deltaV_scaled": "0",
+      "max_keep_excess_scaled": "1",
+      "n": 4,
+      "positive_excess_keep_count": 1,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "109",
+      "u_tight_actions": [],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          2
+        ]
+      ]
+    },
+    {
+      "G_scaled": "4",
+      "U_scaled": "4",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 2,
+      "max_delete_deltaV_scaled": "2",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "110",
+      "u_tight_actions": [
+        [
+          "KEEP",
+          3
+        ],
+        [
+          "DELETE",
+          3
+        ]
+      ],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          2
+        ]
+      ]
+    },
+    {
+      "G_scaled": "14",
+      "U_scaled": "14",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 2,
+      "max_delete_deltaV_scaled": "2",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "111",
+      "u_tight_actions": [],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          2
+        ],
+        [
+          "KEEP",
+          4
+        ]
+      ]
+    },
+    {
+      "G_scaled": "5",
+      "U_scaled": "6",
+      "V_scaled": "1",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 1,
+      "max_delete_deltaV_scaled": "1",
+      "max_keep_excess_scaled": "1",
+      "n": 4,
+      "positive_excess_keep_count": 1,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "112",
+      "u_tight_actions": [
+        [
+          "KEEP",
+          1
+        ],
+        [
+          "DELETE",
+          1
+        ]
+      ],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          2
+        ]
+      ]
+    },
+    {
+      "G_scaled": "8",
+      "U_scaled": "10",
+      "V_scaled": "2",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 0,
+      "max_delete_deltaV_scaled": "0",
+      "max_keep_excess_scaled": "2",
+      "n": 4,
+      "positive_excess_keep_count": 1,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "113",
+      "u_tight_actions": [
+        [
+          "DELETE",
+          1
+        ]
+      ],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          2
+        ]
+      ]
+    },
+    {
+      "G_scaled": "10",
+      "U_scaled": "10",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 2,
+      "max_delete_deltaV_scaled": "1",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "114",
+      "u_tight_actions": [],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          2
+        ]
+      ]
+    },
+    {
+      "G_scaled": "4",
+      "U_scaled": "4",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 1,
+      "max_delete_deltaV_scaled": "1",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "115",
+      "u_tight_actions": [],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          2
+        ]
+      ]
+    },
+    {
+      "G_scaled": "10",
+      "U_scaled": "12",
+      "V_scaled": "2",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 0,
+      "max_delete_deltaV_scaled": "0",
+      "max_keep_excess_scaled": "2",
+      "n": 4,
+      "positive_excess_keep_count": 1,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "116",
+      "u_tight_actions": [
+        [
+          "DELETE",
+          1
+        ]
+      ],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          2
+        ]
+      ]
+    },
+    {
+      "G_scaled": "11",
+      "U_scaled": "12",
+      "V_scaled": "1",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 1,
+      "max_delete_deltaV_scaled": "1",
+      "max_keep_excess_scaled": "1",
+      "n": 4,
+      "positive_excess_keep_count": 1,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "117",
+      "u_tight_actions": [],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          2
+        ]
+      ]
+    },
+    {
+      "G_scaled": "5",
+      "U_scaled": "6",
+      "V_scaled": "1",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 0,
+      "max_delete_deltaV_scaled": "0",
+      "max_keep_excess_scaled": "1",
+      "n": 4,
+      "positive_excess_keep_count": 1,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "118",
+      "u_tight_actions": [
+        [
+          "KEEP",
+          1
+        ],
+        [
+          "DELETE",
+          1
+        ]
+      ],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          2
+        ]
+      ]
+    },
+    {
+      "G_scaled": "6",
+      "U_scaled": "6",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 1,
+      "max_delete_deltaV_scaled": "1",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "119",
+      "u_tight_actions": [
+        [
+          "KEEP",
+          1
+        ],
+        [
+          "DELETE",
+          1
+        ]
+      ],
+      "v_tight_actions": []
+    },
+    {
+      "G_scaled": "0",
+      "U_scaled": "0",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 1,
+      "max_delete_deltaV_scaled": "1",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "120",
+      "u_tight_actions": [
+        [
+          "DELETE",
+          1
+        ],
+        [
+          "DELETE",
+          3
+        ],
+        [
+          "DELETE",
+          4
+        ]
+      ],
+      "v_tight_actions": []
+    },
+    {
+      "G_scaled": "6",
+      "U_scaled": "8",
+      "V_scaled": "2",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 0,
+      "max_delete_deltaV_scaled": "0",
+      "max_keep_excess_scaled": "2",
+      "n": 4,
+      "positive_excess_keep_count": 1,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "121",
+      "u_tight_actions": [
+        [
+          "KEEP",
+          1
+        ],
+        [
+          "DELETE",
+          3
+        ],
+        [
+          "DELETE",
+          4
+        ]
+      ],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          2
+        ]
+      ]
+    },
+    {
+      "G_scaled": "9",
+      "U_scaled": "10",
+      "V_scaled": "1",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 1,
+      "max_delete_deltaV_scaled": "1",
+      "max_keep_excess_scaled": "1",
+      "n": 4,
+      "positive_excess_keep_count": 1,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "122",
+      "u_tight_actions": [
+        [
+          "DELETE",
+          4
+        ]
+      ],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          2
+        ]
+      ]
+    },
+    {
+      "G_scaled": "5",
+      "U_scaled": "6",
+      "V_scaled": "1",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 0,
+      "max_delete_deltaV_scaled": "0",
+      "max_keep_excess_scaled": "1",
+      "n": 4,
+      "positive_excess_keep_count": 1,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "123",
+      "u_tight_actions": [
+        [
+          "DELETE",
+          3
+        ],
+        [
+          "DELETE",
+          4
+        ]
+      ],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          2
+        ]
+      ]
+    },
+    {
+      "G_scaled": "12",
+      "U_scaled": "12",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 2,
+      "max_delete_deltaV_scaled": "2",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "124",
+      "u_tight_actions": [],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          2
+        ],
+        [
+          "KEEP",
+          3
+        ]
+      ]
+    },
+    {
+      "G_scaled": "4",
+      "U_scaled": "4",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 2,
+      "max_delete_deltaV_scaled": "2",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "125",
+      "u_tight_actions": [
+        [
+          "KEEP",
+          4
+        ],
+        [
+          "DELETE",
+          4
+        ]
+      ],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          2
+        ]
+      ]
+    },
+    {
+      "G_scaled": "11",
+      "U_scaled": "13",
+      "V_scaled": "2",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 0,
+      "max_delete_deltaV_scaled": "0",
+      "max_keep_excess_scaled": "2",
+      "n": 4,
+      "positive_excess_keep_count": 1,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "126",
+      "u_tight_actions": [],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          1
+        ]
+      ]
+    },
+    {
+      "G_scaled": "16",
+      "U_scaled": "17",
+      "V_scaled": "1",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 1,
+      "max_delete_deltaV_scaled": "1",
+      "max_keep_excess_scaled": "1",
+      "n": 4,
+      "positive_excess_keep_count": 1,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "127",
+      "u_tight_actions": [],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          1
+        ]
+      ]
+    },
+    {
+      "G_scaled": "16",
+      "U_scaled": "17",
+      "V_scaled": "1",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 0,
+      "max_delete_deltaV_scaled": "0",
+      "max_keep_excess_scaled": "1",
+      "n": 4,
+      "positive_excess_keep_count": 1,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "128",
+      "u_tight_actions": [],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          1
+        ]
+      ]
+    },
+    {
+      "G_scaled": "17",
+      "U_scaled": "18",
+      "V_scaled": "1",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 0,
+      "max_delete_deltaV_scaled": "0",
+      "max_keep_excess_scaled": "1",
+      "n": 4,
+      "positive_excess_keep_count": 1,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "129",
+      "u_tight_actions": [],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          1
+        ]
+      ]
+    },
+    {
+      "G_scaled": "4",
+      "U_scaled": "4",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 2,
+      "max_delete_deltaV_scaled": "2",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "130",
+      "u_tight_actions": [
+        [
+          "DELETE",
+          2
+        ]
+      ],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          1
+        ]
+      ]
+    },
+    {
+      "G_scaled": "15",
+      "U_scaled": "15",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 2,
+      "max_delete_deltaV_scaled": "2",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "131",
+      "u_tight_actions": [],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          1
+        ]
+      ]
+    },
+    {
+      "G_scaled": "22",
+      "U_scaled": "22",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 1,
+      "max_delete_deltaV_scaled": "1",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "132",
+      "u_tight_actions": [],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          1
+        ]
+      ]
+    },
+    {
+      "G_scaled": "22",
+      "U_scaled": "22",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 1,
+      "max_delete_deltaV_scaled": "1",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "133",
+      "u_tight_actions": [],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          1
+        ]
+      ]
+    },
+    {
+      "G_scaled": "16",
+      "U_scaled": "16",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 1,
+      "max_delete_deltaV_scaled": "1",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "134",
+      "u_tight_actions": [],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          1
+        ]
+      ]
+    },
+    {
+      "G_scaled": "0",
+      "U_scaled": "0",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 2,
+      "max_delete_deltaV_scaled": "2",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "135",
+      "u_tight_actions": [
+        [
+          "DELETE",
+          2
+        ],
+        [
+          "DELETE",
+          3
+        ],
+        [
+          "DELETE",
+          4
+        ]
+      ],
+      "v_tight_actions": []
+    },
+    {
+      "G_scaled": "9",
+      "U_scaled": "9",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 2,
+      "max_delete_deltaV_scaled": "2",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "136",
+      "u_tight_actions": [
+        [
+          "KEEP",
+          4
+        ],
+        [
+          "DELETE",
+          4
+        ]
+      ],
+      "v_tight_actions": []
+    },
+    {
+      "G_scaled": "14",
+      "U_scaled": "14",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 2,
+      "max_delete_deltaV_scaled": "1",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "137",
+      "u_tight_actions": [],
+      "v_tight_actions": []
+    },
+    {
+      "G_scaled": "14",
+      "U_scaled": "14",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 2,
+      "max_delete_deltaV_scaled": "2",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "138",
+      "u_tight_actions": [],
+      "v_tight_actions": []
+    },
+    {
+      "G_scaled": "11",
+      "U_scaled": "11",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 2,
+      "max_delete_deltaV_scaled": "2",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "139",
+      "u_tight_actions": [],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          4
+        ]
+      ]
+    },
+    {
+      "G_scaled": "6",
+      "U_scaled": "8",
+      "V_scaled": "2",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 0,
+      "max_delete_deltaV_scaled": "0",
+      "max_keep_excess_scaled": "2",
+      "n": 4,
+      "positive_excess_keep_count": 1,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "140",
+      "u_tight_actions": [
+        [
+          "KEEP",
+          4
+        ]
+      ],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          1
+        ]
+      ]
+    },
+    {
+      "G_scaled": "15",
+      "U_scaled": "16",
+      "V_scaled": "1",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 1,
+      "max_delete_deltaV_scaled": "1",
+      "max_keep_excess_scaled": "1",
+      "n": 4,
+      "positive_excess_keep_count": 1,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "141",
+      "u_tight_actions": [],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          1
+        ]
+      ]
+    },
+    {
+      "G_scaled": "15",
+      "U_scaled": "16",
+      "V_scaled": "1",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 0,
+      "max_delete_deltaV_scaled": "0",
+      "max_keep_excess_scaled": "1",
+      "n": 4,
+      "positive_excess_keep_count": 1,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "142",
+      "u_tight_actions": [],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          1
+        ]
+      ]
+    },
+    {
+      "G_scaled": "11",
+      "U_scaled": "12",
+      "V_scaled": "1",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 0,
+      "max_delete_deltaV_scaled": "0",
+      "max_keep_excess_scaled": "1",
+      "n": 4,
+      "positive_excess_keep_count": 1,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "143",
+      "u_tight_actions": [
+        [
+          "DELETE",
+          2
+        ],
+        [
+          "DELETE",
+          4
+        ]
+      ],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          1
+        ]
+      ]
+    },
+    {
+      "G_scaled": "13",
+      "U_scaled": "13",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 2,
+      "max_delete_deltaV_scaled": "2",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "144",
+      "u_tight_actions": [],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          1
+        ]
+      ]
+    },
+    {
+      "G_scaled": "4",
+      "U_scaled": "4",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 2,
+      "max_delete_deltaV_scaled": "2",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "145",
+      "u_tight_actions": [
+        [
+          "KEEP",
+          3
+        ],
+        [
+          "DELETE",
+          3
+        ]
+      ],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          1
+        ]
+      ]
+    },
+    {
+      "G_scaled": "18",
+      "U_scaled": "18",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 1,
+      "max_delete_deltaV_scaled": "1",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "146",
+      "u_tight_actions": [
+        [
+          "DELETE",
+          4
+        ]
+      ],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          1
+        ]
+      ]
+    },
+    {
+      "G_scaled": "18",
+      "U_scaled": "18",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 1,
+      "max_delete_deltaV_scaled": "1",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "147",
+      "u_tight_actions": [
+        [
+          "DELETE",
+          4
+        ]
+      ],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          1
+        ]
+      ]
+    },
+    {
+      "G_scaled": "14",
+      "U_scaled": "14",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 1,
+      "max_delete_deltaV_scaled": "1",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "148",
+      "u_tight_actions": [
+        [
+          "DELETE",
+          4
+        ]
+      ],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          1
+        ]
+      ]
+    },
+    {
+      "G_scaled": "11",
+      "U_scaled": "11",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 2,
+      "max_delete_deltaV_scaled": "2",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "149",
+      "u_tight_actions": [
+        [
+          "DELETE",
+          4
+        ]
+      ],
+      "v_tight_actions": []
+    },
+    {
+      "G_scaled": "0",
+      "U_scaled": "0",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 2,
+      "max_delete_deltaV_scaled": "2",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "150",
+      "u_tight_actions": [
+        [
+          "DELETE",
+          2
+        ],
+        [
+          "DELETE",
+          3
+        ],
+        [
+          "DELETE",
+          4
+        ]
+      ],
+      "v_tight_actions": []
+    },
+    {
+      "G_scaled": "13",
+      "U_scaled": "13",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 2,
+      "max_delete_deltaV_scaled": "1",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "151",
+      "u_tight_actions": [
+        [
+          "KEEP",
+          4
+        ],
+        [
+          "DELETE",
+          4
+        ]
+      ],
+      "v_tight_actions": []
+    },
+    {
+      "G_scaled": "13",
+      "U_scaled": "13",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 2,
+      "max_delete_deltaV_scaled": "2",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "152",
+      "u_tight_actions": [
+        [
+          "KEEP",
+          4
+        ],
+        [
+          "DELETE",
+          4
+        ]
+      ],
+      "v_tight_actions": []
+    },
+    {
+      "G_scaled": "9",
+      "U_scaled": "9",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 2,
+      "max_delete_deltaV_scaled": "2",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "153",
+      "u_tight_actions": [
+        [
+          "KEEP",
+          4
+        ],
+        [
+          "DELETE",
+          4
+        ]
+      ],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          4
+        ]
+      ]
+    },
+    {
+      "G_scaled": "14",
+      "U_scaled": "16",
+      "V_scaled": "2",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 0,
+      "max_delete_deltaV_scaled": "0",
+      "max_keep_excess_scaled": "2",
+      "n": 4,
+      "positive_excess_keep_count": 1,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "154",
+      "u_tight_actions": [],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          1
+        ]
+      ]
+    },
+    {
+      "G_scaled": "5",
+      "U_scaled": "6",
+      "V_scaled": "1",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 1,
+      "max_delete_deltaV_scaled": "1",
+      "max_keep_excess_scaled": "1",
+      "n": 4,
+      "positive_excess_keep_count": 1,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "155",
+      "u_tight_actions": [],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          1
+        ]
+      ]
+    },
+    {
+      "G_scaled": "14",
+      "U_scaled": "15",
+      "V_scaled": "1",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 0,
+      "max_delete_deltaV_scaled": "0",
+      "max_keep_excess_scaled": "1",
+      "n": 4,
+      "positive_excess_keep_count": 1,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "156",
+      "u_tight_actions": [],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          1
+        ]
+      ]
+    },
+    {
+      "G_scaled": "11",
+      "U_scaled": "12",
+      "V_scaled": "1",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 0,
+      "max_delete_deltaV_scaled": "0",
+      "max_keep_excess_scaled": "1",
+      "n": 4,
+      "positive_excess_keep_count": 1,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "157",
+      "u_tight_actions": [],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          1
+        ]
+      ]
+    },
+    {
+      "G_scaled": "10",
+      "U_scaled": "10",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 2,
+      "max_delete_deltaV_scaled": "2",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "158",
+      "u_tight_actions": [],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          1
+        ]
+      ]
+    },
+    {
+      "G_scaled": "16",
+      "U_scaled": "16",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 2,
+      "max_delete_deltaV_scaled": "2",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "159",
+      "u_tight_actions": [],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          1
+        ],
+        [
+          "KEEP",
+          3
+        ]
+      ]
+    },
+    {
+      "G_scaled": "4",
+      "U_scaled": "4",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 1,
+      "max_delete_deltaV_scaled": "1",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "160",
+      "u_tight_actions": [],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          1
+        ]
+      ]
+    },
+    {
+      "G_scaled": "16",
+      "U_scaled": "16",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 1,
+      "max_delete_deltaV_scaled": "1",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "161",
+      "u_tight_actions": [],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          1
+        ]
+      ]
+    },
+    {
+      "G_scaled": "22",
+      "U_scaled": "22",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 1,
+      "max_delete_deltaV_scaled": "1",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "162",
+      "u_tight_actions": [],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          1
+        ]
+      ]
+    },
+    {
+      "G_scaled": "8",
+      "U_scaled": "8",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 2,
+      "max_delete_deltaV_scaled": "2",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "163",
+      "u_tight_actions": [],
+      "v_tight_actions": []
+    },
+    {
+      "G_scaled": "11",
+      "U_scaled": "11",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 2,
+      "max_delete_deltaV_scaled": "2",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "164",
+      "u_tight_actions": [],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          3
+        ]
+      ]
+    },
+    {
+      "G_scaled": "0",
+      "U_scaled": "0",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 2,
+      "max_delete_deltaV_scaled": "1",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "165",
+      "u_tight_actions": [
+        [
+          "DELETE",
+          2
+        ],
+        [
+          "DELETE",
+          3
+        ],
+        [
+          "DELETE",
+          4
+        ]
+      ],
+      "v_tight_actions": []
+    },
+    {
+      "G_scaled": "11",
+      "U_scaled": "11",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 2,
+      "max_delete_deltaV_scaled": "2",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "166",
+      "u_tight_actions": [],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          3
+        ]
+      ]
+    },
+    {
+      "G_scaled": "9",
+      "U_scaled": "9",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 2,
+      "max_delete_deltaV_scaled": "2",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "167",
+      "u_tight_actions": [
+        [
+          "DELETE",
+          3
+        ],
+        [
+          "DELETE",
+          4
+        ]
+      ],
+      "v_tight_actions": []
+    },
+    {
+      "G_scaled": "13",
+      "U_scaled": "15",
+      "V_scaled": "2",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 0,
+      "max_delete_deltaV_scaled": "0",
+      "max_keep_excess_scaled": "2",
+      "n": 4,
+      "positive_excess_keep_count": 1,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "168",
+      "u_tight_actions": [],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          1
+        ]
+      ]
+    },
+    {
+      "G_scaled": "11",
+      "U_scaled": "12",
+      "V_scaled": "1",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 1,
+      "max_delete_deltaV_scaled": "1",
+      "max_keep_excess_scaled": "1",
+      "n": 4,
+      "positive_excess_keep_count": 1,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "169",
+      "u_tight_actions": [],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          1
+        ]
+      ]
+    },
+    {
+      "G_scaled": "5",
+      "U_scaled": "6",
+      "V_scaled": "1",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 0,
+      "max_delete_deltaV_scaled": "0",
+      "max_keep_excess_scaled": "1",
+      "n": 4,
+      "positive_excess_keep_count": 1,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "170",
+      "u_tight_actions": [],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          1
+        ]
+      ]
+    },
+    {
+      "G_scaled": "21",
+      "U_scaled": "22",
+      "V_scaled": "1",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 0,
+      "max_delete_deltaV_scaled": "0",
+      "max_keep_excess_scaled": "1",
+      "n": 4,
+      "positive_excess_keep_count": 1,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "171",
+      "u_tight_actions": [],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          1
+        ]
+      ]
+    },
+    {
+      "G_scaled": "12",
+      "U_scaled": "12",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 2,
+      "max_delete_deltaV_scaled": "2",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "172",
+      "u_tight_actions": [],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          1
+        ],
+        [
+          "KEEP",
+          2
+        ]
+      ]
+    },
+    {
+      "G_scaled": "10",
+      "U_scaled": "10",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 2,
+      "max_delete_deltaV_scaled": "2",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "173",
+      "u_tight_actions": [],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          1
+        ]
+      ]
+    },
+    {
+      "G_scaled": "16",
+      "U_scaled": "16",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 1,
+      "max_delete_deltaV_scaled": "1",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "174",
+      "u_tight_actions": [],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          1
+        ]
+      ]
+    },
+    {
+      "G_scaled": "4",
+      "U_scaled": "4",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 1,
+      "max_delete_deltaV_scaled": "1",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "175",
+      "u_tight_actions": [
+        [
+          "DELETE",
+          3
+        ]
+      ],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          1
+        ]
+      ]
+    },
+    {
+      "G_scaled": "12",
+      "U_scaled": "12",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 1,
+      "max_delete_deltaV_scaled": "1",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "176",
+      "u_tight_actions": [],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          1
+        ]
+      ]
+    },
+    {
+      "G_scaled": "10",
+      "U_scaled": "10",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 2,
+      "max_delete_deltaV_scaled": "2",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "177",
+      "u_tight_actions": [
+        [
+          "DELETE",
+          4
+        ]
+      ],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          2
+        ]
+      ]
+    },
+    {
+      "G_scaled": "8",
+      "U_scaled": "8",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 2,
+      "max_delete_deltaV_scaled": "2",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "178",
+      "u_tight_actions": [],
+      "v_tight_actions": []
+    },
+    {
+      "G_scaled": "9",
+      "U_scaled": "9",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 2,
+      "max_delete_deltaV_scaled": "1",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "179",
+      "u_tight_actions": [
+        [
+          "DELETE",
+          2
+        ],
+        [
+          "DELETE",
+          4
+        ]
+      ],
+      "v_tight_actions": []
+    },
+    {
+      "G_scaled": "0",
+      "U_scaled": "0",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 2,
+      "max_delete_deltaV_scaled": "2",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "180",
+      "u_tight_actions": [
+        [
+          "DELETE",
+          2
+        ],
+        [
+          "DELETE",
+          3
+        ],
+        [
+          "DELETE",
+          4
+        ]
+      ],
+      "v_tight_actions": []
+    },
+    {
+      "G_scaled": "10",
+      "U_scaled": "10",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 2,
+      "max_delete_deltaV_scaled": "2",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "181",
+      "u_tight_actions": [
+        [
+          "DELETE",
+          2
+        ],
+        [
+          "DELETE",
+          4
+        ]
+      ],
+      "v_tight_actions": []
+    },
+    {
+      "G_scaled": "8",
+      "U_scaled": "10",
+      "V_scaled": "2",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 0,
+      "max_delete_deltaV_scaled": "0",
+      "max_keep_excess_scaled": "2",
+      "n": 4,
+      "positive_excess_keep_count": 1,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "182",
+      "u_tight_actions": [],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          1
+        ]
+      ]
+    },
+    {
+      "G_scaled": "13",
+      "U_scaled": "14",
+      "V_scaled": "1",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 1,
+      "max_delete_deltaV_scaled": "1",
+      "max_keep_excess_scaled": "1",
+      "n": 4,
+      "positive_excess_keep_count": 1,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "183",
+      "u_tight_actions": [],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          1
+        ]
+      ]
+    },
+    {
+      "G_scaled": "11",
+      "U_scaled": "12",
+      "V_scaled": "1",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 0,
+      "max_delete_deltaV_scaled": "0",
+      "max_keep_excess_scaled": "1",
+      "n": 4,
+      "positive_excess_keep_count": 1,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "184",
+      "u_tight_actions": [],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          1
+        ]
+      ]
+    },
+    {
+      "G_scaled": "5",
+      "U_scaled": "6",
+      "V_scaled": "1",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 0,
+      "max_delete_deltaV_scaled": "0",
+      "max_keep_excess_scaled": "1",
+      "n": 4,
+      "positive_excess_keep_count": 1,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "185",
+      "u_tight_actions": [
+        [
+          "DELETE",
+          4
+        ]
+      ],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          1
+        ]
+      ]
+    },
+    {
+      "G_scaled": "16",
+      "U_scaled": "16",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 2,
+      "max_delete_deltaV_scaled": "2",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "186",
+      "u_tight_actions": [],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          1
+        ],
+        [
+          "KEEP",
+          2
+        ]
+      ]
+    },
+    {
+      "G_scaled": "14",
+      "U_scaled": "14",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 2,
+      "max_delete_deltaV_scaled": "2",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "187",
+      "u_tight_actions": [],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          1
+        ]
+      ]
+    },
+    {
+      "G_scaled": "10",
+      "U_scaled": "10",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 1,
+      "max_delete_deltaV_scaled": "1",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "188",
+      "u_tight_actions": [
+        [
+          "DELETE",
+          4
+        ]
+      ],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          1
+        ]
+      ]
+    },
+    {
+      "G_scaled": "10",
+      "U_scaled": "10",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 1,
+      "max_delete_deltaV_scaled": "1",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "189",
+      "u_tight_actions": [
+        [
+          "DELETE",
+          4
+        ]
+      ],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          1
+        ]
+      ]
+    },
+    {
+      "G_scaled": "4",
+      "U_scaled": "4",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 1,
+      "max_delete_deltaV_scaled": "1",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "190",
+      "u_tight_actions": [
+        [
+          "KEEP",
+          4
+        ],
+        [
+          "DELETE",
+          4
+        ]
+      ],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          1
+        ]
+      ]
+    },
+    {
+      "G_scaled": "11",
+      "U_scaled": "11",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 2,
+      "max_delete_deltaV_scaled": "2",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "191",
+      "u_tight_actions": [],
+      "v_tight_actions": [
+        [
+          "KEEP",
+          2
+        ]
+      ]
+    },
+    {
+      "G_scaled": "6",
+      "U_scaled": "6",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 2,
+      "max_delete_deltaV_scaled": "2",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "192",
+      "u_tight_actions": [
+        [
+          "DELETE",
+          2
+        ],
+        [
+          "DELETE",
+          3
+        ]
+      ],
+      "v_tight_actions": []
+    },
+    {
+      "G_scaled": "8",
+      "U_scaled": "8",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 2,
+      "max_delete_deltaV_scaled": "1",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "193",
+      "u_tight_actions": [
+        [
+          "KEEP",
+          4
+        ],
+        [
+          "DELETE",
+          4
+        ]
+      ],
+      "v_tight_actions": []
+    },
+    {
+      "G_scaled": "8",
+      "U_scaled": "8",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 2,
+      "max_delete_deltaV_scaled": "2",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "194",
+      "u_tight_actions": [
+        [
+          "DELETE",
+          2
+        ],
+        [
+          "KEEP",
+          4
+        ],
+        [
+          "DELETE",
+          4
+        ]
+      ],
+      "v_tight_actions": []
+    },
+    {
+      "G_scaled": "0",
+      "U_scaled": "0",
+      "V_scaled": "0",
+      "b": {
+        "p": "2",
+        "q": "1"
+      },
+      "delete_creation_count": 2,
+      "max_delete_deltaV_scaled": "2",
+      "max_keep_excess_scaled": "0",
+      "n": 4,
+      "positive_excess_keep_count": 0,
+      "schema_version": "BELL-SIG-v0.2",
+      "state_id": "195",
+      "u_tight_actions": [
+        [
+          "DELETE",
+          2
+        ],
+        [
+          "DELETE",
+          3
+        ],
+        [
+          "DELETE",
+          4
+        ]
+      ],
+      "v_tight_actions": []
+    }
+  ]
+}

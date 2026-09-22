@@ -1,0 +1,60 @@
+{
+  "phase": "PHASE-03",
+  "summary": {
+    "2": {
+      "both": 0,
+      "delete_create": 0,
+      "exact_repay": 0,
+      "keep_excess": 0,
+      "sig_sha": "3CEBE198F42DF6B244115DD12F1972CD5514EFE7B47378D3ABB024902A91103D",
+      "utight": 2,
+      "vtight": 2
+    },
+    "3": {
+      "both": 0,
+      "delete_create": 12,
+      "exact_repay": 4,
+      "keep_excess": 4,
+      "sig_sha": "F9F1D589E2CF6DEBB9B6378C371D70600655DFDEC1494B23BBCAFDD39D6D0107",
+      "utight": 14,
+      "vtight": 12
+    },
+    "4": {
+      "both": 2,
+      "delete_create": 228,
+      "exact_repay": 72,
+      "keep_excess": 72,
+      "sig_sha": "4DA1BD22BD53C43CA5A44FB9175E56B93420C7624C1CF090450C15833D199A4D",
+      "utight": 194,
+      "vtight": 160
+    },
+    "5": {
+      "both": 30,
+      "delete_create": 3060,
+      "exact_repay": 894,
+      "keep_excess": 938,
+      "sig_sha": "3282A3F03DDF6DA84F9BA42B29C04918E758116105A895FA16E2C08FC70349DD",
+      "utight": 1910,
+      "vtight": 1614
+    },
+    "6": {
+      "both": 264,
+      "delete_create": 40148,
+      "exact_repay": 10478,
+      "keep_excess": 11768,
+      "sig_sha": "C626162F07F7EA96B8BC644452975901B88A3F2B09E70CEB2DCCC6EA204BB06E",
+      "utight": 19636,
+      "vtight": 17326
+    },
+    "7": {
+      "both": 2726,
+      "delete_create": 529016,
+      "exact_repay": 124728,
+      "keep_excess": 151534,
+      "sig_sha": "6F896A02B75E887FFF16CE43B482B7C961FCDDE7FCE3B250BA0998BC7AC3E12C",
+      "utight": 210642,
+      "vtight": 193512
+    }
+  },
+  "verdict": "SPECIMENS_CERTIFIED"
+}
