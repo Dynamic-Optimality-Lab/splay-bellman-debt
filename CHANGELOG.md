@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## WP-4 (2026-09-22)
+- GATED_PASS: BD0-06/07 REVIEWED (SHA 2E4ED189.../866C4E56...); augmented n2/3/4 (20/235/8764) + n5 stretch (496264); b=2 geometry + canary GREEN (4/19/196 groups); H2R 120k/4.08M committed, BANK_COMMITTED, discovery-blind; 14-stat recency ontology; atoms D1-D7 all INCONSISTENT (D5 repay 99.5% near-miss); R/D/HLD 21/21 + full 70/70 + STRESS_PASS. Bugs closed: heap key mismatch, markdown-normalize in review checks.
+
 ## WP-3 theorem closure (2026-09-22)
 - BD0-04 REVIEWED (SHA 1CC8663E...F1C0ACFC2) + BD0-05 REVIEWED (SHA 4ED550C1...37C9CFB2), lifecycles preserved; future-vs-source distinction explicit.
 - Quotient audit: V_TRANSPORT_APPLICABLE (method-correct, vacuous on singletons), U_TRANSPORT_BLOCKED_BY_SOURCE_CONTRACT (no redesign). Findings preserved; BD0-06..14 untouched (BD0-10 option B).

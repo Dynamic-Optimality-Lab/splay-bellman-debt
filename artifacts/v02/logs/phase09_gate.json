@@ -1,0 +1,21 @@
+{
+  "phase": "PHASE-09",
+  "report": {
+    "2": {
+      "note": "K(A,B) vs K(+rhoX/+rhoY/+both) ablation recorded in phase10 atoms",
+      "sha": "0AF3959FE1A9E79F2952C8784488E17CDD0BF5625774E338B24870A292D8D1FA",
+      "states": 20
+    },
+    "3": {
+      "note": "K(A,B) vs K(+rhoX/+rhoY/+both) ablation recorded in phase10 atoms",
+      "sha": "52B550B580665A2D86203B91ED06BCF48005D5CD70AD08826059E247725D6D3C",
+      "states": 235
+    },
+    "4": {
+      "note": "K(A,B) vs K(+rhoX/+rhoY/+both) ablation recorded in phase10 atoms",
+      "sha": "03DEC25DCC8A7A2258860A078624FC234CED7B4566EE4824D2EA1595CB9C4DDF",
+      "states": 8764
+    }
+  },
+  "verdict": "RECENCY_ONTOLOGY_COMPLETE"
+}

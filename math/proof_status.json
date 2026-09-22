@@ -95,14 +95,48 @@
    "status": "REVIEWED"
   },
   {
+   "history": [
+    {
+     "status": "UNPROVED",
+     "utc": "2026-09-22T16:00:00Z"
+    },
+    {
+     "status": "PROVED",
+     "utc": "2026-09-22T17:20:00Z"
+    },
+    {
+     "status": "REVIEWED",
+     "utc": "2026-09-22T17:25:00Z"
+    }
+   ],
    "id": "BD0-06",
+   "proof": "math/theorem_BD06_recency_update.md",
+   "proof_sha256": "2E4ED189C504BEAAFAF87F0E0CC4FC0C665BA54406CC1023C6C4C0E2319DC2CA",
+   "review": "tests/test_wp4_recency.py",
    "statement": "rho(P) update preserves relative last-access order of seen keys",
-   "status": "UNPROVED"
+   "status": "REVIEWED"
   },
   {
+   "history": [
+    {
+     "status": "UNPROVED",
+     "utc": "2026-09-22T16:00:00Z"
+    },
+    {
+     "status": "PROVED",
+     "utc": "2026-09-22T17:20:00Z"
+    },
+    {
+     "status": "REVIEWED",
+     "utc": "2026-09-22T17:25:00Z"
+    }
+   ],
    "id": "BD0-07",
+   "proof": "math/theorem_BD07_augmented_path.md",
+   "proof_sha256": "866C4E56ADEDD923C4D23DFF93528D6D961863855E937A6139B28DB44CB12044",
+   "review": "tests/test_wp4_recency.py",
    "statement": "augmented-state path corresponds exactly to (X,Y,rho_X,rho_Y)",
-   "status": "UNPROVED"
+   "status": "REVIEWED"
   },
   {
    "id": "BD0-08",

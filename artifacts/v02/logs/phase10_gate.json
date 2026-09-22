@@ -1,0 +1,13 @@
+{
+  "phase": "PHASE-10",
+  "verdict": "DEBT_ATOMS_COMPLETE",
+  "verdicts": {
+    "D1_node": "DEBT_ATOM_FAMILY_INCONSISTENT",
+    "D2_edge": "DEBT_ATOM_FAMILY_INCONSISTENT",
+    "D3_recency": "DEBT_ATOM_FAMILY_INCONSISTENT",
+    "D4_nested": "DEBT_ATOM_FAMILY_INCONSISTENT",
+    "D5_rank": "DEBT_ATOM_FAMILY_INCONSISTENT",
+    "D6_mapped": "DEBT_ATOM_FAMILY_INCONSISTENT",
+    "D7_multiscale": "DEBT_ATOM_FAMILY_INCONSISTENT"
+  }
+}

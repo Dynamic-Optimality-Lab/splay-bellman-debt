@@ -1,0 +1,8 @@
+{
+  "canary": "GREEN",
+  "groups": 4,
+  "maxU": 8,
+  "maxV": 0,
+  "n": 2,
+  "states": 20
+}
