@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## WP-6 (2026-09-22)
+- GATED_PASS, terminal FINITE_DEBT_LAW_MINING_RESULTS (computed): routes both NOT_ACTIVATED (no survivor, no C1-C4 motif); FINAL_RESULT + 260-entry manifest + deterministic archive (19.8MB, rebuild-verified); 6 reports + reproduce script; PR/NEG/SEAL 15/15 + full 99/99 + STRESS_PASS. Bugs closed: manifest self-reference, phase18 ordering, archive determinism (ordering root cause), SEAL-02 overmatch. BD0-08/09/11/12/14 stay UNPROVED legitimately. Experiment complete.
+
 ## WP-5 (2026-09-22)
 - GATED_PASS: ERA-BD-A froze PHI-0001/2/3 (b_H=2/1); dev falsification REJECTED all (worst +7/+13/+3, smallest +1 each, analyses preserved); H1/H2R/n8 pristine (empty set committed); clean-room 32/32; adversary NOT_ACTIVATED; D/HLD 8/8 + full 84/84 + STRESS_PASS. Bugs closed: witness ordering, vacuous agreement, stress scoping, dead ternary.
 

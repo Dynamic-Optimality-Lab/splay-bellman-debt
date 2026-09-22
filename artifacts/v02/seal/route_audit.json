@@ -1,0 +1,16 @@
+{
+  "negative": {
+    "C1_reachable_legal_motif": false,
+    "C2_parameterized_construction": false,
+    "C3_growing_ratio": false,
+    "C4_independent_replay": false,
+    "activated": false,
+    "reason": "no systematic actual-cost motif; H-residual failures are not Splay-ratio motifs"
+  },
+  "positive": {
+    "activated": false,
+    "p15_proof": "NOT_ATTEMPTED",
+    "p16_telescope_bridge": "NOT_ATTEMPTED",
+    "reason": "zero development survivors; no primary theorem candidate to promote"
+  }
+}
