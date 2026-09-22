@@ -1,0 +1,15 @@
+source_experiment: SPLAY-AM-PD-v0.1
+source_commit: 6de1ca2a595e8895f54794f3a211fe6ee1a95a80
+terminal_claim: FINITE_EXACT_BN_RESULTS
+artifacts: read_only
+rewrite_as_v02_evidence: false
+sealed_files:
+  - parent/PARENT_SEAL.json
+  - parent/PARENT_FINAL_RESULT.json
+  - parent/PARENT_MANIFEST.sha256
+  - parent/PARENT_ARCHIVE.sha256
+  - parent/PARENT_WORKPLAN_FINAL.md
+  - parent/PARENT_PATH_FINAL.md
+  - parent/import_ledger.json
+  - parent/BOOTSTRAP_MANIFEST.sha256
+bootstrap: BOOTSTRAP_PARENT_IMPORT_then_READ_ONLY_LOCKED

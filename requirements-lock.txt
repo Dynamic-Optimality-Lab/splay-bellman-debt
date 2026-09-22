@@ -1,0 +1,3 @@
+# requirements-lock.txt — WP-1 exact stack (stdlib only; no third-party required for foundation seal)
+# Python >=3.12, stdlib: hashlib, json, pathlib
+# Discovery-phase packages (sympy, zstandard, jsonschema, scipy/HiGHS) pinned in WP-2..WP-5 when needed.

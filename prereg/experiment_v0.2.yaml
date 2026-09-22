@@ -1,0 +1,17 @@
+experiment_id: SPLAY-AM-BD-v0.2
+parent:
+  experiment_id: SPLAY-AM-PD-v0.1
+  sealed_commit: 6de1ca2a595e8895f54794f3a211fe6ee1a95a80
+target_problem: Sleator-Tarjan dynamic optimality conjecture
+bridge: Levy-Tarjan approximate monotonicity
+primary_discovery_object: canonical_bellman_debt
+primary_anchor_b:
+  p: 2
+  q: 1
+primary_track: STATE_ONLY
+secondary_track: RECENCY_AUGMENTED
+pair_semantics: inherited_read_only_from_parent
+authoritative_arithmetic: exact
+finite_evidence_is_theorem: false
+spec_amendment: SPLAY_AM_BD_IMPLEMENTATION_SPEC_v0.2.1.md
+plan_revision: v0.2.1

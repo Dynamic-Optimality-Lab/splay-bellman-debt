@@ -1,0 +1,17 @@
+eligibility:
+  total_on_declared_track: true
+  independent_of_ids: true
+  independent_of_UV_lookup: true
+  independent_of_bn_tables: true
+  independent_of_n_coefficients: true
+  relabel_invariant: true
+  deterministic_ties: true
+  one_universal_bH_frozen_pre_holdout: true
+preferred_forms: [D1, D2, D3, D4, D5, D6, D7, D8, D9]
+forbidden: [black-box-nn, lookup-tables, unrestricted-symbolic-regression]
+identity: Phi_T_T_empty_empty_eq_0
+nonnegativity: Phi_ge_0
+range_policy: diagnostic_only_LINEAR_SUPERLINEAR_UNKNOWN
+formula_edit_creates_new_id: true
+residual_branches: [RATIONAL, TRANSCENDENTAL]
+sign_uncertified_blocks_promotion: true

@@ -1,0 +1,11 @@
+STATE_ONLY:
+  state: [A, B]
+  development_sizes: [2, 3, 4, 5, 6, 7]
+  contaminated_exhaustive_validation: [8]
+  fresh_holdout: HOLDOUT-H1-v0.1
+RECENCY_AUGMENTED:
+  state: [A, B, rho_X, rho_Y]
+  exact_required_sizes: [2, 3, 4]
+  exact_stretch_sizes: [5]
+  fresh_holdout: HOLDOUT-H2R-v0.1
+separation_rule: no_pooling_without_explicit_label

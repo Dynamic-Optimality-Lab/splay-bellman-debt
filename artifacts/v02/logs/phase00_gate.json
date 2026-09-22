@@ -1,0 +1,16 @@
+{
+  "adapter": {
+    "PARENT-01": true,
+    "PARENT-02": true,
+    "PARENT-03": true,
+    "PARENT-04": true,
+    "PARENT-05": true,
+    "PARENT-06": true
+  },
+  "bd0_15_status": "UNPROVED",
+  "experiment_id": "SPLAY-AM-BD-v0.2",
+  "phase": "PHASE-00",
+  "stop_set_ok": true,
+  "threat_set_ok": true,
+  "verdict": "FOUNDATION_SEALED"
+}

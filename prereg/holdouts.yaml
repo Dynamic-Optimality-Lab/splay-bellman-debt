@@ -1,0 +1,20 @@
+n8:
+  status: PARTIALLY_REVEALED_CANARY_CONTAMINATED
+  fresh: false
+  use: CONTAMINATED_EXHAUSTIVE_VALIDATION_only
+H1:
+  inherited: true
+  bank_id: HOLDOUT-H1-v0.1
+  commitment: C9D9BE2652412F6100C667BA1598D982E241868A0751AC5357499D55C0613BFF
+  eligible_track: STATE_ONLY
+  required_precondition: firewall_EMPTY
+H2R:
+  inherited: false
+  bank_id: HOLDOUT-H2R-v0.1
+  eligible_track: RECENCY_AUGMENTED
+  status_at_prereg: TO_BE_GENERATED_AND_QUARANTINED
+  sizes: [8, 10, 12, 16, 24, 32]
+  states_per_size: 20000
+  total_states: 120000
+  total_transitions: 4080000
+firewall: EMPTY_then_BANK_COMMITTED_then_CANDIDATE_SET_FROZEN_then_UNLOCKED_ONCE

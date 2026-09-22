@@ -1,0 +1,38 @@
+ontology_version: ONTOLOGY-v0.2
+frozen_before_target_join: true
+state_only_families:
+  - S-depth
+  - S-parent
+  - S-ancestor
+  - S-subtree-size
+  - S-interval
+  - S-all-next-key-access-paths
+  - S-root-relation
+  - S-order-reversal-symmetry
+  - relative-classic-rank
+  - crossing-depth
+  - interval-nesting
+  - heavy-gap-mapped
+  - geometric-inversion-mapped
+  - bounded-multiscale
+recency_families:
+  - seen-unseen
+  - recency-rank
+  - pairwise-order
+  - rhoX-rhoY-disagreement
+  - heap-violations-edge
+  - heap-violations-ancestor
+  - recency-crossing-depth
+  - nested-recency-interval
+  - rank-discrepancy
+  - inversion-diagnostics
+  - heavy-gap-recency
+  - multiscale-recency
+leakage_prohibition:
+  - U
+  - V
+  - G
+  - Bellman-signature
+  - candidate-labels
+  - tightness-labels
+  - holdout-verdict

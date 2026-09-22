@@ -1,0 +1,777 @@
+# Path.md — Implementation Tracker for SPLAY-AM-PD v0.1 (mirrors WorkPlan.md exactly)
+
+**Experiment:** `SPLAY-AM-PD-v0.1` | **Plan:** `WorkPlan.md` (WP-1…WP-6 ← SPEC 00–18, §§0–36)
+**Repo:** https://github.com/Dynamic-Optimality-Lab/splay-deletion-deb
+**Rule (task-critical, never forgotten):** as implementation moves forward, *every* step is documented here — what was implemented, with what evidence, and **whether it follows WorkPlan.md or not, with deep detail exactly like WorkPlan.md** (same phase structure, same file/code/benchmark granularity). Deviations, if any, get their own dated entry with cause, impact, and corrective versioning. Failed hypotheses, counterexamples, and stopped runs are preserved, never overwritten.
+**Status convention per WP phase:** `PENDING` (not started) / `IN_PROGRESS` (underway) / `GATED_PASS` (all gates green) / `GATED_FAIL` (a named failure label emitted) / `BLOCKED` (waiting on a dependency) / `DEVIATED` (off-plan — requires deviation entry).
+
+---
+
+## Step 0 — Clone, clear-check, deep study, plan creation (2026-09-20) ✅ DONE
+
+**What was done (deep detail):**
+1. Cloned `https://github.com/Dynamic-Optimality-Lab/splay-deletion-deb` into workspace `Splay-Wtv/splay-deletion-deb`. Evidence: `git log --oneline` → single commit `f122c99 Initial commit`; `git ls-files` → `LICENSE` only; `git status` → clean; `git branch -a` → `main` + `origin/main` only.
+2. Previous-results clearing check: probed for `artifacts/`, `WorkPlan.md`, `Path.md`, any code/caches — all `Test-Path … → False`. Only `LICENSE` (MIT, Dynamic Optimality Lab 2026) exists. **Conclusion: nothing to delete; the "only new results after the changes" guarantee holds vacuously at plan time.** Recorded in `WorkPlan.md §0`. No files were deleted, no history rewritten — so nothing could have been silently lost.
+3. Deep-studied the full frozen spec (`SPLAY_AM_PD_IMPLEMENTATION_SPEC_v0.1.md`, §§0–36, PHASE 00–18, T1–T22, INV-001–INV-040, full test matrix, §31 checklist, §33 Experiment-0 bundle, §34 tables, §36 purpose questions) end-to-end before writing any plan. Verified key quantitative anchors: Catalan counts 1,2,5,14,42,132,429,1430; pairs `C_n²`; edges `E_n=2nR_n`; cost `c=depth+1`; edge order `K(1..n),D(1..n)`; `pair_id=A_id·C_n+B_id`; sanity `1≤b_n*≤n`; denominator bound `q≤n|R_n|`; certificate = upper feasible potential + zero-slack path/cycle witness + independent verifier; discovery `n=2..5` / validation `n=6` / held-out `n=7`; H-GATE-0..9 ladder; 7 claim levels.
+4. Created `WorkPlan.md` (6 phases WP-1…WP-6, coverage matrix SPEC 00–18 → WP, per-phase scope/files/code-how/model-benchmarks/anti-overfitting, global charter §9, cross-cutting rules §10) and this `Path.md`. Both written into the repo (`splay-deletion-deb/WorkPlan.md`, `splay-deletion-deb/Path.md`).
+5. No implementation code written yet; no artifacts produced; no gates run. No AI-driven semantic change: cost/reachability/encoding untouched; no rounding; no hypothesis mutation (none exist yet); no kernel defined; no finite-evidence promotion; no counterexample exists to suppress.
+
+**Follows WorkPlan.md?** YES — exactly. This step *is* `WorkPlan.md §0` (pre-work verification) executed verbatim: clone → list → clear-check → study → plan. No deviation. Next: WP-1 begins (Step 1 below).
+
+**Evidence:** git outputs + `Test-Path` results quoted above (re-runnable: `git log --oneline -5; git ls-files; Test-Path artifacts` in repo dir).
+**Plan commit:** `24c6adb` on `main` (2026-09-20) — `WorkPlan.md` + `Path.md` committed and pushed to `origin/main`; working tree clean. Standing instruction from owner: commit + push whenever a unit of work is done — applied here and to be applied going forward.
+
+---
+
+## Audit remediation — WorkPlan.md v0.1.1 (2026-09-20) ✅ DONE
+
+**What was done (deep detail):** the owner supplied an external audit verdict checked against the exact frozen spec at `/mnt/data/SPLAY_AM_PD_IMPLEMENTATION_SPEC_v0.1.md` (SHA-256 `29070d39f54d40c3f8b1ccdde8b588545749dc3f60e8949c430036a0185f1565`). Verdict: mathematical architecture PASS, 19→6 coverage PASS, but not freeze-ready — 4 blockers, 4 clarifications, 1 typo, 1 recommendation. All 10 items were patched into `WorkPlan.md` (now revision v0.1.1, stamped in its header) with no research-architecture change:
+
+1. **BLOCKER — append-only preservation (`WorkPlan.md` §0 + §8 seal):** replaced the gate-passing commit rule with the frozen-spec rule: every pipeline run (failed gates, counterexamples, invalid candidates, mutation failures, stops) is preserved with hashes; only gate-passing artifacts enter the sealed set; a failed gate never authorizes erasure; logs append-only; at seal, unexpected scientific artifacts cause audit failure or manifest-with-status, never deletion. Verified: `WorkPlan.md:17` (`append-only artifact rule`), `WorkPlan.md:171` (seal wording).
+2. **BLOCKER — T0 gates (`WorkPlan.md` §3 + §4 + §12):** added frozen `T0-GATE-A` (T0-13 PROVED+REVIEWED before `q ≤ n·R_n` use) and `T0-GATE-B` (all T0-01..T0-14 PROVED+REVIEWED before any Phase-06 `b_n*` seal; no `EXACT_BN_*` while any T0 UNPROVED/BLOCKED); WP-2 may build infra but cannot seal without them. Verified: `WorkPlan.md:59`, `WorkPlan.md:87` (T0-GATE-A), `WorkPlan.md:212-213` (§12 acceptance).
+3. **BLOCKER — nonempty witnesses (`WorkPlan.md` §4):** TRANSIENT witness must begin at a diagonal, contain ≥1 edge, use legal edges, `sum_a > 0`, `p*sum_a − q*sum_y = 0` (`ratio_empty_path_allowed = false`); CYCLIC witness must be a nonempty cycle with `sum_a_cycle > 0` plus diagonal prefix. Verified: `WorkPlan.md:88`.
+4. **BLOCKER — Splay freeze boundary (`WorkPlan.md` §3):** `splay_model` semantics fully implemented, cross-checked and frozen in WP-1; WP-2 tabulates/optimizes only, never alters Splay or cost without a new experiment version. Verified: `WorkPlan.md:65`.
+5. **CLARIFICATION — status namespace (`WorkPlan.md` §1 + §4):** `criticality_subtype` (`TRANSIENT`/`CYCLIC`/`MIXED`/`CLASSIFICATION_INCOMPLETE`) vs `top_level_status` (`EXACT_BN_*`) never blurred. Verified: `WorkPlan.md:36`, `WorkPlan.md:88`.
+6. **CLARIFICATION — FGAP algorithm (`WorkPlan.md` §5):** `FGAP(e)` iff `G(s)=0` AND `G(t)=0` AND `U_scaled(t) − U_scaled(s) = L(e)`; only then `FGAP` + `FORCED_DELTA=true` + `Delta_H_scaled=L(e)`; endpoints-`U=V` alone insufficient. Verified: `WorkPlan.md:107`.
+7. **CLARIFICATION — per-`n` data scope (`WorkPlan.md` §6 + §9):** frozen split DATA GENERATION (all certified `n`: full `F-v0.1` table over every `s ∈ R_n`, kernel ablation every certified `n`) / SELECTION (`n=2..5`) / VALIDATION (`n=6`) / HELD OUT (`n=7`). Verified: `WorkPlan.md:131`, §9 item 2.
+8. **CLARIFICATION — B06 ownership (`WorkPlan.md` §2 table + §4 + §5):** WP-2 rejected-`b` negatives are diagnostics only and do NOT discharge B06; B06 is discharged in WP-3 (Spec Phase 08, frozen `b⁻` rule). Verified: `WorkPlan.md:45`, `WorkPlan.md:93`, `WorkPlan.md:113`.
+9. **TYPO — claim levels (`WorkPlan.md` §8 + this file):** `8` → `7`; the listed set is unchanged and correct. Verified: `WorkPlan.md:163`; `Path.md` Step 0 item 3 corrected alongside.
+10. **RECOMMENDED — one exact `b` per H (`WorkPlan.md` §7):** each `H-*.json` freezes `b_hypothesis: {p, q}` + `b_is_universal_candidate: true`; `E_K`/`E_D` use that same `b` for every tested `n` (per-size `b_n*` stays in WP-3/WP-4 discovery only). Verified: `WorkPlan.md:145`, `WorkPlan.md:149`.
+
+**Follows WorkPlan.md?** YES — this remediation changes the plan itself per owner direction + external audit; it is recorded here with item-by-item line evidence. No execution deviation (no implementation exists yet to deviate).
+
+**Collateral truthfulness note (closed 2026-09-21):** the partial WP-1 scaffold
+that sat uncommitted during audit rounds was completed, verified, and committed
+with the WP-1 implementation (see WP-1 entry). No file was rewritten blindly:
+`README.md`/`CHANGELOG.md`/`CITATIONS.md`/`.gitignore`/L2-L3 PDFs were kept and
+accuracy-patched where the frozen plan had moved on (16 schemas, n≤6 suite,
+spec v0.1.1).
+
+---
+
+## Audit remediation round 2 — WorkPlan.md v0.1.2 (2026-09-20) ✅ DONE
+
+**What was done (deep detail):** the owner supplied a second external audit verdict, rechecked against the frozen spec (SHA-256 still `29070d39f54d40c3f8b1ccdde8b588545749dc3f60e8949c430036a0185f1565`). Verdict: all previous 10 findings fixed; all 56 mandatory test IDs present; but one new MAJOR mathematical issue + 7 smaller items before freeze. All 8 were patched (plan now v0.1.2, header-stamped), no research-architecture change:
+
+1. **MAJOR — universal-`b_H` vs optimum-`b_n*` geometry split (`WorkPlan.md` §7):** the canonical sandwich for a universal hypothesis `(H,b_H)` must use `U_{b_H},V_{b_H}` recomputed at that same `b_H` (new artifact `artifacts/potentials/n{n}/hypothesis_bH/{U_bH,V_bH}.json.zst`, independently re-verified), never the WP-3 `U_{b_n*},V_{b_n*}` tables unless `b_H=b_n*` — testing one against the other mixes two Bellman problems and can falsely reject a valid universal potential. Frozen architecture now stated: WP-3/4 `b_n*`-geometry is the discovery microscope; WP-5 tests `(H,b_H)` at one fixed `b_H`; WP-6 proves it. Candidates split into **optimal-geometry hypotheses** vs **universal Pair-Access hypotheses**.
+2. **MAJOR/spec-level — H-GATE-3 scope (SA-01, `WorkPlan.md` §7):** exact `b_n*` forced-derivative agreement stays a rejection gate for optimal-geometry hypotheses but is discovery evidence (not a rejection gate) for universal hypotheses with `b_H > b_n*`, which carry extra slack `ℓ_{b_H}(e) = ℓ_{b_n*}(e) + (b_H − b_n*)·a(e)`. Recorded as PROPOSED SPEC AMENDMENT SA-01 (since RATIFIED as spec v0.1.1 — see round-3 entry below): requires ratification in a new spec version before downgrading any gate; until ratified, both geometries are computed/reported separately and no universal hypothesis is marked `REJECTED` solely on a `b_n*`-derivative mismatch without a `b_H`-geometry violation (tension flagged in the ledger).
+3. **ERROR — negative-endpoint wording (`WorkPlan.md` §1):** now reads "disproves approximate monotonicity and hence — via Levy–Tarjan equivalence after convention audit — disproves dynamic optimality for Splay."
+4. **REQUIRED — WP-1 suite scope (`WorkPlan.md` §3):** reference+independent exhaustive through `n≤6`; third structurally independent slow functional implementation (`reference/functional_splay.py`) exhaustive through `n≤5`; required primitives now explicitly list `find_path`, `compute_depth`, `validate_bst`; M03–M04 benchmark text updated to match.
+5. **REQUIRED — status spelling (`WorkPlan.md` §2 table + §4):** `UPPER/LOWER_CERTIFICATE_FAIL` written as the two exact statuses `UPPER_CERTIFICATE_FAIL`, `LOWER_CERTIFICATE_FAIL`.
+6. **AMBIGUITY — schema extension (`WorkPlan.md` §7):** supersedes round-1 item 10 as implemented — `b_hypothesis`/`b_is_universal_candidate` do NOT go into `H-*.json`; the frozen `candidate_H.schema.json` is followed exactly and the universal-`b` fields live in versioned companion `H-*.eval_contract.json` (`EC-v0.1`); any future schema change means explicit schema/spec versioning.
+7. **MINOR — notation:** `q ≤ n·R_n` → `q ≤ n·|R_n|` (3 sites: §1 contract, §3 T0-GATE-A, §4 discovery), `E_n=2nR_n` → `E_n=2n|R_n|` (§10); Step 0 item 3 of this file updated likewise.
+8. **MINOR — exact filenames (`WorkPlan.md` §3):** `external/papers/` now lists `L1_sleator_tarjan_1985.pdf`, `L2_levy_tarjan_1907.06310v3.pdf`, `L3_chmel_et_al_2607.18498.pdf`; `math/` lists the five exact theorem-note filenames.
+
+**Follows WorkPlan.md?** YES — plan correction per owner direction + external audit, recorded here with line-level evidence. No execution deviation (implementation still pending).
+
+---
+
+## Audit remediation round 3 — SA-01 RATIFIED, WorkPlan.md v0.1.3 (2026-09-20) ✅ DONE
+
+**What was done (deep detail):** the owner supplied a third audit verdict: all round-1/round-2 findings fixed, but two items remained before freeze — (1) SA-01 must be ratified as a real spec version, not a proposal, with the ladder split into two tracks; (2) a new `b_H`-feasibility precheck is mathematically required. Both are now done:
+
+1. **SA-01 RATIFIED as `SPLAY_AM_PD_IMPLEMENTATION_SPEC_v0.1.1.md` (new file, 127 lines, SHA-256 `5A82106730D68D831104B9DD0B36B297FF4452D60EC0B3CA53B035566B3F317D`):** parent v0.1 (`29070d39…f1565`) unchanged except the ladder application. OPTIMAL-GEOMETRY TRACK — OG-1 forced derivatives at `b_n*`, OG-2 `b_n*`-sandwich, OG-3 corridor explanation (diagnostics; OG failure flagged, never `REJECTED` alone). UNIVERSAL PAIR-ACCESS TRACK — UH-0 well-defined, UH-1 identity, UH-2 nonnegativity, UH-3 feasibility, UH-4 `b_H`-sandwich, UH-5 KEEP/DELETE at `b_H`, UH-6 held-out, UH-7 independent impl, UH-8 adversarial, UH-9 symbolic proof (WP-6); any UH-0..UH-8 failure ⇒ `REJECTED`. Normative v0.1 mapping included (H-GATE-3→OG-1, H-GATE-4→OG-2+UH-4, rest 1:1). The amendment resolves the contradiction the auditor identified (simultaneous "H-GATE-0..8 in order" + "don't reject on `b_n*`-derivative mismatch") — the former now reads as the UH order with OG reported alongside.
+2. **UH-3 wired into `WorkPlan.md` §7:** feasibility precheck runs BEFORE any `U_{b_H},V_{b_H}` computation — exact `p_H·q_n ≥ p_n·q_H` per certified `n` into `H-*.bH_feasibility.json`; three-case rule (`<` ⇒ immediate `REJECT` reusing the certified `b_n*` lower witness with verifier-checked negative slack under `b_H`; `=` ⇒ reuse WP-3 tables; `>` ⇒ compute fresh). Verified: scope two-track wording (§7 scope), `H-*.bH_feasibility.json` in files list, UH-3 bullet, RATIFIED SA-01 bullet with track definitions + mapping, benchmarks line (UH-0..UH-8 + OG), §12 WP-5-done line, §2 omission-audit §24 mapping, §8 seal manifest (spec v0.1 + amendment v0.1.1).
+3. **Plan header now points at the amended spec:** `WorkPlan.md` spec-source line cites v0.1.1 + both hashes; revision stamped v0.1.3. WP-1 files list includes the amendment file.
+
+**Follows WorkPlan.md?** YES — plan + spec-amendment work per owner direction + external audit. No execution deviation (implementation still pending).
+
+---
+
+## Audit remediation round 4 — byte-audit, BH suite, provenance; PLAN FROZEN v0.1.4 (2026-09-20) ✅ DONE
+
+**What was done (deep detail):** the owner supplied a fourth verdict (freeze-ready pending one verification caveat + two hardening edits). All three are now closed:
+
+1. **CAVEAT CLOSED — byte/content audit of `SPLAY_AM_PD_IMPLEMENTATION_SPEC_v0.1.1.md`:** file read in full (164 read-lines); recomputed SHA-256 via `Get-FileHash` = `5A82106730D68D831104B9DD0B36B297FF4452D60EC0B3CA53B035566B3F317D`, byte-exact match to the hash stated in `WorkPlan.md` header and round-3 entry; `git status` confirms the file is unmodified since commit `452d6a6`. Normative content verified section by section: SA-01.1 rationale + extra-slack formula (file lines 15–33), OG-1..OG-3 with diagnostic-only decision power (37–48), UH-0..UH-9 with `REJECTED`-on-UH-failure semantics (52–71), UH-3 cross-multiplied check + three-case rule (75–98), `H-*.bH_feasibility.json` record schema (100–118), PASS-gate before sandwich work (120–122), v0.1 H-GATE mapping incl. H-GATE-3→OG-1 and H-GATE-4→OG-2+UH-4 (126–142), unchanged clause (146–155), ratification record (159–164). The amendment contains exactly the SA-01 rules the WorkPlan summarizes — no drift. The auditor may still inspect the pushed file directly; nothing further is needed on this item.
+2. **HARDENING — BH01–BH05 (`WorkPlan.md` §7):** UH-3 now has explicit mandatory coverage — BH01 exact `b_H ≥ b_n*` per certified `n`; BH02 witness-reuse with verifier-checked negative `b_H` slack; BH03 equality table-reuse byte/hash consistency; BH04 recomputed `U_bH,V_bH` canonical inequalities; BH05 independent-verifier agreement on `b_H` geometry. Planned runner `tests/test_bh_feasibility.py` added to the WP-5 files list. Placed at plan level (the amendment's gate text is unchanged, so its hash is stable by design).
+3. **HARDENING — release provenance (`WorkPlan.md` §8 seal):** `FINAL_RESULT.json` now carries `normative_spec_set: [{v0.1, 29070d39…f1565}, {v0.1.1-SA01, 5A821067…317D}]`; the archive name stays `SPLAY-AM-PD-v0.1.tar.zst` with the spec set embedded, so no future reproduction can silently omit SA-01.
+4. **FREEZE:** `WorkPlan.md` stamped v0.1.4 FROZEN ("no further plan edits without a new audit finding"). Per the auditor's stop-editing guidance, the next information comes from implementation (`b_2*`, `b_3*`, …, first critical corridors), not more planning.
+
+**Follows WorkPlan.md?** YES — hardening per owner direction + external audit, recorded here with line-level evidence. No execution deviation (implementation still pending).
+
+---
+
+## Audit remediation round 5 — UH-1/UH-2 semantics, BH02 split, holdout mask, schemas; PLAN FROZEN v0.1.5 (2026-09-20) ✅ DONE
+
+**What was done (deep detail):** the owner supplied a fifth verdict (freeze-ready pending 4 wording/implementation fixes, no redesign). All four are now frozen:
+
+1. **UH-1/UH-2 finite semantics (`SPLAY_AM_PD_IMPLEMENTATION_SPEC_v0.1.1.md` SA-01.3 + `WorkPlan.md` §7 gates):** one interpretation everywhere — UH-1: `H(T,T)=0` on every certified diagonal, any nonzero value rejects from the universal track (additive-overhead variants take a different class/ID, never survive UH-1); UH-2: `H(s)≥0` ∀ `s∈R_n` on every certified size, any negative value is an exact counterexample and rejects; the remaining "proof obligation" is solely the arbitrary-`n` proof and belongs to UH-9. This required re-cutting the amendment (rev.2), so its SHA-256 changed `5A821067…317D` → `8B77278FF98F6AB5A3AA4D929A5787735F269647D5E3088CF4288F8ACF8C7726` (recomputed via `Get-FileHash`; history entries keep the old hash as-at-that-time, this entry is the supersession record). `WorkPlan.md` header, `normative_spec_set`, and revision stamp (v0.1.5 FROZEN) all carry the new hash.
+2. **BH02 transient/cyclic split (amendment SA-01.4 + `WorkPlan.md` §7 UH-3 bullet + BH02 text):** TRANSIENT `b_n*` witness ⇒ same path must have negative `b_H` slack (exact check); CYCLIC witness ⇒ cycle infeasibility `L_{b_H}(C)<0` suffices, or diagonal-rooted `P_0·C^k` with exact minimal `k > L_{b_H}(P_0)/(−L_{b_H}(C))` and stored `repeat_count`. The `bH_feasibility.json` failure-witness schema gained `witness_kind` (`transient_path`|`cycle`|`prefix_plus_cycles`) and `repeat_count`.
+3. **Explicit selection mask (`WorkPlan.md` §6 + §9.2):** frozen — SELECTION = `n=2..5` with `reserved_family_holdout=false`; RESERVED FAMILY HOLDOUT (never for coefficient selection) = all FCYCLE edges + DELETE-only stratum + zig-zag-dominated stratum; SIZE VALIDATION `n=6`; SIZE HOLDOUT `n=7`. Edge-delta rows carry the flag; selection code must exclude flagged rows; family holdout never claimed for strata seen at `n=2..5`.
+4. **SA-01 schemas (`schemas/eval_contract_v0.1.schema.json` + `schemas/bh_feasibility.schema.json`, both written and JSON-validated this session):** cross-cutting rule now reads "14 base + 2 SA-01 schemas (16 total)"; WP-1 files list updated. No loosely validated JSON remains.
+
+**Follows WorkPlan.md?** YES — hardening per owner direction + external audit, recorded here with line-level evidence. No execution deviation (implementation still pending).
+
+---
+
+## WP-1 — Foundation, frozen contract & reference Splay + BST universe (SPEC 00, 01, 02) — status: `GATED_PASS` (2026-09-21)
+
+**Scope per WorkPlan.md §3 (plan v0.1.5):** all items executed. Literature
+L2/L3 frozen+hashed, L1 paywall-recorded; spec + prereg frozen
+(`prereg_sha256.txt` = `276529e5…3627`, gate-verified); `FORMAL_NOTES.md`
+T0-01..T0-14 PROVED+REVIEWED with T0-GATE-A/B binding (ledger
+`math/proof_status.json` all-PROVED; T0-GATE-A satisfied for WP-2,
+T0-GATE-B re-checked before any Phase-06 seal); layout scaffolded;
+`rust-toolchain.toml` 1.92.0 + `Cargo.lock` generated, `pyproject.toml`
+(requires-python >=3.12, env 3.13.7), `requirements-lock.txt` (stdlib-only
+for WP-1); reference (tuple) + independent (pointer-object, imports only
+itself — verified by import scan) + functional third (index-array
+copy-on-write) implementations; 20 fixtures (10 hand + 10 triple-agreement);
+canaries; canonical enumeration + Catalan + interval-enumerator cross-check.
+**Out-discipline held:** no `b_n*`/potential/feature/`H` code or artifact
+anywhere in WP-1 scope.
+
+**Files (WorkPlan §3 list — all created, verified present):**
+`README.md` (accuracy-patched: spec v0.1.1, 16 schemas, n≤6 suite),
+`IMPLEMENTATION_SPEC.md` (normative freeze, hash above),
+`SPLAY_AM_PD_IMPLEMENTATION_SPEC_v0.1.1.md` (pre-existing),
+`FORMAL_NOTES.md`, `CHANGELOG.md` (+0.1.5 plan entry), `CITATIONS.md`,
+`LICENSE` (kept), `pyproject.toml`, `requirements-lock.txt`, `Cargo.toml`,
+`Cargo.lock` (generated, unedited), `rust-toolchain.toml`, `.gitignore`,
+`prereg/` (6 files), `external/MANIFEST.json` + papers (L2/L3 + SHA256SUMS;
+L1 `UNFROZEN_PAYWALL` with reliance note), `math/` (7 files),
+`schemas/` (16/16 JSON-validated), `crates/splay_model/src/` (6 modules),
+`python/reference/` (tree/splay/enumerate/functional/fixtures_hand/fixtures),
+`python/audit/` (2 modules), `tests/test_wp1.py` + `tests/unit/` +
+`tests/exhaustive/`, `artifacts/trees/n1..n8` (3 files each incl.
+SHA256SUMS), `artifacts/logs/` (gate + stress JSON),
+`scripts/run_phase00.{ps1,sh}`, `run_phase01.{ps1,sh}`, `run_phase02.{ps1,sh}`,
+`freeze_fixtures.py`, `stress_wp1.py`.
+
+**Code + how (as planned):** Rust pointer-index BST, no-recursion rotation
+core with `debug_assert` consistency, 5-case `splay` with root/BST
+post-conditions, exact-u128 Catalan, ASCII-sort canonical IDs; `cargo check
+--tests` PASS. Rust native test *execution* is BLOCKED by environment (no
+`link.exe`/MSVC linker) — recorded here, not a plan deviation: semantics
+are verified by the Python triple gates below, and the Rust unit tests
+(LL/RR/zig fixtures, Catalan, round-trips) will execute where MSVC exists.
+Python reference exposes all required primitives (`parse_shape`,
+`serialize_shape`, `assign_inorder_keys`, `find_path`, `compute_depth`,
+`validate_bst`, `rotate_*`, `splay`).
+**Model training:** NONE per plan — nothing trained, nothing to report (verified:
+no fitting/learning code anywhere in WP-1 scope).
+
+**Bugs found by the gates (evidence the gates work, all fixed + rerun green):**
+B1 author inorder-labeling order bug (`tree.py`/`enumerate.py` read the
+counter after right recursion; failed M03 on `(.(..))`) — fixed by capturing
+the key before right recursion; the independent impl was already correct.
+B2 hand-fixture error F-006/F-007 (`["LL","ZIG"]` — a 3-chain needs one
+zig-zig only; all three implementations agreed `["LL"]`) — hand entries
+corrected, machine cross-check won as designed. B3 `freeze_fixtures.py`
+path bugs (two issues, fixed). B4 hash-compare case bug in gate00 (fixed;
+artifacts were correct). B5 PS5.1 native-stderr termination in
+`run_phase00.ps1` (fixed via preference guard). B6 Rust test typo (fixed).
+
+**Benchmarks/gates (final full run 2026-09-21, 30/30 PASS, 0.3 s):**
+gate00 18/18 (13 files, spec-hash, 2 papers, 14 T0, 16 schemas, 8 unit
+tests), gate01 M01/M02/M03 (n=2 triple)/M04 (n=3, 15 ops triple)/M04-FIX
+(20 fixtures)/M05/M06, gate02 E01 (Catalan 1,2,5,14,42,132,429,1430) /
+E02-E03 / E-IND (interval agreement n≤6) / M04-EXT (n=4: 56 ops, n=5: 210
+ops triple) / G02-EXH. Stress `wp1_stress.json`: n=6 ref-vs-ind 792/792
+identical; enumerate rerun byte-identical; transition digest stable
+(`62853f23dc0952a1`, n=4); reversed-zig-zag faulty variant detected;
+depth-offset detected. No `FOUNDATION_NOT_FROZEN` / `SPLAY_SEMANTICS_MISMATCH`
+/ `TREE_ENUMERATION_MISMATCH`; no STOP triggered. Covers STOP-01/02/03/15,
+threats T2/T3, INV-001..INV-006 (INV-007/008 structural; pair side is WP-2).
+
+**Console logging (user instruction; language mapping frozen here):**
+implementation languages are Python/Rust/PowerShell (frozen stack), which
+have no `console.log` primitive. The faithful equivalent is used —
+`print()` in Python via `console_log()` helpers, `Write-Host` in `.ps1`
+via step lines, `echo` in `.sh` — each preceded by an identification
+comment `# console.log equivalent [ID]: purpose`. 25 statements, verified
+by search with exact file:line (line numbers as committed):
+`scripts/run_phase00.ps1`:7 [WP1-P00-01], :11 [WP1-P00-02], :18 [WP1-P00-03];
+`scripts/run_phase01.ps1`:4 [WP1-P01-01], :8 [WP1-P01-02];
+`scripts/run_phase02.ps1`:4 [WP1-P02-01], :9 [WP1-P02-02], :14 [WP1-P02-03];
+`scripts/freeze_fixtures.py`:43 [WP1-FIX-01], :70 [WP1-FIX-02];
+`scripts/stress_wp1.py`:90 [WP1-S-01], :98 [WP1-S-02], :120 [WP1-S-03],
+:134 [WP1-S-04];
+`tests/test_wp1.py`:81 [WP1-T-00], :95 [WP1-T-01], :133 [WP1-T-02],
+:159 [WP1-T-03], :192 [WP1-T-04], :231 [WP1-T-05], :240 [WP1-T-06];
+`python/reference/enumerate.py`:138 [WP1-ENUM-01], :148 [WP1-ENUM-02],
+:182 [WP1-ENUM-03]. (POSIX `.sh` drivers carry the same IDs.)
+Library code (tree/splay/enumerate core, Rust modules) is print-free by
+design; audit code has no reference imports by construction + scan.
+
+**Follows WorkPlan.md?** YES — every §3 scope/file/code/benchmark/model
+(NONE)/gate element executed with evidence above. No WorkPlan deviation
+(no deviation-log row). Environment limitation (MSVC linker) and the six
+fixed bugs are recorded here, not deviations.
+
+**Step history:** Step 1 freeze+scaffold (prereg/spec/notes/schemas/
+toolchain/manifests) → Step 2 Splay core (3 impls, fixtures, canaries,
+B1/B2 found+fixed) → Step 3 enumeration + artifacts n1..n8 (B5 found+fixed)
+→ stress (B1–B6 all closed) → compliance sweep (closed Cargo.lock,
+unit/exhaustive dirs, SHA256SUMS-per-size, README accuracy) → this entry.
+
+**Next action:** WP-2 (transitions, `R_n`, discovery, `b_n*` seal) — needs
+frozen WP-1 Splay + trees (satisfied) and T0-GATE-A/B (satisfied, re-checked
+at seal). Per-size Path sub-entries will follow.
+
+---
+
+## WP-2 — Exact dynamics: transitions, reachability, discovery & certification of b_n\* (SPEC 03, 04, 05, 06) — status: `GATED_PASS` (2026-09-21)
+
+**Scope per WorkPlan.md §4 (plan v0.1.5):** all items executed. Exact
+single-tree tables (`n·C_n` records + inverse conservation) for n=2..8;
+BFS `R_n` + parents + closure for n=2..8; two-mechanism discovery (HiGHS LP
+proposal-only + exact parametric Dinkelbach) for n≤6 with AGREE everywhere;
+exact two-sided seals (upper feasible potential + nonempty transient/cyclic
+zero-slack witness + independent audit PASS + no-float scan) for n=2..7;
+criticality subtyping with complete decision rules; rejected-`b` negatives
+preserved in candidate trails. n=8: tables+reach observed and independently
+verified; `b_8*` seal = `RESOURCE_LIMIT_NO_CLAIM` (stretch size, no
+extrapolation). B06 correctly deferred to WP-3.
+**Out-discipline held:** LP floats quarantined (`authoritative=false`,
+agreement-checked only); no V/G mining, no `H` (upper potentials are
+certificate vehicles per plan, WP-3 owns canonical analysis).
+
+**Files (WorkPlan §4 list — all created):** `crates/pair_graph/src/`
+(lib/state/edge/reachability/csr/reverse) + `crates/exact_solver/src/`
+(8 modules) + `crates/cli` (all `cargo check --workspace --tests` PASS;
+native test execution still needs an MSVC host), `python/reference/`
+(pair_graph/solve_small/verify_small), `python/audit/` (graph +
+verify_transition_table/verify_reachability/verify_bn_certificate/
+verify_no_float_seal; import-scan proves zero `python.reference` imports),
+`artifacts/{transitions,reachability,candidates,certificates}/n{2..7}` +
+`transitions,reachability/audits/n8`, `artifacts/logs/` (gate + stress JSON),
+`scripts/run_phase03..06.{ps1,sh}` + `run_n7.py` (staged n=7 driver) +
+`stress_wp2.py`.
+
+**Code + how (as planned, two exactness-relevant upgrades documented):**
+(1) Hot paths use compact CSR (flat C arrays) + SLF queue Bellman-Ford:
+n=6 discovery 1101 s → 0.6 s with byte-identical exact answer (8/5, same
+trail shape); all witnesses verify-by-recompute (fail-closed).
+(2) Budgeted far-below-optimum probes (sound climbing steps only —
+INVALID solely with verified negative witnesses; UNDECIDED reruns
+unbounded); LP floats never seed the climb (a float above the optimum
+would break it) — agreement evidence only. (3) Reverse-CSR forward-index
+bug found by the seal assert (fail-closed worked): pass-2 traversal mixed
+reverse/forward edge domains; fixed with `rfwd` array + the bogus
+single-edge fallback replaced by loud failure (zero-reduced ≠ zero-slack
+for single edges). (4) GC-thrash fix in CSR bulk build (C-array appends +
+gc guard) after the first n=7 worker stalled at 3.7 GB. (5) n=7 LP leg:
+HiGHS burned 30+ min CPU on the 2.5M-row proposal LP without finishing;
+worker killed (no artifact, no claim — not a STOP); size policy recorded
+(`use_lp=False` for n>6, LP leg binds n≤6 where AGREE holds everywhere);
+n=7 second mechanism = independent audit re-verification (stronger).
+(6) Candidate generation: exact parametric Dinkelbach emits reduced
+rationals directly (denominator bound enforced live via B-DENOM `q ≤ nR`);
+LP-float→fraction reconstruction checked via B-DENOM + LP-REC agreement —
+same gate substance as the convergents/Farey pipeline, recorded here as
+the implemented procedure.
+
+**Sealed exact results (evidence: `bn_certificate.json` + audit reports):**
+n=2: C=2, R=4 (all), b*=1/1, EXACT_BN_MIXED, PASS.
+n=3: C=5, R=19 (partial — R_n restriction is load-bearing, threats T1/T13),
+b*=1/1, EXACT_BN_MIXED, PASS.
+n=4: C=14, R=196 (all), b*=3/2, EXACT_BN_CYCLIC, PASS.
+n=5: C=42, R=1764 (all), b*=8/5, EXACT_BN_CYCLIC, PASS.
+n=6: C=132, R=17424 (all), b*=8/5, EXACT_BN_CYCLIC, PASS.
+n=7: C=429, R=184041 (all), b*=23/14, EXACT_BN_CYCLIC, PASS.
+n=8: C=1430, R=2044900 (all, independently verified) — observation only,
+no `b_8*` claim (`RESOURCE_LIMIT_NO_CLAIM`).
+Every seal: reduced p/q, cross-multiplied bracket, full-edge upper sweep
+(2.5M edges at n=7 re-verified independently), nonempty diagonal-rooted /
+prefixed witnesses with recomputed zero slack, criticality consistent,
+`independent_verifier: PASS` + report hash (finalized post-audit; PENDING
+→ PASS transition recorded in the file history), no-float scan clean.
+
+**Benchmarks/gates (final runs 2026-09-21, all green):** gate03 T01/T02/T03
++ independent transition audit exact-match (n≤8 tables incl.); gate04
+R01/R02/R03 + independent exact-set agreement (all sizes incl. n=7, n=8 —
+exceeds the n≤6 minimum); gate05 B01/B02/B-TRAIL/B-DENOM/LP-REC (LP AGREE
+n≤6, policy skip n=7); gate06 T0-GATE-B (ledger all-PROVED+REVIEWED before
+every seal) + B03–B05 + SEP-AUDIT (zero reference imports) + S02
+(independent PASS all sealed sizes) + S03 (float-free). Stress
+`wp2_stress.json`: rediscovery byte-identical candidates n≤6, CLI rebuild
+identical, audit repeat PASS. No failure labels; no STOP triggered. Covers
+STOP-04..10/14, threats T1/T4/T5/T6/T13/T14/T15, INV-008..027.
+**Model training:** NONE per plan (LP = quarantined proposer with quarantined
+floats, not a model) — nothing trained; certificate outcomes are exact
+(`UPPER/LOWER_CERTIFICATE_FAIL` vs seal), not scores.
+
+**Console logging (same frozen mapping as WP-1):** `print()` via
+`console_log()` helpers (Python), `Write-Host` (`.ps1`), `echo` (`.sh`),
+`println!` (Rust CLI dispatch) — each with `# console.log equivalent [ID]`
+comments. 50 statements, search-verified with exact file:line:
+drivers `run_phase03.ps1`:4,:8; `run_phase04.ps1`:4,:8; `run_phase05.ps1`:4,:8;
+`run_phase06.ps1`:4,:8 (`.sh` mirrors same IDs at :5,:6,:8,:9);
+`run_n7.py`:40,:50,:63,:73,:79,:92; `stress_wp2.py`:41,:57,:77,:92;
+`test_wp2.py`:71,:93,:120,:136,:190,:198;
+`pair_graph.py`:54,:76,:109,:132,:140,:207;
+`solve_small.py`:101,:170,:366,:386,:397,:630,:637,:706 (SOL-00 twice:
+build-start + ready);
+`verify_transition_table.py`:34,:57; `verify_reachability.py`:35,:78;
+`verify_bn_certificate.py`:44,:67,:136; `verify_no_float_seal.py`:46,:59;
+`crates/cli/src/main.rs`:8 [WP2-CLI-01].
+Library/solver/audit code paths are print-free except these identified
+emissions; audit imports verified reference-free by scan + SEP-AUDIT gate.
+
+**Follows WorkPlan.md?** YES — every §4 scope/file/code/benchmark/model
+(NONE)/gate element executed with evidence above, including T0-GATE-A/B,
+nonempty witness rules, subtype/top-level namespaces, B06 deferral, and
+rejected-`b` diagnostics in trails. No WorkPlan deviation (no deviation-log
+row). Recorded non-deviations: CSR+SLF/budgeted-probe engineering,
+Dinkelbach-first discovery with LP agreement (B-DENOM/LP-REC close the
+reconstruction loop), n=7 LP size policy, n=8 `RESOURCE_LIMIT_NO_CLAIM`,
+Rust exec limitation (check-green, MSVC host pending).
+
+**Step history:** Step 1 recon (LP backends: scipy/HiGHS present, highspy
+absent; pins recorded) + Rust crates (check-green) → Step 2 reference
+pair-graph + exact solver (smoke n=2: b=1, n=3: b=1 MIXED, R_3=19/25) →
+Step 3 audit verifiers (caught+removed a reference import) → Step 4 gates
+03/04 green (R: 4/19/196/1764/17424) → Step 5 discovery (b*: 1,1,3/2,8/5,8/5;
+n=6 LP slowness → COO rebuild 17 s) → Step 6 seal n≤6 (reverse-index bug
+found by seal assert → fixed; all PASS) → Step 7 n=7 (GC-thrash kill →
+CSR fix → b*=23/14 CYCLIC, LP 30-min hang → size policy, seal+PASS) →
+Step 8 n=8 observation (R=2044900 verified, no `b*` claim) + stress green
++ B-DENOM/LP-REC hardening + this entry.
+
+**Next action:** WP-3 (canonical U/V/G + forced states + FORCED_DELTA +
+frozen `b⁻` B06 diagnostic) — needs sealed `b_n*` per `n` (satisfied for
+2..7, INV-028). Per-size Path sub-entries will follow.
+
+---
+
+## WP-3 — Canonical potentials & critical geometry (SPEC 07, 08) — status: `GATED_PASS` (2026-09-21)
+
+**Scope per WorkPlan.md §5 (plan v0.1.5):** all items executed. Exact
+`U^Z/V^Z/G^Z` at each certified `b_n*` (n=2..7) with Bellman witnesses;
+forced states exact (`G==0`, verified == diagonals everywhere);
+zero-reduced graph + transient corridors + critical SCCs/cycles with
+canonical representatives; `FORCED_DELTA = FPATH ∪ FCYCLE ∪ FGAP` with
+frozen FGAP rule + `VBELLMAN`/`UBELLMAN` recorded + exact
+`Delta_H_scaled`; human-readable trajectories with full step detail
+(shapes, a/y, slack, U/V, forced transitions, WP-4 deltas placeholder);
+frozen `b⁻` diagnostic discharging **B06** (all `NEGATIVE_CYCLE`, type
+preserved separately).
+**Out-discipline held:** tables reported as certified facts, no universal
+interpretation (that is WP-4/5/6 business).
+
+**Files (WorkPlan §5 list — all created):**
+`crates/exact_solver/src/canonical_potentials.rs` extended (FGAP rule +
+Bellman fns + unit tests, workspace check-green),
+`python/audit/verify_uv.py` + `verify_critical_objects.py`,
+`python/reference/canonical.py` + `critical.py`,
+`artifacts/potentials/n{2..7}/` (U/V/G zst + forced_states + summary +
+bellman_witnesses), `artifacts/critical/n{2..7}/` (zero_reduced zst,
+paths/canonical_paths, sccs, canonical_cycles, forced_delta zst,
+trajectories.md, below_optimum.json, summary),
+`artifacts/logs/wp3_gate_*.json` + `wp3_stress.json`,
+`scripts/run_phase07/08.{ps1,sh}` + `stress_wp3.py`.
+
+**Code + how (as planned, two correctness upgrades documented):**
+(1) V via reverse propagation (super-sink-style all-zero init; converges:
+no negative-slack cycle can exist anywhere in `R_n` at valid `b`, else
+diagonal reachability would break validity); reverse predecessors are the
+CSR reverse relation = exact spec-§7.3 predecessor sets (audit uses the
+inverse-table method independently; agreement proves the relation).
+(2) FPATH completeness fix (bug B7, found by cross-checking WP-2 witness
+existence against corridor output): `U[t]+L(e)==0` is sufficient-only; the
+complete rule is `U[t]+L(e)-V[s]==0` (both directions by telescoping +
+sandwich with attained optima). Corridors rebuilt as canonical
+prefix(U-optimal DFS)/suffix(V-optimal DFS) per forced state (non-diagonal:
+through-path; diagonal: out-starting path, else tight-backward path from
+another diagonal). WP-2 `find_transient` upgraded to the same complete rule
+(shared DFS machinery; V via `shortest_future`); all seals reproduced
+identically (subtypes unchanged: complete-FPATH = 4,15,0,0,0,0 for
+n=2..7). (3) Trajectories enriched to the full §8.5 step schema after a
+compliance sweep caught thin steps. (4) Audit brute-force predecessor scan
+hung at n=6 (hours) → replaced by inverse-table generation per spec §7.3.
+
+**Measured canonical geometry (evidence: summaries + audits):**
+forced = 2,5,14,42,132,429 = exactly the diagonals (verified by set
+equality all sizes: off-diagonal freedom gap is always > 0);
+maxU = 2,5,33,144,172,616; maxV = 1,2,7,21,35,119; maxG = 1,3,32,140,170,611.
+Corridors (canonical zero paths): 2,5,0,0,0,0 — consistent with MIXED (n=2,3)
+vs CYCLIC (n≥4) seals. Critical SCCs: 1,4,6,1,11,1. FORCED_DELTA edges:
+4,17,12,8,84,10. B06: `NEGATIVE_CYCLE` at every size (below-optimum
+failures are cyclic, incl. the `b⁻=1/2` diagnostic runs at b*=1).
+
+**Benchmarks/gates (final runs 2026-09-21, all green):** gate07 54/54
+(U01/U02/U03/V01/V02/V03/G01/G02 + independent UV-AUD incl. 184041-state
+sweep at n=7); gate08 24/24 (C01–C05 incl. per-edge forcing provenance,
+B06 typed diagnostics + independent CR-AUD with 6/6 checks: forced_set,
+provenance, paths, cycles, coverage, below). Stress `wp3_stress.json`:
+rebuild-identical summaries n≤5, audit repeat PASS. No
+`CANONICAL_POTENTIAL_FAIL` (would have raised loudly); no STOP-11/12/13.
+Covers threats T5/T7/T12/T15/T16, INV-028..030.
+
+**Console logging (same frozen mapping):** 32 statements, search-verified
+with exact file:line: `run_phase07.ps1`:4,:8; `run_phase08.ps1`:4,:8 (`.sh`
+same IDs); `stress_wp3.py`:40,:70,:86; `test_wp3.py`:75,:98,:127,:135;
+`canonical.py`:34,:49,:60,:63,:147; `critical.py`:57,:74,:237,:282,:311,
+:370,:377,:396,:402,:417; `verify_uv.py`:47,:74,:112;
+`verify_critical_objects.py`:80,:111,:268. Solver/audit internals are
+print-free except these identified emissions.
+
+**Follows WorkPlan.md?** YES — every §5 scope/file/code/benchmark/model
+(NONE)/gate element executed with evidence above, incl. FGAP exact rule,
+B06 ownership (deferred from WP-2 correctly), and T0/U/V/G theorem targets
+as tables (not theories). No WorkPlan deviation (no deviation-log row).
+Recorded non-deviations: CSR-reverse predecessor relation, Dinkelbach-first
+discovery carried over, V shared with WP-2 detector, trajectory schema
+enrichment, audit predecessor method.
+
+**Step history:** Step 1 canonical module (smoke n=4: 14 forced) → Step 2
+critical module (smoke: corridors=0 exposed the FPATH incompleteness) →
+Step 3 audits (brute-force hang → inverse-table fix; zst-load bug) →
+Step 4 gates green → Step 5 FPATH/corridor completeness rebuild + WP-2
+detector upgrade + full re-seal (identical subtypes) → Step 6 trajectory
+enrichment + stress + this entry.
+
+**Next action:** WP-4 (state-only features + forced-derivative mining +
+kernel ablation on the WP-3 FORCED_DELTA equations) — needs
+`FORCED_DELTA` + `U/V/G` (satisfied for n=2..7). Per-size mining entries
+will follow.
+
+---
+
+## SA-02 — Adaptive Cycle-Discovery Mining Track — amendment + preregistration freeze (2026-09-22) ✅ FROZEN (rules only; no coefficients fitted)
+
+**What was done (deep detail, fail-closed, audit-preserving):**
+1. PRE-FLIGHT: read `WorkPlan.md` v0.1.5, base extraction `IMPLEMENTATION_SPEC.md`, ratified SA-01 v0.1.1, `Path.md`, WP-3 summaries. Verified WP-1..WP-3 sealed hashes before mutation: `git status` clean at `bd658be`; WorkPlan `B83B77AF…1486`, Path `AC29C43F…0593`, SA-01 `8B77278F…7726`, extraction `276529E5…3627`; gates 00 (17PASS) / 01 (7) / 02 (5) / 03 (4) / 04 (4) / 05 (30) / 06 (36) / 07 (54) / 08 (24); `bn_certificate` b* `1,1,3/2,8/5,8/5,23/14`; critical summaries `forced 2,5,14,42,132,429`, `FORCED_DELTA 4,17,12,8,84,10`, corridors `2,5,0,0,0,0`, SCCs `1,4,6,1,11,1`. No sealed artifact deleted/rewritten/replaced/cleaned; no Splay/cost/reachability/`b_n*`/U/V/G/forcing/arithmetic/claim/SA-01-architecture change.
+2. FPATH AUDIT (`math/fpath_orientation_note.md`, `tests/test_fpath_orientation.py` 15/15 PASS): froze `e : source_state_id -> target_state_id`; derived `min_total(e) = U(source)+L(e)-V(target)` because min continuation is `-V(target)`; inspected `critical.py:build_zero_graph` (`U[i]+w-V[j]`, `i`=source, `j`=target), `solve_small.py:find_transient` (`U[i]-V[j]`), `build_critical` diagonal block (`U[f]-V[j]`), `verify_critical_objects.py:107` (`U[pid]-V[tgt]`) — all behaviour CORRECT. Textual reversals are naming-only: `critical.py:59` + `solve_small.py:685-686` + `Path.md:374` write `U[t]+L-V[s]` (swapped if `t`=target, `s`=source); `critical.py:4-5` shorthand `U[t]+L==0` is sufficient-only; `tight_pred_lists` uses `s`=target/`t`=source (reverse-index convention). Full-edge recompute proves orientation load-bearing: correct `4,15,0,0,28→0,336→0,944→0` vs swapped `6,27,20,28,336,944` (all differences non-zero-reduced; sealed FPATH `4,15,0,0,0,0` matches correct exactly). Verdict: NO WP-3 RESEAL (behaviour correct, prose ambiguous); regression test uses only `source_state_id`/`target_state_id` (AST-enforced, no `s`/`t` Name nodes) + hand unit + tightness checks.
+3. SA-02 RATIFIED as `SPLAY_AM_PD_IMPLEMENTATION_SPEC_v0.1.2.md` (SHA-256 `79C58ED0278A6F81FE42685955C2D50EEF9A6744CCD0A701B6FE8DF96EE41CDF`): triggered by sealed WP-3 observation before WP-4 fitting (see trigger below); SA-01 untouched; applies only where stated; base+SA-01+WorkPlan normative elsewhere.
+4. WorkPlan v0.1.6 FROZEN (SHA-256 recorded post-edit; header carries SA-02 + prereg hashes): minimal changes — normative stack + trigger + two tracks + anti-overfitting charter (Track-A vs Track-B validation) + `normative_spec_set` base+SA01+SA02 + schemas 16→18. Preserves v0.1.5 history; permitted by the “no further edits without a new audit finding” rule (this FCYCLE starvation IS that finding).
+5. PREREG `prereg/wp4_sa02.yaml` (SHA-256 `BDE98934623B8EDCE00369F0C426E0DFE1358F158A688BA1EA2D885628B3B826`, sidecar `prereg/wp4_sa02.sha256`): selection/validation/holdout, prohibited reads, candidate-version rules, firewall, anatomy fields, search order, validation order A–G. Frozen before coefficient search.
+6. FIREWALL `python/mining/holdout_firewall.py` (default-deny detailed n7; blocks detailed n6 during initial fit; unlock-once after final freeze; mismatch/second-unlock fail-closed) + `tests/test_sa02_freeze.py` 23/23 PASS (prereg/SA-02 hashes, v0.1.6/18/schemas/spec-set, Track-A 0 rows with per-n `{2:0,3:0,4:0,5:0}`, Track-B 20 rows `{4:12,5:8}`, FW-N7/FW-N6/UNLOCK flows, sealed n4/5 cycle `p*sum_a==q*sum_y`, `sum_a==q*k` checks, no-answer-import, namespace, sealed-hash preservation). Contamination ledger `artifacts/audits/contamination_ledger.json` (previously known `b_7*=23/14` + counts ledgered; detailed n7/n6 unread attested). Schemas 18/18 JSON-valid (2 new SA-02).
+7. NO coefficient search has run at this freeze. NO `n=6` row fitted. NO detailed `n=7` inspected for generation. Cycle anatomy / features / datasets / linear search / kernels begin ONLY after this freeze commit.
+
+**Exact sealed WP-3 observation triggering SA-02:** corridors `2,5,0,0,0,0` (zero for all `n>=4`, consistent with `CYCLIC` seals at `b_n* = 3/2,8/5,8/5,23/14`); `FORCED_DELTA` `4,17,12,8,84,10` with provenance `FPATH 4,15,0,0,0,0` vs `FCYCLE 4,15,12,8,84,10` (100% cyclic at `n>=4`); all forced edges KEEP (DELETE 0); `n=3` non-FCYCLE 2 rows both zig-zag (`LR`/`RL`, recomputed via frozen Splay); Track-B zig strata at selection: `n=4` 12×zig, `n=5` 4×zig + 4×zigzig; validation `n=6` 42×zig + 42×zigzig; holdout `n=7` 6×zig + 2×LL,ZIG + 2×RR,ZIG (unseen multi-step motifs).
+**Why the original FCYCLE holdout became discovery-starved:** reserving all FCYCLE (+ DELETE-only + zig-zag) leaves Track-A selection `n=2..5` with 0 rows (`n=2` 4 FCYCLE-out; `n=3` 15 FCYCLE-out + 2 FPATH-only but zig-zag-out; `n=4` 12-out; `n=5` 8-out) — precisely where `b_n*>1` non-trivial geometry lives.
+**Why Track A is retained untouched:** it is the original preregistered control; reinterpreting it after seeing starvation would be silent preregistration alteration. Starvation is recorded as a scientific result, never repaired.
+**Why Track B is scientifically justified:** it learns only from the exact cyclic forcing WP-3 discovered (`n=4,5` FCYCLE, 20 equations), with DELETE/KEEP and zig families as reporting strata (never masks), strict `n=6`-after-initial-freeze / `n=7`-once-after-final-freeze order, firewall + contamination ledger, exact-linear-first discipline, and per-track manifests — discovery without contaminating later sizes.
+**What n=7 information was already known before SA-02:** aggregates from sealed summaries — `b_7*=23/14`, forced 429 / `FORCED_DELTA` 10 / SCC 1 / `CYCLIC` / corridors 0 / all-KEEP (ledgered as PREVIOUSLY KNOWN AGGREGATE METADATA).
+**What detailed n=7 information remained unread:** every per-edge/cycle/trajectory/delta/residual/provenance detail at `n=7` (firewall default-deny; deliberately failed-read test confirms).
+**Exact commit/hash at which SA-02 became frozen:** freeze commit `645c074`
+(`SA-02 freeze: Adaptive Cycle-Discovery Mining Track rules + prereg before
+coefficient search`); file hashes: SA-02 `79C58ED0…41CDF`, prereg `BDE98934…3B826`, WorkPlan v0.1.6 `0DC4728C…2EACE0F`, schemas manifest `372E0E03…DBEE99`, anatomy `3B9919EC…7699DD`, firewall at freeze `0514AEFF…012C1A` (post-freeze test-isolation fix `CBFDB3A0…68C39B`, no normative change; ledgered), FPATH note `3E19C875…371AE8`, FPATH test `775D7893…F97EB9`. WP-3 required NO resealing (orientation verdict above).
+
+**Follows WorkPlan.md?** YES — this amendment IS WorkPlan v0.1.6 (`§6` SA-02 tracks, `§9` charter, `§10` 18 schemas, `§8` spec set) executed append-only with evidence above. No deviation.
+
+---
+
+## WP-4 — State-only features + forced-derivative mining + kernel ablation (SPEC 09, 10, 11) ⭐ — status: `GATED_PASS` (2026-09-22, SA-02 discovery; mining evidence only, no theorem)
+
+**Scope per WorkPlan.md §6 (plan v0.1.6, SA-02 tracks):** all items executed
+under SA-02 firewall + validation order. F-v0.1 state-only extractor
+(`python/mining/scalar_features.py`, 16 integer scalars + vectors + mirror
+invariant decls; F01 static no-answer PASS, F02 identical-zero/spine-diff
+PASS, F03 mirror PASS); state tables for every reachable state
+(`n=2:4, n=3:19, n=4:196, n=5:1764, n=6:17424, n=7:184041` with hashes
+`d3c86ed2…,3a55f02c…,6deeae3e…,bd4d68f7…,dbaa4490…,93d9f2e9…`); edge deltas
+staged (`n=2:4,n=3:17,n=4:12,n=5:8` before freeze; `n=6:84` after initial
+freeze; `n=7:10` after final unlock-once); Track-A manifest 0 rows
+(`6B2D3250…`, starved result preserved) + Track-B manifest 20 FCYCLE rows
+(`62E24AE8…`, 12+8); cycle anatomy `n=4` 6 cycles/12 edges (`5028a291…`),
+`n=5` 1 cycle/4 edges (`0872e0cb…`), `n=6` 11/44 (`2554dd35…`, after initial
+freeze), `n=7` 1/10 (`c97175de…`, after final unlock-once) with all
+`sum_L==0`, `p*sum_a==q*sum_y`, `sum_a==q*k`, `k>0` exact; exact linear-first
+search over Q (Track-A rank0/null16 vacuous; Track-B rank7/null9 consistent
+dense `H_B_v1` 6-support rational, sparse `[-2,2]`≤2 best residual `4/5`);
+nonlinear ladder deferred (linear not exhausted; no unrestricted regression);
+kernels track-separated (`FULL_STATE` PASS all sizes; ablations
+`KERNEL_VALUE_INSUFFICIENT` with smallest pairs, e.g. Track-B minus_depth
+`[9,83]`); validation `H-SA02-B-v1` on n=6 84 rows max `5/1` FAIL → freeze
+final `H-SA02-B-v1-final` (`04BFACAD…`, same coeffs, n6 as validation) →
+holdout n=7 once 10 rows max `139/35` FAIL untouched; motifs compared
+(n4 2-cycles zig-only; n5 4-cycle zig/zigzig; n6 11 SCCs 42/42 split; n7
+single 10-edge with `LL,ZIG`/`RR,ZIG` unseen multis); firewall audit
+(blocks + unlock-once PASS) + contamination ledger (N6/N7 reveals in order).
+**Out-discipline held:** mining hypotheses only; no universal claim; every
+FAIL preserved (never repaired); mining never wrote certificates.
+**Files (WorkPlan §6 list — created, hashed):**
+`python/mining/{holdout_firewall,scalar_features,build_features,build_datasets,exact_linear,cycle_anatomy,freeze_initial,validate_n6,freeze_final,evaluate_n7,kernel_ablation}.py`,
+`artifacts/features/n{2..7}/`, `artifacts/datasets/track_{a,b}_manifest.json`,
+`artifacts/cycle_anatomy/n{4,5,6,7}/`, `artifacts/hypotheses/{track_*_linear_report,H-SA02-B-v1,H-SA02-B-v1-final,hypothesis_ledger}.json`,
+`artifacts/{validation/holdout}/`, `artifacts/kernels/*_{a,b}.json`,
+`artifacts/audits/{contamination_ledger,holdout_firewall_audit,n7_unlock}.json`,
+`THEOREM_MINING_REPORT.md` (A–M), `tests/test_sa02_freeze.py` (23/23) +
+`tests/test_sa02_tracks.py` (34/34) + `tests/test_fpath_orientation.py` (15/15).
+**Code + how (incl. model specifics):** per WorkPlan §6/§9 + SA-02 §SA-02.6:
+discovery equations Track-A 0 / Track-B n=4,5 FCYCLE 20; domains
+`ℤ[-2,2]` support≤2 sparse → full-Q dense as new search version (never
+silent); ranking `(count,residual,complexity,cross-n)`; `R²` none;
+basis + minimal-subsystem (null here since consistent); stratification
+`KEEP/DELETE×FPATH/FCYCLE/FGAP×zig` always reported.
+**Resultant benchmarks (exact, on discovery):** Track-A satisfaction vacuous
+(0 rows), max-res 0, rank0/null16; Track-B satisfaction 20/20 (dense),
+sparse-best max `4/5`, rank7/null9, basis `[0,1,2,4,12,13,14]`; kernels
+FULL_STATE PASS, ablations FAIL with witnesses (see tables).
+**Brutal anti-overfitting (ENTIRELY different benchmarks):** EXECUTED per
+WorkPlan §9 + SA-02: different sizes (n=6 validation FAIL `5/1`, n=7 holdout
+FAIL `139/35` untouched-once, 10–100× larger, unseen SCCs/motifs); different
+families (FCYCLE-only discovery vs zig/KEEP strata reported); different
+target (derivatives, not `V`); different code (firewall + independent audit
+verifiers); different regime (multi-step `LL,ZIG` holdout motifs); mutation
+controls via firewall second-unlock/mismatch blocks. `CROSS_N_STABLE` NOT
+claimed (both FAIL). Post-holdout edits → new IDs (none made; old runs
+preserved).
+**Follows WorkPlan.md?** YES — every §6/§9/SA-02 scope/file/code/benchmark
+element executed with evidence above, in validation order
+fit-n45 → freeze-initial (`7B4079A6…`) → reveal-n6 → freeze-final
+(`04BFACAD…`) → reveal-n7-once. No deviation (firewall test-isolation fix
+ledgered, no normative change).
+**Next action:** WP-5 (UH gates for any future universal `(H,b_H)`; current
+dense `H_B` FAILS validation/holdout and is NOT a universal candidate —
+needs new hypothesis/track, never re-call n=7 untouched).
+
+### WP-4 completion supplement (2026-09-22, post-`072b211` work) ✅ DONE
+
+**Rule:** `n7_status = PREVIOUSLY_REVEALED_AFTER_H-SA02-B-v1-final_FREEZE` for
+everything below. `H-SA02-B-v1` (`dc96cabf…`) + `H-SA02-B-v1-final`
+(`1aef5d42…`) byte-preserved (hashes recomputed, never edited); failures stand.
+
+1. **Affine exhaustion** (`python/mining/affine_exhaustion.py` →
+   `track_b_affine_space.json`): 9 primitive integer null directions (sorted,
+   sign-fixed); bend-only zero column; `crossing=Aonly+Bonly` certified on
+   selection. Minimum exact support over Q = **5** (all 1941 subsets ≤4
+   restricted-inconsistent → domain-independent lower bound;
+   `min_support_exhaustion_log.json`; canonical 5-support
+   `{-9/5 Aonly, +8/5 Bonly, -8/5 both, +1/5 depth_max, -1/5 parent_flip}`).
+   Per-domain: INT1/2/3 none ≤4 (exhaustive); Q2/3/4 + NONNEG none ≤5 (stated
+   bounds; Q-affine supports via bounded parametric probe, honestly labeled);
+   Q5/SIGNED min 5. 11 canonical alternatives evaluated on development n6/n7
+   (`track_b_alternatives.json`): n6 residuals split `5` vs `34/5` vs `17/5`,
+   n7 `139/35` vs `193/35` — family membership is behaviorally non-unique,
+   but §2 below decides the class without sampling doubt.
+2. **Global verdict:** n456 (104x16) rank 8 vs aug 9 INCONSISTENT; n4567
+   (114x16) same → NO single F-v0.1-linear potential fits all sizes.
+   **Minimum triple** (proven: system-wide Bareiss sweep finds no inconsistent
+   single/pair in 104 rows; triple ranks 2 vs 3; all pairs consistent):
+   `n4 src58 K k1 L0 ZIG` + `n6 src3863 K k1 L9 LL/RR` + `n6 src9683 K k5 L1
+   ZIG` (`mis_n456.json`, stratified; superseded 7-row witness preserved
+   inside). Localization: `{n4,n5}` consistent; `{n4,n6}` + `{n5,n6}` each
+   inconsistent → n6-vs-selection, no n7 needed, all-KEEP. Identical-`DeltaF`:
+   zero same-n + zero cross-n conflicts in 133 FCYCLE rows (dependency-with-
+   mismatch, not duplicate clash).
+3. **Atom ladder F-v0.1+A1** (`nonlinear_atoms.py`, 14 frozen `g_*` atoms,
+   F-v0.1 untouched): selection rank stays 7 (atoms redundant; min atoms 0);
+   n456 extended (104x30) rank 11 vs aug 12 INCONSISTENT; n4567 likewise; no
+   single atom rescues. Ladder-level witness: 12 n6-only rows, irreducible,
+   sizes 1-3 ruled out system-wide (exact minimum in [4,12], honestly
+   labeled; `mis_n456_extended.json`). Charge ansatz with these 14 local
+   forms is exactly dead.
+4. **Cycles compared** (`compare_cycles.py` → `comparison_n4567.json`): k=2
+   uniform; n4 all-`L_i=0` 2-cycles (all-ZIG) vs n5/n6 wide-`L` 4-cycles vs n7
+   10-cycle with `LL,ZIG`/`RR,ZIG` multis; 100% KEEP, no LR/RL anywhere.
+5. **POST-n7 candidates** (`global_tests.py`): `H-SA02-C-1` (`d3b76c91…`,
+   5-support, global 59/135 sat max `139/35`) + `H-SA02-C-2` (`5a810cdf…`,
+   local n6 minimizer 4 vs 5, global 53/135 max `31/7`) — both FAIL, killed,
+   preserved, POST-n7-labeled with `heldout_sizes: []`. No untouched claim.
+6. **Kernels completed** (`kernel_ablation.py`, `K-v0.1-complete`): FULL
+   transition checks (rep-based, all edges, n=2..5) + (V,U) value sweeps.
+   FULL_STATE PASS everywhere. Every family necessary: Track-B ablations fail
+   at n=4 by VALUE; Track-A ablations pass all at n=2, fail at n=3 by
+   TRANSITION (e.g. minus_depth states 0/24, DELETE k=2, successor
+   heavy-agreement differs — depth dynamically necessary). 8-family descriptor
+   MINIMAL. Schema-exact key `smallest_n_failing` added alongside legacy alias
+   (frozen schema untouched).
+7. **Gates:** `tests/test_wp4_gates.py` 26/26 (F01-D03, K01-K03, firewall,
+   schema incl. candidate_H for B+C ids + kernel projection, determinism via
+   hash reproduction, sealed preservation). Full matrix: FPATH 15/15, freeze
+   23/23, tracks 34/34, WP-4 gates 26/26.
+
+**Follows WorkPlan.md?** YES — §§6/9/11 + SA-02, append-only, exact-only, new
+IDs for all post-n7 work, no WP-5 started, no SA-02 rewrite, no n7 rerun.
+
+---
+
+## SA-03 — Post-n7 Universal-Candidate Validation Protocol — amendment + preregistration freeze (2026-09-22) ✅ FROZEN (rules only; no WP-5 candidate synthesized)
+
+**What was done (deep detail, fail-closed, audit-preserving):**
+1. PRE-FLIGHT: read `WorkPlan.md` v0.1.6, `Path.md`, base extraction `IMPLEMENTATION_SPEC.md`, SA-01 v0.1.1, SA-02 v0.1.2, WP-4 completion artifacts + candidate ledger + contamination ledger + n7 unlock record + n8 transition/reachability summaries. Verified: HEAD `4c5eaf7` with clean tree and no WP-5 work (no `artifacts/wp5/`, no `python/adversary/`); SA-01 `8B77278F…7726`, SA-02 `79C58ED0…41CDF`, prereg `BDE98934…3B826`, WorkPlan v0.1.6 `0DC4728C…2EACE0F` all match; sealed WP-1/2/3 + WP-4 bytes unchanged; no post-n7 candidate exists (candidate set EMPTY, firewall `EMPTY`).
+2. SA-03 RATIFIED as `SPLAY_AM_PD_IMPLEMENTATION_SPEC_v0.1.3.md` (SHA-256 `BB407FAC46DB30FA58F8833E513152FC10182AC931AFD84DDB0C29B0217E25E1`): triggered AFTER WP-4 completion; n7 legitimately revealed under SA-02 (unlock 1, `139/35` FAIL preserved); new hypotheses cannot claim n7 untouched (not retroactive: ERA-A labels immutable); SA-01 OG/UH authoritative except UH-6 refined for POST_N7; SA-02 WP-4 provenance authoritative.
+3. ERAS frozen: ERA A = `H-SA02-B-v1`, `H-SA02-B-v1-final` (pre-reveal; immutable) + ERA-B-marked `H-SA02-C-1`, `H-SA02-C-2` (POST_N7 from birth); every future ID gets `candidate_era=POST_N7`, `n7_status=REVEALED_DEVELOPMENT_DATA`, `untouched_sizes` without 7 (`candidate_eras.json`).
+4. FRESH HOLDOUT n=8: NOT an exact-`b_n*` holdout (`b_8*` unsealed, `RESOURCE_LIMIT_NO_CLAIM` stands) — direct Pair-Access falsification holdout on authoritative `R_8` (`|R_8|=2,044,900`, Catalan 1430, transitions 11,440 records, audits PASS; exact check count `2·8·2,044,900=32,718,400`; no sampling). Pass = finite n8 fact only (+ finite `b_8* ≤ b_H` upper certificate, never exact `b_8*`).
+5. FIREWALL `python/n8_holdout/n8_firewall.py` (`EMPTY`→`SET_FROZEN`→`UNLOCKED_ONCE`, hash-bound; SA-02 n6/n7 firewall left byte-identical): blocks detailed n8 pre-freeze (aggregates stay visible); production state seeded `EMPTY` with EMPTY set (`n8_firewall.json`, `n8_candidate_set.json`).
+6. POST-n7 DEVELOPMENT DATA: all revealed n≤7 results usable as discovery/falsification evidence, honestly ledgered; n≤7 = `STRUCTURAL_DISCOVERY_AND_FALSIFICATION`, n8 = `FRESH_POST_N7_PAIR_ACCESS_HOLDOUT`.
+7. UH-6 refined (ERA B only): frozen-before-reveal + full 32,718,400-check sweep + independent verification → `REJECTED` or `UH-6_PASS_FINITE_N8` (never universal). UH-0..UH-5/UH-7/UH-8/UH-9 unchanged; n8 sandwich OPTIONAL; UH-3 excludes n8 (un-sealed) with n8 pass supplying finite feasibility directly.
+8. FREEZE CONTRACT + REVEAL PROTOCOL + POST-n8 rules + MULTIPLICITY (complete pre-frozen set, no additions, no cherry-picking) + INDEPENDENT package (`python/n8_holdout/independent.py`, clean-room, static audit) + ADVERSARIAL separation + NEGATIVE-BRANCH discipline all frozen in SA-03 §§SA-03.7–13.
+9. MACHINERY SELF-TEST (only authorized pre-unlock detailed-n8 execution): full sweep + independent twin run once with degenerate `H=0` TEST VECTOR (`b_H=23/14`, UH-3-passing) while candidate set EMPTY — edge count 32,718,400 exact; norm 0, nonneg 0; KEEP max 89 (`cB=8,cA=1` at pid 1429, k=8), DELETE max −23; primary↔independent agreement byte-exact on maxima/argmaxes/counts/counterexamples; H=0 REJECTED as required (rule exercised, not a hypothesis: never enters `artifacts/hypotheses/` or any ledger). Outputs in-memory/test-temp only; `artifacts/wp5/sa03/holdout/` does not exist.
+10. SCHEMAS 18→20 (`wp5_post_n7_candidate_v0.1` with schema-level `untouched_sizes`∌7 ban; `n8_pair_access_holdout_v0.1` with fixed edge count + `REJECTED`/`UH-6_PASS_FINITE_N8` verdict enum); ledgers updated (schemas 20, prereg 10 files). WorkPlan v0.1.7 FROZEN (spec stack + WP-5 semantics + UH-6 + n8 holdout + charter + 20 schemas + 4-spec seal set; history preserved; permitted as the new audit finding: n7-consumed holdout needs fresh-holdout semantics).
+11. TESTS `tests/test_sa03_freeze.py` 31/31 PASS (SA03-01..20 + SEP + UH3 + AGREE4): era labels, historical preservation, firewall blocks (incl. re-seed refusal), freeze hash binding + tamper detection, set-freeze rules, once-only unlock, revision-identity + untouched-claim rules, full n8 sweeps, edge-count identity, agreement, REJECTED-forcing, 21 sealed pins, SA-01/SA-02 bytes, prereg bytes, separation audit. Fail-closed verified live: a hand-transcription slip in the sidecar/WorkPlan prereg hash (`…DDD…` vs true `…DDF…`) was caught by SA03-20 and corrected from computed bytes (ledger already held the true value). Known-stale prior gates (NOT regressions, sealed tests left untouched): `test_sa02_freeze.py` PLAN-REV + PLAN-SCHEMA-18 pin v0.1.6/`18 total` (plan is now legitimately v0.1.7/20; 21/23 otherwise green; 23/23 stands as the SA-02 freeze historical fact) and `test_wp1.py` G00-SCHEMAS pins 16 (stale since SA-02 added 2; pre-existing). `test_sa02_tracks.py` 34/34 and `test_wp4_gates.py` 26/26 still fully green.
+12. NO WP-5 candidate synthesized in this step: candidate set EMPTY at freeze; firewall `EMPTY`; no `H-SA03-*`/`H-SA05-*` ID created; no coefficients chosen; no `b_H` chosen; no motif extraction for synthesis. Claim stays `FINITE_EXACT_BN_RESULTS` (SA-03 advances nothing by design).
+
+**Exact sealed WP-3/WP-2 facts reused (not re-sealed):** `b_n*` n=2..7 + n8 `|R_8|`, Catalan, transition/reachability summaries + audits (values in `n8_known_aggregates.json`).
+**What n8 aggregate info was already known:** existence, Catalan 1430, `|R_8|=2,044,900` all-reachable, both audits PASS, `b_8*` unavailable (all `PREVIOUSLY_KNOWN_AGGREGATE_METADATA`).
+**What detailed n8 info stayed quarantined:** every transition record / state-list / per-edge-cost / residual / evaluation / maximizer / counterexample / feature-table read except via the H=0 self-test path above (EMPTY set, discarded outputs).
+**Exact commit/hash at which SA-03 became frozen:** freeze commit hash recorded post-commit (SA-02 precedent: placeholder here, hash in §22 final report / next execution step); file hashes: SA-03 `BB407FAC…17E25E1`, prereg `FCE7F8C0…365BD73`, WorkPlan v0.1.7 (header; full hash in §19 final report), schemas post-n7-candidate + n8-holdout (ledger), firewall `python/n8_holdout/*` (new package; SA-02 firewall untouched).
+
+**Follows WorkPlan.md?** YES — this amendment IS WorkPlan v0.1.7 (§7 UH-6 refinement, §9 charter ERA-B items, §10 20 schemas, §8 four-spec seal set) executed append-only with evidence above. No deviation. WP-5 still `PENDING` (machinery ready, synthesis not started).
+
+---
+
+## SA-04 — n8 Canary Contamination Correction and Replacement Holdout Protocol — corrective amendment freeze (2026-09-22) ✅ FROZEN (rules only; no WP-5 candidate synthesized)
+
+**What was done (deep detail, fail-closed, audit-preserving):**
+1. PRE-FLIGHT: read `WorkPlan.md` v0.1.7, `Path.md`, base extraction `IMPLEMENTATION_SPEC.md`, SA-01 v0.1.1, SA-02 v0.1.2 (+ SA-03 v0.1.3 text), WP-4 completion artifacts + candidate ledger (4 IDs: B-v1, B-v1-final, C-1, C-2) + contamination ledger (10 entries) + n7 unlock record (unlock_count 1) + n8 transition/reachability summaries. Verified: HEAD `4c5eaf7` with clean tree and zero WP-5 work (no `artifacts/wp5/`, no `python/adversary/`); SA-01 `8B77278F…7726`, SA-02 `79C58ED0…41CDF`, SA-03 `BB407FAC…17E25E1`, prereg `FCE7F8C0…365BD73`, WorkPlan v0.1.7 `AC375553…0DBADE` all match; sealed WP-1/2/3 + WP-4 bytes unchanged (21 pinned SHA-256 re-verified in SA04-18); no post-n7 candidate exists (candidate set EMPTY, firewall `EMPTY`).
+2. SA-04 RATIFIED as `SPLAY_AM_PD_IMPLEMENTATION_SPEC_v0.1.4.md` (SHA-256 `23046D37799860CCFD69BED21D6474F35ACA4E6FB91474FAAE2002617503E5FB`, computed post-write, never predeclared): triggered by the SA-03 H=0 canary finding post-`ba58a18`, pre-synthesis. SA-01/SA-02/SA-03 bytes and hashes immutable (SA04-01/22 verify).
+3. N8 RECLASSIFIED (`N8_STATUS = PARTIALLY_REVEALED_CANARY_CONTAMINATED`): canary facts recovered exactly from code/tests/outputs — H=0 test vector at `b_H=23/14`, KEEP max 89 (`cB=8,cA=1`, argmax pid 1429/k8, 3,944,504 positives), DELETE max −23 (argmax pid 0/k8, 0 positives), norm/nonneg 0, first counterexamples `(7,KEEP,8,+5)`, `(14,KEEP,8,+5)`, full-`R_8` dual-engine agreement, no holdout writes — ledgered (`N8_CANARY_RECLASSIFIED_SA04`) with `KNOWN_BEFORE_SA03` vs `REVEALED_BY_SA03_CANARY` vs `STILL_QUARANTINED` split. n8 firewall stays ACTIVE (SA04-04 green); canary facts development-visible; all else blocked. EV-8 mandatory but never sufficient.
+4. REPLACEMENT HOLDOUT-H1-v0.1 FROZEN (generated pre-synthesis, candidate-independent): sizes {9,10,12,16,24,32} × 20,000 legal diagonal-rooted histories = 120,000 states → 4,120,000 fresh edges (identity verified from metadata); 12 frozen strata with exact counts (6000/2000/2000/1600/1400/1000/1600/1600/1000/800/600/400); one-shot generator (refuses re-run) + secret quarantined in `bank_secret.json` (never printed/preregistered); canonical sorted-JSON `.zst` + commitment `C9D9BE26…0613BFF` embedded in prereg (strata-first, commitment-second, bytes-frozen-third — documented procedure, zero synthesis throughout). Full dual replay: 120,000/120,000 histories legal under BOTH Splay implementations (reference + clean-room twin validated by 3000/3000 differential tests after fixing two genuine twin bugs: inorder-counter capture, subtree-walk off-by-one).
+5. FIREWALLS: `python/n8_holdout/*` byte-identical (verified clean); NEW `python/holdout_bank/` (generate + `h1_firewall.py` path guards + synthesis-namespace static audit + post-unlock evaluator + clean-room twin + verdict/claim-rule helpers). Pre-freeze: bank reads blocked (SA04-09-guard), synthesis namespaces clean, aggregates visible without case data (SA04-09/10).
+6. UH-6 CORRECTED: EV-8 mandatory + H1 fresh (`UH-6_PASS_FRESH_H1` only with independent agreement on both); multiplicity spans n8+H1 with one frozen set; descendants take new IDs with both as development. Independent twin handles EV-8 + H1 (tree/Splay/costs/H/residuals/replay, no synthesis imports; SA04-SEPH1 AST-verified).
+7. SCHEMAS 20→22 (bank manifest + holdout result; SA-03 schemas untouched) + ledgers (schemas 22, prereg 12 files). WorkPlan v0.1.8 FROZEN (stack + WP-5 semantics + UH-6→H1 + bank firewall + 22 schemas + five-spec seal set; history preserved; permitted as the new audit finding). Prereg `prereg/wp5_sa04.yaml` (`CC6F65F3…CC6409`, sidecar + ledger + WorkPlan record all match; commitment embedded).
+8. TESTS `tests/test_sa04_freeze.py` 27/27 PASS (SA04-01..23 + SEPH1 + SCHEMA + PREREG): SA-03 immutability, era/schema bans, canary ledgering, n8 still blocked, bank counts/sizes/commitment/schema, synthesis blocking, aggregates, temp multiplicity logic, EV-8 edge identity, verdict rules (incl. EV-8-alone≠UH-6, independence-required), smoke agreement, FULL dual replay, descendant rules, zero-synthesis proof, 21-pin preservation, SA-01/02/03 bytes, prereg bytes, separation audits. Prior suites: tracks 34/34 + WP-4 gates 26/26 still green; `test_sa03_freeze.py` shows exactly 2 stale version-pin fails (SA03-20/SA03-PLAN-REV pin v0.1.7 + `20 total`, now legitimately v0.1.8/22; 29/31 otherwise green incl. full n8 sweeps) and `test_sa02_freeze.py` 2 + `test_wp1.py` 1 of the same pre-existing kind — sealed tests left untouched per audit rules, staleness fails loudly, never silently. All placeholders filled from computed bytes (a second transcription slip was impossible by construction: patch scripts, not typing).
+9. NO WP-5 CANDIDATE SYNTHESIZED: ledger IDs exactly {B-v1, B-v1-final, C-1, C-2}; n8 set EMPTY + firewall EMPTY; no `holdout/` dir; no `H-SA03-*`/`H-SA05-*`; no coefficients/`b_H`/motifs chosen. Claim stays `FINITE_EXACT_BN_RESULTS` (correction advances nothing).
+
+**WP-4 completion commit:** `4c5eaf7`. **Exact point n7 became revealed:** SA-02 unlock by `H-SA02-B-v1-final` (pre-`ba58a18`), ledgered `N7_REVEALED_ONCE_AFTER_FINAL_FREEZE` + `N7_PREVIOUSLY_REVEALED_POST_H_SA02_B_V1_FINAL`. **Why SA-03 is necessary:** post-n7 hypotheses need validation semantics without an untouched n7 (was: SA-03 entry). **Why SA-04 is necessary:** SA-03's own verification canary leaked detailed n8 outputs, so n8 cannot stay the fresh holdout; H1 replaces it while n8 keeps exact-falsification duty. **Why n8 is usable for direct Pair Access without exact `b_8*`:** the sweep tests inequalities at the candidate's own frozen `b_H` — feasibility-shaped, never requiring the optimum. **n8 aggregates already known:** existence, Catalan 1430, `|R_8|=2,044,900`, both audits PASS, `b_8*` unavailable. **Detailed n8 quarantined:** all transition rows/state lists/costs/residuals/evaluations/maximizers/counterexamples/feature tables except the ledgered canary facts. **Exact SA-04 freeze commit:** hash recorded post-commit (SA-02 precedent: placeholder here, hash in §19 final report / next execution step); file hashes: SA-04 `23046D37…7503E5FB`, prereg `CC6F65F3…CC6409`, WorkPlan v0.1.8 `BDDC493F…F758B8` (header; full hash in §19 final report), schemas bank+result (ledger), firewalls `python/n8_holdout/*` untouched + `python/holdout_bank/*` new.
+
+**Follows WorkPlan.md?** YES — this amendment IS WorkPlan v0.1.8 (§7 UH-6→H1 correction, §9 ERA-B/H1 charter items, §10 22 schemas, §8 five-spec seal set) executed append-only with evidence above. No deviation. WP-5 still `PENDING` (protocol ready, synthesis not started).
+
+---
+
+## WP-5 — Candidate H synthesis + independent falsification + adversarial search (SPEC 12, 13, 14) ⭐ — status: `GATED_PASS` (2026-09-22; validation protocol fully executed, zero survivors, no theorem)
+
+**Scope per WorkPlan.md §7 (plan v0.1.8, SA-01 + SA-03 + SA-04):** all items executed. Six ERA-B POST_N7 universal hypotheses frozen (H-0001 depth-sum/H1, H-0002 ancestor-sym/H3, H-0003 access-sym/H3, H-0004 heavy-disagree/H5, H-0005 parent-diff/H2, H-0006 depth+heavy combo/H6; H4 multiscale deferred with rationale below); ratified two-track ladder run in full (OG-1..OG-3 reported per hypothesis, UH-0..UH-8 decisive); UH-3 `b_H`-feasibility precheck before any `U_{b_H},V_{b_H}` work (shared `b_H=2/1`, clears all sealed `b_n*`); each validated at its own frozen `b_H` (one exact `b`, never per-size `b_n*`); H1–H6 priority sampled H1/H2/H3/H5/H6; no neural nets; independent clean-room falsifier (`M_K/M_D` over `R_n×[n]` + first maximizers + out-of-domain panel + `COUNTEREXAMPLE` freeze + mutation controls); large-`n` adversaries (8 engines, exact residuals, history-realizable stream, motif generalization, samples-only families). Ceiling respected: nothing claimed above `FINITE_EXACT_BN_RESULTS`.
+**Out-discipline held:** hypotheses are mining/falsification subjects only; every FAIL preserved under its frozen ID (never repaired, never overwritten); no finite pattern promoted; mining never wrote certificates; holdouts (n8 EV-8, H1 fresh) unconsumed — both firewalls still `EMPTY`, no `holdout/` dir, no frozen set.
+**Files (WorkPlan §7 list — all created, verified present):**
+`python/mining/symbolic_candidates.py` (freeze entry, delegates to `python/wp5/candidates.py`) + `report_candidates.py` (read-only reporter), `python/adversary/{residual_search, hill_climb, genetic_search, motif_generator, witness_generalizer}.py` (exact evaluator + uniform/random/hill-climb/annealing/genetic/motif-inflation/structured/mirror engines), `python/wp5/{structural, candidates, falsify, mutation, static_audit, run_phase, run_verify, run_adversarial, holdout}.py`, independent package `python/wp5_independent/independent.py` (from-scratch parse/Splay/cost/H/residuals; imports stdlib+zstandard only; verified 285/285 exhaustive Splay agreement n=2..5), `artifacts/hypotheses/H-000{1..6}.{json,eval_contract.json,bH_feasibility.json,og.json,wp5.json,uh.json}` (frozen schemas followed exactly; universal-`b` in EC-v0.1 companion), `artifacts/falsification/H-000{1..6}/{n2..n7.json,dev_summary.json,independent.json,mutations_*.json}`, `artifacts/falsification/adversarial/{runs.json (1272 runs),counterexamples.json (955),near_tight_families.json + family_H-*.json}`, `artifacts/logs/{phase12,phase13,phase14,wp5_bh,wp5_gates,wp5_stress}.json`, `scripts/{run_phase12,run_phase13,run_phase14}.{ps1,sh}`, `tests/test_bh_feasibility.py` (BH01–BH05) + `tests/test_wp5_gates.py`, `scripts/stress_wp5.py`.
+**Code + how (as planned, with two recorded engineering fixes):**
+- *Eligibility freeze:* `H(A,B,n)` total, history-free (pure keyed-tree functions; no `X/Y/U/V/IDs/n-tables`); universal `b_H=2/1` frozen before any residual (SA-01 ARCH rationale recorded: clears max sealed `b_7*=23/14` with margin); H1→H6 priority sampled H1/H2/H3/H5/H6 — H4 bounded-multiscale deferred with rationale (scale-sampling design choices constitute a new research track; T18-correct to defer, recorded here not hidden); **no black-box neural predictors**; symmetry recorded as discovery (mirror probe), not requirement; zero post-freeze edits (one-shot freeze guard refuses re-freeze; ledger append-only).
+- *UH-3:* exact `p_H·q_n ≥ p_n·q_H` per sealed n into `H-*.bH_feasibility.json`; three-case rule implemented (`bh_case`) with all branches executed in tests: `<` ⇒ immediate `REJECT` reusing sealed witnesses with verifier-recomputed negative slack (transient n=2/b=1/2 slack −2; cyclic n=4/b=1/1 slack −2) and `P_0·C^k` with exact minimal k (n=4/b=1/1, k=4, slack −2, `repeat_count` stored); `=` ⇒ reuse rule (unit-tested branch predicate); `>` ⇒ fresh tables. No sandwich/residual work begins on FAIL (gating order enforced in run_phase).
+- *Gates before falsification:* `H(T,T)=0` exact on every certified diagonal (all 6 PASS); `H≥0` exact on every `R_n` state (all 6 PASS); sandwich uses recomputed `U_{b_H},V_{b_H}` only (shared b_H=2 tables; computed for all six candidates in the UH-4 compliance repair below — executed even though all were already REJECTED at UH-5, because SA-01 orders UH-4 before UH-5); exact residuals `E_K/E_D` at frozen `b_H` for EVERY tested n (never per-size `b_n*`) with `max≤0` exact + held-out passes — held-out legs never reached (no survivors; n8/H1 pristine).
+- *b-geometry split:* WP-3/4 `b_n*`-geometry used as discovery microscope (OG diagnostics vs forced derivatives/canonical sandwich/corridors reported per candidate); WP-5 tests `(H,b_H=2)` as universal certificate; optimal-geometry vs universal Pair-Access classes tracked (all six are universal-class).
+- *SA-01 ladder:* OG-1 exact agreements reported (H-0001..3: 0/12 + 0/8; H-0004/5: 4/12 + 0/8; H-0006: 8/12 + 0/8 — diagnostics, never decisive); OG-2 sandwich counts + H-ranges; OG-3 corridor/cycle H-values; UH-0..UH-8 decisive with first-REJECTED-sticks semantics (UH-6 PENDING = holdout unconsumed; UH-7 agreement-verified-not-survival on killed candidates).
+- *Independent falsifier:* `M_K/M_D` over full `R_n×[n]` n=2..7 exactly + lex-first maximizers; `R_n` policy; out-of-domain panel on unreachable pairs labeled `OUT_OF_DOMAIN_NOT_LOGICALLY_REQUIRED` (non-trivial only at n=3: 6 pairs); positive residual → `COUNTEREXAMPLE` records (n, shapes, key/mode, costs, H-before/after, exact residual_num/den, formula_id) + hypothesis stays `REJECTED`; mutation controls (global sign-flip mutants per candidate on n≤4, fresh MUT-* IDs, all caught with preserved worst residuals).
+- *Adversaries (falsification only — passing ≠ proof):* 8 engines × 6 candidates = 1272 exact runs at n=16/24 (+structured/mirror specials): uniform, random, hill-climb, annealing, genetic, motif-inflation (WP-4 canonical key patterns), structured (spine/opposite/root-split/interval/mirror), history-realizable streams; 955 supplementary counterexamples (all candidates already REJECTED at UH-5; runs labeled supplementary); motif generalization on sharpest dev CEs → 6 sampled families (`NEAR_TIGHT`/`POTENTIAL_UNBOUNDED`, e.g. H-0002 13→19→26 — samples only, WP-6 P17 decides proof, never claimed here).
+- *How coded exactly:* residuals as exact ints (scale `q_H=2`); deterministic ascending-pair order + K(1..n)/D(1..n) edge order; lex-first maximizers; H tables memoized per tree (Catalan counts, not per pair); dev sweeps sharded by size with sorted deterministic output.
+- *Engineering fixes found by fail-closed execution (evidence gates work):* E1 independent-twin root-assignment bug in both rotations (caught by 285/285 differential suite before any gate ran); E2 missing parse/label/shape helpers (module never executable — caught at first import); E3 sealed-witness format mismatch in BH02 builders (`a`/`y` fields assumed, modes assumed int — fixed to recompute via audit successor + string modes); E4 adversarial `canonical_shapes(24)` enumeration hang (~1e13 shapes — replaced by direct skeleton construction); E5 witness_generalizer serializer mixup; E6 duplicate dev_passed + miswired imports (caught at stage start). All fixed + rerun green; originals never committed.
+**Model specifics & resultant benchmarks (required by task):**
+- *Trained objects:* (i) NONE fitted — all six H formulas fixed by definition (structural-exact domain; zero coefficients searched); (ii) no nonlinear atoms (formulas are closed-form); (iii) no kernel subsets (WP-4 program complete). *Training data:* none (definitions predate data contact; n≤7 used SOLELY as falsification evidence). *Resultant benchmarks (exact, on development):* all six REJECTED with first decisive rejection at UH-4 (fresh b=2 sandwich; per-H/per-n table in the compliance repair below) and UH-5 counterexamples preserved as supplementary evidence — UH-5 legs alone first-failed H-0001 at n=5 (KEEP max 2), H-0002/3 at n=4 (1/2), H-0004 at n=3 (KEEP 1; DELETE passes everywhere, worst −2), H-0005 at n=4 (KEEP 2; DELETE passes, worst −1), H-0006 at n=3 (DELETE 1; worst KEEP 7 / DELETE 11 at n=7). UH-1/2/3 PASS 6/6; OG-1 agreements above; mirror-invariant H-0001/2/3/5, mirror-variant H-0004/6 (22/196, 39/200, 32/200 — heavy tie-break asymmetry, discovery); mutants all caught (worsts 2..12); adversaries 955 supplementary CEs; families sampled (no proof).
+- *Brutal held-out testing:* NOT CONSUMED — zero UH-8 survivors ⇒ no frozen set ⇒ n8 firewall `EMPTY`, H1 firewall `EMPTY`, no `holdout/` dir (verified by MULTI-EMPTY gate + holdout refusal probes: all 5 entry points refuse). Post-n7/post-n8-consumption rules never triggered (nothing consumed). All witnesses/counterexamples/failed hypotheses preserved forever.
+**Benchmarks / gates (final runs 2026-09-22, all green):** H01 diagonal zeros 6/6; H02 nonnegativity 6/6; H03 KEEP verdicts match maxima 6/6; H04 DELETE exact 6/6 (reported); H05 independent agreement 3/3 candidates × (maxima, argmaxes, counts, counterexamples, UH-1/2 counts) + transition re-derivation 0 mismatches all sizes; A01 8 engines exact; A02 mutants caught 3/3; UH ladder chains consistent (first-REJECTED-sticks, UH-6 never passed); BH01 all-PASS b_H=2 + BH02 all-3-branches + BH03 equality branch + BH04/BH05 n=2 machinery proof (7/7); MULTI-EMPTY (no consumption); firewall refusals (5/5 entry points); schema+ledger (candidate_H, EC-v0.1, bH_feasibility, wp5_post_n7 for 6/6 + ledger hash match); sealed preservation (4 amendments + 3 preregs + certs/summaries). Full matrices: `test_bh_feasibility.py` 7/7, `test_wp5_gates.py` 23/23. Covers threats T8–T11/T18–T21, INV-032..034.
+**Console logging (frozen language mapping):** `print()` via `console_log()` helpers in Python (each preceded by `# console.log equivalent [ID]`), `Write-Host` in `.ps1`, `echo` in `.sh`. Complete ID inventory with exact file:line as committed (each call site is preceded by the quoted `# console.log equivalent [ID]` comment; each helper also carries the text as its docstring): structural.py:13 [WP5-STR-01], :105 [WP5-STR-02], :155 [WP5-STR-03]; candidates.py:26 [WP5-SYN-01], :93 [WP5-SYN-08], :144 [WP5-SYN-04], :221 [WP5-SYN-05], :275 [WP5-SYN-06], :365 [WP5-SYN-07], :372 [WP5-SYN-02]; mining/symbolic_candidates.py:13 [WP5-SYN-10], :21 [WP5-SYN-11]; mining/report_candidates.py:13 [WP5-REP-01], :21 [WP5-REP-02]; falsify.py:22 [WP5-FAL-01], :34 [WP5-FAL-04], :59 [WP5-FAL-05], :83 [WP5-FAL-06], :151 [WP5-FAL-07], :191 [WP5-FAL-08], :226 [WP5-FAL-09]; mutation.py:17 [WP5-MUT-01], :32 [WP5-MUT-02], :72 [WP5-MUT-03]; static_audit.py:17 [WP5-AUD-01]; run_phase.py:21 [WP5-RUN-01], :58 [WP5-RUN-05], :74 [WP5-RUN-06], :129 [WP5-RUN-02], :212 [WP5-RUN-08], :223 [WP5-RUN-03], :226 [WP5-RUN-04], :253 [WP5-RUN-07]; run_verify.py:16 [WP5-VRF-01], :34 [WP5-VRF-02], :56 [WP5-VRF-03], :64 [WP5-VRF-04], :100 [WP5-VRF-05], :132 [WP5-VRF-06], :170 [WP5-VRF-07], :181 [WP5-VRF-08], :197 [WP5-VRF-09], :214 [WP5-VRF-10]; run_adversarial.py:18 [WP5-ADV-20], :31 [WP5-ADV-21], :101 [WP5-ADV-22], :109 [WP5-ADV-28], :148 [WP5-ADV-29], :175 [WP5-ADV-23], :190 [WP5-ADV-24], :193 [WP5-ADV-25], :214 [WP5-ADV-26]; holdout.py:20 [WP5-HLD-01], :39 [WP5-HLD-02], :58 [WP5-HLD-03], :65 [WP5-HLD-04], :73 [WP5-HLD-05], :126 [WP5-HLD-06], :145 [WP5-HLD-07], :159 [WP5-HLD-08], :166 [WP5-HLD-09], :221 [WP5-HLD-10]; adversary/motif_generator.py:15 [WP5-ADV-01], :130 [WP5-ADV-02]; adversary/residual_search.py:15 [WP5-ADV-03], :70 [WP5-ADV-04], :87 [WP5-ADV-05]; adversary/hill_climb.py:12 [WP5-ADV-06], :20 [WP5-ADV-07], :49 [WP5-ADV-08]; adversary/genetic_search.py:15 [WP5-ADV-09], :24 [WP5-ADV-10], :60 [WP5-ADV-11]; adversary/witness_generalizer.py:18 [WP5-ADV-12], :42 [WP5-ADV-13]; wp5_independent/independent.py:19 [WP5-IND-01], :322 [WP5-IND-02], :339 [WP5-IND-03]; scripts/run_phase12.ps1:4 [WP5-P12-01], :8 [WP5-P12-02]; scripts/run_phase12.sh:5 [WP5-P12-01], :8 [WP5-P12-02]; scripts/run_phase13.ps1:4 [WP5-P13-01], :8 [WP5-P13-02]; scripts/run_phase13.sh:5 [WP5-P13-01], :8 [WP5-P13-02]; scripts/run_phase14.ps1:4 [WP5-P14-01], :8 [WP5-P14-02]; scripts/run_phase14.sh:5 [WP5-P14-01], :8 [WP5-P14-02]; scripts/stress_wp5.py:23 [WP5-S-01], :41 [WP5-S-02], :66 [WP5-S-01], :115 [WP5-S-03] (S-01 emitted at module scope :23 and suite start :66 by design); tests/test_bh_feasibility.py:24 [WP5-T-BH-00], :50 [WP5-T-BH-01], :67 [WP5-T-BH-02], :90 [WP5-T-BH-03], :100 [WP5-T-BH-04], :122 [WP5-T-BH-05], :129 [WP5-T-BH-06]; tests/test_wp5_gates.py:21 [WP5-T-05-00], :49 [WP5-T-05-01], :62 [WP5-T-05-02], :77 [WP5-T-05-03], :91 [WP5-T-05-04], :118 [WP5-T-05-05], :141 [WP5-T-05-11], :171 [WP5-T-05-12], :182 [WP5-T-05-06], :201 [WP5-T-05-07], :238 [WP5-T-05-08], :288 [WP5-T-05-09], :301 [WP5-T-05-10]. (Retired IDs with no code site: WP5-SYN-03 (superseded by WP5-RUN-05/06 in driver), WP5-FAL-02/03 (moved to driver as WP5-RUN-05/06).)
+**Follows WorkPlan.md?** YES — every §7 scope/file/code-how/benchmark/model/anti-overfitting element executed with evidence above. No WorkPlan deviation (no deviation-log row). Recorded non-deviations: per-candidate falsification namespaces (`artifacts/falsification/<id>/`, content superset of mandated fields); adversarial runs on killed candidates labeled supplementary (verdicts frozen, never upgraded); UH-4 tables computed for all six candidates in the compliance repair below (BH04/BH05 machinery proven at n=2 in the original run; full b=2 geometry added by repair); H4 multiscale deferred with T18 rationale; resweep mechanism (`--sweeps-only`, maxima-identity assertion) used once for the enriched counterexample record format.
+**Compliance audit vs WorkPlan §7 (line-by-line, gaps closed before finish):** SCOPE — versioned state-only H frozen (6 IDs) ✓; two-track ladder (OG reported + UH decisive) ✓; independent falsifier on all certified sizes ✓; adversaries + motif generalization ✓; ceiling respected ✓. FILES — symbolic_candidates.py ✓, report_candidates.py ✓, adversary 5/5 ✓, independent package ✓ (no discovery imports, AST-audited), H-*.json ✓, eval_contract ✓, bH_feasibility ✓, falsification per-n/per-candidate ✓ (+independent/mutations/dev_summary), adversarial runs/counterexamples/near_tight ✓, logs phase12/13/14 ✓, run_phase12..14.sh ✓ (+.ps1 mirrors), test_bh_feasibility BH01–BH05 ✓. CODE — eligibility ✓, UH-3 ✓ (+all witness branches executed), gates ✓, b-geometry split ✓ (two classes tracked), SA-01 ladder ✓, falsifier ✓ (M_K/M_D, maximizers, out-of-domain panel, COUNTEREXAMPLE records with full payload, mutation controls), adversaries ✓ (all listed generators/engines incl. SMT/MIP structural support noted uninvoked), exact coding ✓ (ints, deterministic order). BENCHMARKS — H01 ✓ H02 ✓ H03 ✓ H04 ✓ H05 ✓ A01 ✓ A02 ✓ BH01–BH05 ✓ UH-0..UH-8 ✓ (+OG). Gaps found during audit and CLOSED: (G1) counterexample records lacked shapes/costs/H-atoms → enriched format + `--sweeps-only` regeneration with maxima-identity assertion (deterministic, verified identical); (G2) agreement compared thin fields → first-witness-triple + length checks added both sides; (G3) UH-7 PASS readable as survival → AGREEMENT-VERIFIED labeling on killed candidates; (G4) H4/H2/H5/H6 coverage → added H-0004/5/6 (only H4 deferred, rationale recorded). Zero open gaps.
+**Next action:** WP-6 (positive needs a surviving `H` — none exists; negative needs a systematic motif — generalizer samples are samples-only, P17 inactive). Seal exactly what exists — never more.
+
+---
+
+## WP-5 corrective compliance repair — UH-4 b_H geometry (2026-09-22) — status: `GATED_PASS` (zero gaps; battery counts below)
+
+**1. Defect discovered:** all six frozen candidates carried `UH-4: PENDING` in `H-*.uh.json` while `b_H=2` exceeds every sealed `b_n*` (1, 1, 3/2, 8/5, 8/5, 23/14). SA-01's greater-than branch (`b_H > b_n*` ⇒ compute fresh `U_{b_H},V_{b_H}`) therefore required a real UH-4 decision, and the implementation prose above wrongly described that leg as having no subjects. WorkPlan semantics unchanged; implementation brought into conformance (no amendment, no waiver).
+**2. Why it mattered mathematically:** `U_{b_n*},V_{b_n*}` and `U_2,V_2` solve different Bellman problems (edge weights `L_b(e)=b·a(e)−y(e)` differ). The universal sandwich `V_{b_H} ≤ H ≤ U_{b_H}` is only meaningful at the hypothesis's own `b_H`; leaving UH-4 `PENDING` skipped a decisive ordered gate (UH-4 precedes UH-5).
+**3. Exact files added:** `python/wp5/uh4_geometry.py` (primary b=2 computation + BHG-v0.1 companion), `python/audit/verify_bh_geometry.py` (independent verifier), `python/wp5/uh4_sandwich.py` (primary UH-4 + ladder updates), `python/wp5_independent/uh4_check.py` (independent UH-4), `tests/test_wp5_uh4.py` (UH4-01..19), `scripts/stress_uh4.py` (S-01..S-14 fault injection), `scripts/run_uh4_repair.{ps1,sh}`. **Changed:** `H-000{1..6}.uh.json` (ladder verdicts only: `UH-4` + `UH-4-artifact` pointer + `UH-5` relabel where UH-4 decides). **Untouched:** every `H-*.json`, eval contract, `bH_feasibility`, `og`, `wp5`, ledger, all `artifacts/falsification/**`, sealed WP-1..4 bytes, all five spec/prereg files, `WorkPlan.md`, n8/H1 detail records.
+**4. U_2/V_2 methodology:** per n=2..7, sealed transitions+reachability → `solve_small.build_csr` → `canonical.compute_U` (queue Bellman-Ford from diagonals; `check_validity` VALID at b=2, guaranteed since `2 > b_n*` and `a(e)≥0`) / `canonical.compute_V` (reverse propagation, empty continuation) → `canonical.build_potentials` layout under `artifacts/potentials/n{n}/hypothesis_bH/` (`U/V/G.json.zst`, `forced_states.json`, `bellman_witnesses.json`, `summary.json`) + versioned companion `bH_geometry.v1.json` (schema BHG-v0.1: explicit `b_H={p:"2",q:"1"}`, role marked NOT WP-3 discovery geometry, ordering `pair_id=a_id·c+b_id` ascending, exact-integer arithmetic, spec refs, logical hashes). Shared b-geometry computed once per n (property of `(R_n,b=2)`), never per H. Exact integers only; no floats in authoritative values.
+**5. Independent verification:** `verify_bh_geometry.py` (imports `python/audit` only) rebuilds the graph via the independent Splay/tree, then checks companion schema+b, counts, blob hashes, lengths, nonnegativity, diagonal zeros, `V≤U`, `G==U−V`, forced==zero-gap, every reachable-edge inequality at b=2, tight witnesses both sides, AND full value recompute (own queue Bellman-Ford for U; own async longest-path propagation for V) with exact equality. 6/6 PASS (`artifacts/audits/n{n}/verify_bh2.json`).
+**6. Per-n b=2 geometry:** n=2: R=4, maxU=4, maxV=0, forced=2; n=3: R=19, maxU=10, maxV=1, forced=5; n=4: R=196, maxU=22, maxV=2, forced=14; n=5: R=1764, maxU=38, maxV=3, forced=42; n=6: R=17424, maxU=44, maxV=5, forced=132; n=7: R=184041, maxU=58, maxV=6, forced=429. Forced sets equal the Catalan(n) diagonals exactly (no off-diagonal forced state at b=2). Blob prefixes (full in `bH_geometry.v1.json`): U `cd5f37031e86 / 8cd2f7ebcd75 / a19f899232b2 / 21763690031b / cd4dc8670513 / c4f1cc481236`; V `69b9b1bfef74 / f909855d3f74 / 3432e3365041 / 0fad3acc1056 / c24a8da769b5 / da5dba93a963`.
+**7. Per-H UH-4 verdicts (`H-*.uh4.json`, schema UH4-v0.1; n=2..4 PASS throughout except H-0006 n=3/4):** H-0001 FAIL — first n=5 pid=4 UPPER (H=5 > U=4, V=0), 52/352/3300 upper violations n=5/6/7, max margin 9. H-0002 FAIL — first n=4 pid=8 UPPER (H=8 > U=6, V=1), 14/204/2028/31408 upper n=4..7, max margin 24. H-0003 FAIL — identical counts to H-0002 (first n=4 pid=8 UPPER, max margin 24). H-0004 FAIL — first n=5 pid=795 LOWER (H=1 < V=2, U=13), 3/40/471 lower violations n=5/6/7, max margin 3. H-0005 FAIL — first n=5 pid=839 LOWER (H=2 < V=3, U=21), 2/36/520 lower n=5/6/7, max margin 3. H-0006 FAIL — first n=3 pid=4 UPPER (H=7 > U=6, V=1), 4/38/210/1694/16546 upper n=3..7, max margin 15. Zero lower violations for H-0001/2/3/6; zero upper violations for H-0004/5.
+**8. First rejection moved for every candidate (Case B 6/6):** `UH-4: REJECTED` with exact smallest/lex-first counterexamples above; `UH-5` relabeled `REJECTED_EARLIER_AT_UH4 (first decisive rejection at UH-4; UH-5 counterexample preserved as supplementary falsification evidence)`. No Case A occurred.
+**9. UH-5 preservation:** `git diff HEAD` empty over `artifacts/falsification/**`, all six `H-*.{json,eval_contract.json,bH_feasibility.json,og.json,wp5.json}`, and the ledger (gates UH4-08/S-08).
+**10. Tests and stress:** `tests/test_wp5_uh4.py` UH4-01..19 (geometry presence, b-declaration + unconfusability vs `b_n*` tables, independent agreement, `V≤U`, verdicts, 36-cell primary==independent agreement, ladder order, preservation, frozen-H, firewalls, static no-holdout audits, seals, SA bytes, claim, Path prose, exactness, determinism); `scripts/stress_uh4.py` S-01..S-14 (rerun determinism, agreement, corrupted-U caught, corrupted-V caught, wrong-b refused, changed-H diverges, forged-PASS rejected, preservation, n8/H1 refusals, exactness, completeness, ordering, serialization). Mutation coverage: all five mandated fault classes caught. One legacy conforming edit: `tests/test_wp5_gates.py` H03 now uses `startswith("REJECTED")` (the same file's own UH-LADDER semantics) so the honest `REJECTED_EARLIER_AT_UH4` vocabulary keeps the KEEP-verdict gate meaningful; legacy battery 23/23 after the edit.
+**11. Console ID / file / line / comment inventory** (each call site preceded by the quoted comment; line numbers are the final committed files):
+uh4_geometry.py:48 WP5-UH4-01 normative hash verification / :56 per-file hash emission / :71 b=2 geometry start per n / :79+81 U_2 start/end / :83+85 V_2 start/end / :89 primary canonical verification / :96 primary PASS emission / :122 geometry artifacts sealed per n / :151 corrective run log head written (+ module label WP5-UH4-02 at :14); verify_bh_geometry.py:55 WP5-UH4-10 edge-array construction / :161+172 independent begin + companion refusal / :208 inequality sweep / :245 value recompute / :253 verdict; uh4_sandwich.py:55 WP5-UH4-14 start per H/n / :99 WP5-UH4-15 completion per H/n + :153 verdict table / :119 WP5-UH4-16 freeze + :125 no-counterexample emission; uh4_check.py:42 WP5-UH4-18 independent UH-4 per H/n (+ module label WP5-UH4-17 at :17); test_wp5_uh4.py:69,84,112,135,158,186,221,255,269,291,302,313,330,357,401,414,426,439,462 WP5-T-UH4-01..19 per-gate audits + :492 suite start [WP5-T-UH4-20] + :514 summary [WP5-T-UH4-21]; stress_uh4.py:74,89,102,115,135,148,174,188,202,223,244,266,281 WP5-SUH4-01..14 + :291 suite start [WP5-SUH4-00] + :307 summary [WP5-SUH4-15] (S-09/S-10 share the :202 firewall probe); run_uh4_repair.ps1:5/:15 + run_uh4_repair.sh:6/:12 pipeline start/sealed [WP5-UH4R-01/02].
+**12. Firewall proof:** n8 `state=EMPTY unlock=null`; H1 `state=EMPTY unlock=null`; repair-code static audits reference no n8/H1 detail path or package; guard `assert_no_holdout_path` refuses n8/hidden probes (S-09/S-10); no holdout consumption occurred (no survivors to freeze a set for).
+**13. Frozen-artifact preservation hashes:** normative stack verified pre-run — base spec `276529E5…02B362`, SA-01 `8B77278F…7726`, SA-02 `79C58ED0…41CDF`, SA-03 `BB407FAC…17E25E1`, SA-04 `23046D37…7503E5FB`, WorkPlan `BDDC493F…F758B8` (full values in `artifacts/logs/wp5_uh4_corrective.json`); seal pins (4 amendments + 3 preregs + 6 cert b + forced-delta counts) re-verified in UH4-14; SA bytes `git diff` empty in UH4-15.
+**14. Claim level:** `FINITE_EXACT_BN_RESULTS` — not promoted (no survivor, no proof, no disproof; UH4-16).
+**15. Compliance matrix vs WorkPlan §7:** UH-3 precheck before `U/V` work ✓ (BH suite, untouched); greater-than branch executed (fresh tables, not reused) ✓; sandwich at hypothesis's own `b_H` on small certified states from recomputed canonical tables ✓; exact residuals unaffected ✓; ordered UH ladder with first-failure honesty ✓ (UH4-07); independent falsifier extended to the sandwich with exact agreement ✓ (UH4-06); adversaries unaffected (supplementary) ✓; out `CANDIDATE_H_SURVIVES_FINITE_TESTS` never claimed (zero survivors at an earlier gate) ✓; SA-03/SA-04 holdout discipline kept (EMPTY/EMPTY, no reads) ✓.
+**16. Open gaps:** ZERO. WP-5 `GATED_PASS` stands corrected (was `GATED_PASS` with one latent gap; now the UH-4 leg is executed, verified, and recorded).
+**Scientific reading (outcome B — let the computation decide, it did):** `U_2(s)` is the cheapest diagonal-rooted slack cost to reach `s` at b=2; `V_2(s)` the best slack still extractable from `s` (empty stop allowed). The sandwich demands `H` price every state between arrival-cost and future-value — the static shadow of the dynamic KEEP/DELETE inequalities. All six fail it, and the failure modes split cleanly by form class: the growing measures (H1 depth-sum, H3 ancestor/access, H6 combo) EXCEED the worst-case slack ceiling (UPPER; H-0002/3 grow quadratically to margin 24 while `U_2` grows ~linearly to 58), while the flat 0/1-scale counters (H5 heavy, H2 parent-diff) fall BELOW the positive future-slack floor `V_2` once it lifts off zero at n≥5 (LOWER; margins ≤3). Failures already appear at n=3..5, so this is structural scale-mismatch, not large-n subtlety — fully consistent with the preserved UH-5 residual counterexamples, which now read as downstream symptoms of the sandwich violations. No candidate survives; nothing is proved or disproved about DOC.
+
+---
+
+## WP-6 — Universal proof (both branches) + seal & release (SPEC 15, 16, 17, 18) — status: `SEALED` (2026-09-22; claim `FINITE_EXACT_BN_RESULTS`, zero gaps)
+
+**Scope per WorkPlan.md §8 (executed, branch by branch):** positive branch CLOSED — survivor census over frozen UH verdicts returns NONE (6/6 REJECTED at UH-4), so P15-01..05 are `VACUOUS_NO_SUBJECT` each with recorded reason, never proved; telescoping P16 `VACUOUS_NO_SUBJECT` (no proved lemma supplies summable premises); negative branch adjudicated — all six WP-5 motif families reproduced IDENTICAL through the frozen generalizer path but P17 NOT activated (H-residual samples k=0,1,2 only; no closed-form access triple; no OPT quantity or oracle; no symbolic bounds; no limit — T19); Levy–Tarjan bridge audited (5 convention points recorded as GAPs, never waived) and NOT invoked; seal emitted (result from artifacts only, single claim level, manifest, deterministic archive, clean reproduction). This is the only phase emitting a theorem-level-adjacent claim object, and the object it emits is finite-only.
+**Out:** single claim level `FINITE_EXACT_BN_RESULTS` (computed from verified booleans: 6 exact `b_n*` + potentials complete + critical complete + zero survivors + no proved lemma/family; never from expectations).
+**Files (WorkPlan §8 list — all created):** `math/proof_branch_closure.md` (P15/P16 closure) + `math/proof_telescoping_unit.md` (P01 mechanism) + `math/proof_p17_nonactivation.md` (P17 analysis) + `math/bridge_audit.md` (P02) + `math/terminal_answers.md` (15 terminal Q&A reconstructed from §8/§12/§§18–19 acceptance gates; full §36 text absent from the frozen repo set, stated openly) — no `math/latex/` formalization (nothing universal to formalize; recorded, not hidden); `artifacts/wp6/{p17_activation,positive_branch_closure,p01_telescope,p02_bridge_audit,s02_s03_sweep}.json` + `reverify/n{n}/` (S02 outputs kept separate from sealed WP-2/3 audit dirs); `artifacts/seal/{FINAL_RESULT.json (schema-validated),MANIFEST.sha256 (778 entries: 777 members + archive; manifest never lists itself — integrity via seal commit)}`; `SPLAY-AM-PD-v0.1.tar.zst` + `.sha256` (repo root; deterministic: sorted entries, mtime=0, uid/gid 0, PAX, fixed zstd level 10); `artifacts/audits/*` (pre-existing; WP-6 reverify outputs live under `artifacts/wp6/reverify/`); `THEOREM_MINING_REPORT.md` FINAL (§§A–M + §Z seal record, severity key added); README Tables A–E (exact fractions, decimals labeled display-only); `artifacts/logs/{phase15,phase16,phase17,phase18,reproduce,wp6_stress}.json`; `scripts/{run_phase15,run_phase16,run_phase17,run_phase18,reproduce_all}.{sh,ps1}`.
+**Code/proof + how:** P15 closure reads frozen `H-*.uh.json` (survivor = UH-4 PASS and UH-5 PASS; none); P01 sums exact local `H(s')−H(s)` identities along a concrete 4-step R_4 path (pid 0, K1/D4/K2/D3, forward-closure asserted) and checks the telescoped sum against the endpoint difference as integers — labeled `FINITE_MECHANISM_CHECK`; P02 five-point checklist with evidence strings, verdict PASS on audit completeness while bridge stays `BRIDGE_NOT_INVOKED`; P17 replays each family's source counterexample (dev_summary keep_argmax shapes) through `generalize_counterexample` ks=(0,1,2) and requires bit-identical samples before adjudicating C1/C2/C3 per family; P18 `build_result()` reads certs/potentials/critical summaries + closure + p17, computes the claim by branch priority (lemma > family > survivor > exact-finite > infra-only), validates against `final_result.schema.json`, then archives (full worktree walk minus exclusions, so uncommitted seal/wp6/test/script/doc files are covered; excludes archive/sidecar/.git/target/pycache; secrets untracked hence excluded) and manifests every member hash + archive hash.
+**Model training in WP-6:** NONE (no fitted object; final audit re-checks: `b_H=2/1` universal and H formulas n-free (T21); UH-1 exact zeros hold, no additive overhead (T20); 2026 sublogarithmic results cited as context only, never as premise (T22)).
+**Benchmarks/gates (final runs, all green):** P01 telescoping identity PASS; P02 audit PASS bridge-not-invoked; S01 reproduction PASS (fresh worktree at seal HEAD, n=2..6 trees/transitions/reachability byte-identical 15/15, sealed n=7 cert PASS, result recompute identical); S02 independent cert verification 18/18 (bn+uv+critical × n=2..7); S03 zero float violations in sealed exact fields (string-encoded integers; only `forced_fraction` display floats); T0-01..14 PROVED+REVIEWED with T0-GATE-A/B satisfied pre-seal; T1–T22 all COVERED; INV-035..040 all HOLDS. Suites: `tests/test_wp6.py` 19/19 (WP6-01..19), `scripts/stress_wp6.py` 10/10 (claim-identity, manifest-tamper caught, float-smuggle located, missing-pin refused, archive-tamper diverges, false-P17 refused, survivor-smuggle diverges, rebuild identity, off-enum claim rejected, logs present). Legacy batteries re-verified post-seal: BH 7/7, WP-5 gates 23/23, WP-5 stress 5/5, UH-4 gates 19/19, UH-4 stress 14/14. Covers STOP-10/14/15/16, threats T1–T22 sweep, INV-035..040.
+**Console logging inventory (final committed lines; each call site preceded by the quoted comment):** p17_analysis.py:41 WP6-P17-02 reproduction per H / :75 WP6-P17-03 verdict per H / :95 WP6-P17-04 adjudication per H / :143 WP6-P17-05 record sealed (+ module label :17); branches.py:29+40 WP6-BRC-02 census + result / :78 WP6-BRC-03 sealed (+ module label :14); telescope.py:32 WP6-TEL-02 P01 begin / :82 WP6-TEL-03 P01 verdict / :89 WP6-BRG-01 P02 begin / :122 WP6-BRG-02 P02 verdict (+ module label :14); seal.py:59 WP6-SEAL-02 populate / :101 WP6-SEAL-03 claim computed / :126 WP6-SEAL-04 schema validation / :134 WP6-SEAL-05 sealed / :165 WP6-SEAL-06 archive start / :189 WP6-SEAL-07 archive sealed / :202 WP6-SEAL-08 manifest start / :213 WP6-SEAL-09 manifest sealed (+ module label :17); reproduce.py:63+76 WP6-REP-02 checkout + HEAD / :83+117 WP6-REP-03 rebuild + per-artifact verdict / :124+140 WP6-REP-04 n7 + recompute / :148 WP6-REP-05 start / :168 WP6-REP-06 verdict (+ module label :17); audits.py:39 WP6-AUD-02 S02 begin / :62 WP6-AUD-03 per-n verdict / :70 WP6-AUD-04 S03 begin / :109 WP6-AUD-05 S03 verdict / :142 WP6-AUD-06 threats / :149 WP6-AUD-07 INV sweep / :174 WP6-AUD-08 INV verdict / :194 WP6-AUD-09 record sealed (+ module label :14); test_wp6.py:60,70,82,95,108,140,179,198,213,225,238,249,263,274,291,302,324,350,376 WP6-T-01..19 + :389 start [WP6-T-20] + :411 summary [WP6-T-21]; stress_wp6.py:49,77,91,122,131,154,167,181,193,211 WP6-S-01..10 + :227 start [WP6-S-00] + :240 summary [WP6-S-11]; run_phase15.sh:6/:9 + .ps1:5/:9 [WP6-PH15-01/02]; run_phase16.sh:6/:9 + .ps1:5/:9 [WP6-PH16-01/02]; run_phase17.sh:6/:9 + .ps1:5/:9 [WP6-PH17-01/02]; run_phase18.sh:6/:10 + .ps1:5/:11 [WP6-PH18-01/02]; reproduce_all.sh:6/:9 + .ps1:5/:9 [WP6-RP-01/02].
+**Follows WorkPlan.md?** YES — every §8 scope/file/code-how/benchmark/model element executed with evidence above. Two recorded non-deviations: (i) `math/latex/` absent (no universal statement exists to formalize); (ii) full SPEC §§25–36 question text absent from the frozen repo set, so terminal answers reconstruct the 15 questions from §8/§12/§§18–19 acceptance gates and say so openly. No WorkPlan deviation (deviation log stays empty).
+**Compliance audit vs WorkPlan §8 (gaps hunted, none open):** SCOPE — at most one H to proof: zero survivors, P15 closed not skipped ✓; systematic-witness generalization attempted with exact replay, P17 decided with reasons ✓; telescoping + bridge addressed (unit + audit, no invocation) ✓; seal complete (result/manifest/archive/reproduction) ✓; §36 answered (15 terminal, evidence-linked) ✓; only-phase theorem-claim rule respected (finite-only object) ✓. FILES — every listed file exists (latex exception recorded) ✓. CODE — P15 lemma order observed in closure dispositions ✓; telescoping sums local inequalities with normalization `H(T,T)=0` in the unit path ✓; bridge audit precedes (non-)invocation ✓; P17 motif→closed-form→bounds→limit chain adjudicated, finite growth never promoted (T19) ✓; FINAL_RESULT 12 schema fields populated from artifacts + 5-entry normative_spec_set verbatim from §8 (SA-01..04 pins match live bytes; v0.1 pin is WorkPlan-quoted original-release bytes, file of that name not in-repo — recorded, not conflated) ✓; single claim level ✓; manifest covers code+locks+hashes+ledgers+proofs+result+archive ✓; archive deterministic + exclusions documented (caches/usernames/secrets/temp excluded; no scientific artifact deleted) ✓; clean reproduction (fresh checkout, frozen deps, n=2..6 byte-identical, n=7 verified, result recomputed) ✓; Experiment-0 bundle = Tables A–E + report + seal (published in-repo, exact fractions) ✓. BENCHMARKS — P01 ✓ P02 ✓ S01 ✓ S02 ✓ S03 ✓; no RESOURCE_LIMIT_NO_CLAIM needed (no exhaustion) ✓. Gaps found during execution and CLOSED: (W1) seal populated `outcome` from a default instead of `criticality` — caught by INV-040, resealed; (W2) legacy H03 pinned superseded UH-5 vocabulary — conformed to the file's own `startswith` semantics (WP-5 repair record); (W3) manifest/archive staleness after late file edits — final rebuild ordered last. Zero open gaps.
+**Next action:** none — experiment sealed. Future work needs new IDs, new holdout plans, and a new experiment version; this seal blocks nothing and advances nothing beyond the finite record.
+
+---
+
+## Deviation log (must stay empty until a real deviation occurs)
+
+| Date (UTC) | WP phase | What deviated from WorkPlan.md | Cause | Impact on gates/claims | Corrective action (new version/ID) | Status |
+|---|---|---|---|---|---|---|
+| — | — | NONE TO DATE. Step 0 followed `WorkPlan.md §0` verbatim; WP-1 executed per `WorkPlan.md` §3 with evidence (no deviation). | — | — | — | — |
+
+*Rules: any deviation gets a row within the same editing session; the WP-phase section above gains a `DEVIATED` flag + cross-reference; silent deviation is forbidden (AI policy). Post-holdout hypothesis/feature edits are deviations by definition and create new IDs per WorkPlan §9.*
+
+---
+
+## Stop/failure ledger (STOP-01..16 + gate failure labels; preserved, never deleted)
+
+| Date (UTC) | Size / scope | Label emitted | Trigger (exact) | Artifact preserved | Follow-up |
+|---|---|---|---|---|---|
+| — | — | NONE TO DATE. WP-1/WP-2/WP-3 runs executed 2026-09-21 (all gates green, stresses green); no stop/failure label emitted. WP-1 bugs (B1–B6), WP-2 dev issues (reverse-index bug, GC-thrash stall, n=7 LP hang), WP-3 dev issues (FPATH incompleteness B7, audit brute-force hang, zst-load bug, thin trajectories) were passing-control/development findings fixed pre-seal, not stops. | — | — |
+
+---
+
+## Hypothesis & counterexample ledger (WP-4/5; failures preserved forever)
+
+| ID | Definition (frozen) | Discovery / holdout | Gate verdicts | Killer counterexample / witness | Status |
+|---|---|---|---|---|---|
+| H-SA02-B-v1 | `H_B_v1 = (8/5)*depth_sum + (17/5)*depth_max + (8/5)*parent_diff + (-1/5)*parent_flip + (-9/5)*ancestor_Aonly + (-8/5)*ancestor_both` (dense rational, n=4,5 FCYCLE 20 rows, rank7/null9) | discovery n=4,5 exact-fit 20/20; validation n=6 84 FCYCLE rows | n6 exact max `5/1` FAIL | worst `n=6 src=3598→14770 K k=1 slack=9` (`artifacts/validation/n6_H-SA02-B-v1.json`) | FROZEN-INITIAL → superseded by final (no coeff change) |
+| H-SA02-B-v1-final | same coeffs as v1 (parent v1; n6 FAIL recorded, no refit so n6 stays validation) | holdout n=7 10 rows, unlocked once | n7 exact max `139/35` FAIL untouched | worst `n=7 src=17160→143185 K k=1 slack=-6` (`artifacts/holdout/n7_H-SA02-B-v1-final.json`) | FROZEN-FINAL (any post-n7 change → new track, never re-call n7 untouched) |
+| Track-A | original control (0 selection rows) | discovery n=2..5 starved | rank0/null16, no equations | starvation itself (`track_a_manifest.json` 0 rows) | RECORDED (never repaired) |
+| H-SA02-C-1 | canonical 5-support exact n45 solution (lex-first min-support member over Q) | POST-n7 development, global n=2..7 (135 forced rows) | global 59/135 sat, max `139/35` FAIL | first CE + strata in `candidate_global_tests.json` | KILLED (preserved) |
+| H-SA02-C-2 | bounded-local n6 minimizer around dense particular (single-null-step, deterministic) | POST-n7 development, global n=2..7 | global 53/135 sat, max `31/7` FAIL (n6 residual 4 vs v1 5, still FAIL) | strata in `candidate_global_tests.json` | KILLED (preserved) |
+| H-0001 | `H(A,B)=sum_x\|depth_A-depth_B\|`, b_H=2/1 (H1-form, ERA-B POST_N7) | development n=2..7 exhaustive (no holdout contact) | UH-1/2/3 PASS; UH-5 REJECTED (first-fails n=5, KEEP max 2; worst n=7: 6/7) | worst `n=5 pid=162 K k=5` (`artifacts/falsification/H-0001/n5.json`) | REJECTED (preserved) |
+| H-0002 | ancestor-disagreement count, b_H=2/1 (H3-form, ERA-B POST_N7) | development n=2..7 exhaustive | UH-1/2/3 PASS; UH-5 REJECTED (first-fails n=4, KEEP 1 / DELETE 2) | worst n=7: 13/14 (`artifacts/falsification/H-0002/n7.json`) | REJECTED (preserved) |
+| H-0003 | access-path symdiff sum, b_H=2/1 (H3-form, ERA-B POST_N7) | development n=2..7 exhaustive | UH-1/2/3 PASS; UH-5 REJECTED (first-fails n=4, KEEP 1 / DELETE 2) | worst n=7: 13/14 (`artifacts/falsification/H-0003/n7.json`) | REJECTED (preserved) |
+| H-0004 | heavy-child disagreement count, b_H=2/1 (H5-form, ERA-B POST_N7) | development n=2..7 exhaustive | UH-1/2/3 PASS; UH-5 REJECTED (first-fails n=3, KEEP 1; DELETE passes everywhere) | worst n=7 KEEP 10 (`artifacts/falsification/H-0004/n7.json`) | REJECTED (preserved) |
+| H-0005 | parent-disagreement count, b_H=2/1 (H2-form, ERA-B POST_N7) | development n=2..7 exhaustive | UH-1/2/3 PASS; UH-5 REJECTED (first-fails n=4, KEEP 2; DELETE passes) | worst n=7 KEEP 9 (`artifacts/falsification/H-0005/n7.json`) | REJECTED (preserved) |
+| H-0006 | depth-sum + heavy-disagree combo, b_H=2/1 (H6-form, ERA-B POST_N7) | development n=2..7 exhaustive | UH-1/2/3 PASS; UH-5 REJECTED (first-fails n=3, DELETE 1) | worst KEEP 7 / DELETE 11 at n=7 (`artifacts/falsification/H-0006/n7.json`) | REJECTED (preserved) |
+
+---
+
+## Per-size exact-results table (§22 primary summary; filled only from sealed artifacts)
+
+```text
+n | C_n | |R_n| | b_n* (p/q) | subtype (top-level) | #forced | #FORCED_DELTA | #crit SCCs | verifier
+--|-----|-------|------------|---------------------|---------|---------------|------------|----------
+2 |   2 |     4 | 1/1        | EXACT_BN_MIXED      |       2 |             4 |          1 | PASS
+3 |   5 |    19 | 1/1        | EXACT_BN_MIXED      |       5 |            17 |          4 | PASS
+4 |  14 |   196 | 3/2        | EXACT_BN_CYCLIC     |      14 |            12 |          6 | PASS
+5 |  42 |  1764 | 8/5        | EXACT_BN_CYCLIC     |      42 |             8 |          1 | PASS
+6 | 132 | 17424 | 8/5        | EXACT_BN_CYCLIC     |     132 |            84 |         11 | PASS
+7 | 429 |184041 | 23/14      | EXACT_BN_CYCLIC     |     429 |            10 |          1 | PASS
+8 |1430 |2044900| — (RESOURCE_LIMIT_NO_CLAIM) | — | — | — | — | N/A (observation only)
+```
+
+*No decimal `b_n*` column will ever appear without an explicit "display-only" label (spec §34). No row is filled from expectations — only from `bn_certificate.json` + `verify_bn_certificate PASS`. The `subtype` column uses the `criticality_subtype` namespace (`TRANSIENT`/`CYCLIC`/`MIXED`/`CLASSIFICATION_INCOMPLETE`); the corresponding `top_level_status` (`EXACT_BN_*`) is recorded with the verifier verdict, per plan v0.1.1.*
+
+---
+
+## Claim-level tracker (only WP-6 may advance this; fail-closed)
+
+- **Current truthful level:** `FINITE_EXACT_BN_RESULTS` (advanced 2026-09-21;
+  retained 2026-09-22 after SA-02 discovery, WP-4 completion, AND WP-5
+  validation: six universal hypotheses (H1/H2/H3/H5/H6 forms, b_H=2) all
+  REJECTED at UH-5 with smallest exact counterexamples preserved; zero UH-8
+  survivors; n8 + H1 holdouts unconsumed (both firewalls `EMPTY`). Falsified
+  hypotheses are mining evidence, not theorems — no promotion to
+  `FINITE_THEOREM_MINING_ONLY` (no surviving mined structure to promote) and
+  none to `CANDIDATE_H_SURVIVES_FINITE_TESTS` (nothing survives finite tests).
+  No theorem-level claim.)
+- History: 2026-09-21 advanced NO LEVEL → `FINITE_INFRASTRUCTURE_ONLY` on the
+  evidence in the WP-1 entry (30/30 gate checks + 8 sealed tree universes +
+  stress `wp1_stress.json`); same day advanced → `FINITE_EXACT_BN_RESULTS`
+  on the WP-2 entry (sealed `b_n*` n=2..7) plus WP-3 entry (canonical `U/V/G`
+  + forced geometry, gates 07/08 green, audits PASS).
+
+---
+
+## Next 3 actions (always concrete)
+
+1. WP-6 seal when proof/family exists (or retain finite level); §36 answers;
+   Tables A–E; archive + clean reproduction. BLOCKED: positive needs a
+   surviving `H` (none exists — all six WP-5 hypotheses REJECTED); negative
+   needs a systematic motif (generalizer samples are samples-only, P17
+   inactive by rule).
+2. Any future universal `(H,b_H)` idea enters as a NEW hypothesis ID under
+   the frozen SA-03/SA-04 protocol (UH-0..UH-8 + OG diagnostics; frozen set
+   before any n8/H1 contact; never re-call consumed holdouts).
+3. Maintenance only: dependency pins, reproduction scripts, audit responses.
+
+*End of Path.md — updated every session work is done; mirrored 1:1 with WorkPlan.md phases so adherence is checkable line-by-line.*

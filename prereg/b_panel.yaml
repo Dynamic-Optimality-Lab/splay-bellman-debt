@@ -1,0 +1,10 @@
+anchor:
+  - {p: 2, q: 1, role: DISCOVERY_ANCHOR}
+secondary:
+  - {p: 5, q: 2, role: ROBUSTNESS_ONLY}
+  - {p: 3, q: 1, role: ROBUSTNESS_ONLY}
+  - {p: 4, q: 1, role: ROBUSTNESS_ONLY}
+candidate_constant_policy:
+  must_be_universal_across_n: true
+  change_requires_new_hypothesis_id: true
+anchor_is_not_theorem_assumption: true
