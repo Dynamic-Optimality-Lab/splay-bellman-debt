@@ -25,8 +25,10 @@ def main() -> int:
     from kernel.refine2 import refine2, same_partition
     ledger = json.loads((root / "math" / "proof_status.json").read_text(encoding="utf-8"))
     by_id = {o["id"]: o for o in ledger["obligations"]}
-    transport = "BLOCKED_BD0_04_05_UNPROVED"
-    assert by_id["BD0-04"]["status"] == "UNPROVED" and by_id["BD0-05"]["status"] == "UNPROVED"
+    # Post-closure: BD0-04/05 REVIEWED; V-transport applicable per method audit,
+    # U-transport remains blocked by source contract (see transport_audit.json).
+    assert by_id["BD0-04"]["status"] == "REVIEWED" and by_id["BD0-05"]["status"] == "REVIEWED"
+    transport = "V_APPLICABLE_U_BLOCKED_BY_SOURCE_CONTRACT"
     report = {"transport": transport}
     for n in [2, 3, 4, 5, 6, 7]:
         # console.log equivalent [WP3-P05-02]: per-n quotient
@@ -54,7 +56,7 @@ def main() -> int:
         json.dumps({"phase": "PHASE-05", "transport": transport,
                     "verdict": "BEHAVIORAL_QUOTIENT_CERTIFIED"}, indent=2, sort_keys=True, default=str) + "\n", encoding="utf-8")
     # console.log equivalent [WP3-P05-03]: phase05 done
-    console_log("[WP3-P05-03] phase05 done transport=BLOCKED")
+    console_log(f"[WP3-P05-03] phase05 done transport={transport}")
     return 0
 
 

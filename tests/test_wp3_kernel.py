@@ -62,12 +62,14 @@ def test_k04_successor_preservation() -> None:
 
 def test_k05_transport_blocked() -> None:
     # console.log equivalent [WP3-K-05]: K-05
-    console_log("[WP3-K-05] K-05 transport blocked until BD0-04/05")
+    console_log("[WP3-K-05] K-05 transport status post-closure")
     ledger = json.loads((root() / "math" / "proof_status.json").read_text())
     by_id = {o["id"]: o for o in ledger["obligations"]}
-    assert by_id["BD0-04"]["status"] == "UNPROVED" and by_id["BD0-05"]["status"] == "UNPROVED"
+    assert by_id["BD0-04"]["status"] == "REVIEWED" and by_id["BD0-05"]["status"] == "REVIEWED"
     gate = json.loads((root() / "artifacts" / "v02" / "logs" / "phase05_gate.json").read_text())
-    assert gate["transport"] == "BLOCKED_BD0_04_05_UNPROVED"
+    assert gate["transport"] == "V_APPLICABLE_U_BLOCKED_BY_SOURCE_CONTRACT"
+    audit = json.loads((root() / "artifacts" / "v02" / "kernels" / "transport_audit.json").read_text())
+    assert audit["BD0-05"]["verdict"] == "U_TRANSPORT_BLOCKED_BY_SOURCE_CONTRACT"
 
 
 def test_k06_full_state() -> None:

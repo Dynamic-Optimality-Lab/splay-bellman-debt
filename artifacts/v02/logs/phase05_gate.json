@@ -1,5 +1,5 @@
 {
   "phase": "PHASE-05",
-  "transport": "BLOCKED_BD0_04_05_UNPROVED",
+  "transport": "V_APPLICABLE_U_BLOCKED_BY_SOURCE_CONTRACT",
   "verdict": "BEHAVIORAL_QUOTIENT_CERTIFIED"
 }

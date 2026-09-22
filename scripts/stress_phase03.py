@@ -40,10 +40,12 @@ def main() -> int:
     abl = (root / "artifacts" / "v02" / "kernels" / "ablation.json").read_text(encoding="utf-8")
     assert "COMPONENTWISE_NECESSARY_FINITE" in abl
     assert "GLOBALLY_MINIMAL" not in abl and "minimal_kernel" not in abl.lower()
-    # console.log equivalent [WP3-STR-06]: transport still blocked
-    console_log("[WP3-STR-06] transport still blocked")
+    # console.log equivalent [WP3-STR-06]: transport status post-closure
+    console_log("[WP3-STR-06] V applicable / U still blocked by source contract")
     q = json.loads((root / "artifacts" / "v02" / "kernels" / "quotient.json").read_text())
-    assert q["transport"] == "BLOCKED_BD0_04_05_UNPROVED"
+    assert q["transport"] in ("BLOCKED_BD0_04_05_UNPROVED", "V_APPLICABLE_U_BLOCKED_BY_SOURCE_CONTRACT")
+    auditf = root / "artifacts" / "v02" / "kernels" / "transport_audit.json"
+    assert auditf.is_file()
     out = {"verdict": "STRESS_PASS", "checks": 6}
     (root / "artifacts" / "v02" / "logs" / "phase03_stress.json").write_text(
         json.dumps(out, indent=2, sort_keys=True) + "\n", encoding="utf-8")

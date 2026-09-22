@@ -51,14 +51,48 @@
    "status": "REVIEWED"
   },
   {
+   "history": [
+    {
+     "status": "UNPROVED",
+     "utc": "2026-09-22T16:00:00Z"
+    },
+    {
+     "status": "PROVED",
+     "utc": "2026-09-22T17:10:00Z"
+    },
+    {
+     "status": "REVIEWED",
+     "utc": "2026-09-22T17:15:00Z"
+    }
+   ],
    "id": "BD0-04",
+   "proof": "math/theorem_BD4_bisimulation_transports_V.md",
+   "proof_sha256": "1CC8663ED728F7D4F3341EF3116C6389BFD7F8BD98ED537EE7E2789F1C0ACFC2",
+   "review": "tests/test_bd004_bd005_transport.py",
    "statement": "deterministic cost-preserving bisimulation transports V_b",
-   "status": "UNPROVED"
+   "status": "REVIEWED"
   },
   {
+   "history": [
+    {
+     "status": "UNPROVED",
+     "utc": "2026-09-22T16:00:00Z"
+    },
+    {
+     "status": "PROVED",
+     "utc": "2026-09-22T17:10:00Z"
+    },
+    {
+     "status": "REVIEWED",
+     "utc": "2026-09-22T17:15:00Z"
+    }
+   ],
    "id": "BD0-05",
+   "proof": "math/theorem_BD5_source_compatible_bisimulation_transports_U.md",
+   "proof_sha256": "4ED550C1386182CA76A283EB19401523CCAE697133CD270FB15063E637C9CFB2",
+   "review": "tests/test_bd004_bd005_transport.py",
    "statement": "compatible source treatment transports U_b",
-   "status": "UNPROVED"
+   "status": "REVIEWED"
   },
   {
    "id": "BD0-06",

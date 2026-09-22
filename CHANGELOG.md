@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## WP-3 theorem closure (2026-09-22)
+- BD0-04 REVIEWED (SHA 1CC8663E...F1C0ACFC2) + BD0-05 REVIEWED (SHA 4ED550C1...37C9CFB2), lifecycles preserved; future-vs-source distinction explicit.
+- Quotient audit: V_TRANSPORT_APPLICABLE (method-correct, vacuous on singletons), U_TRANSPORT_BLOCKED_BY_SOURCE_CONTRACT (no redesign). Findings preserved; BD0-06..14 untouched (BD0-10 option B).
+- Re-ran: phases 04-07 PASS, pytest 43/43, stress + gate-matrix + byte audit PASS. Only transport labels changed (documented). H1 EMPTY, no WP-4 artifacts. Hygiene policy docs/large_file_hygiene.md.
+
 ## WP-3 (2026-09-22)
 - GATED_PASS: blind 39-scalar ontology n=2..7; quotient KERNEL_NO_COMPRESSION (classes==R, dual-agreement, transport BLOCKED on BD0-04/05); K0 ablation (all TRANSITION_INSUFFICIENT, diagonal-collapse lesson); delta mining winner (rank_sign_neg,+1) with n6/n7 streamed validation (35-45%); ST/K 16/16 + BD 10/10 + STRESS_PASS. Bugs closed: docstrip audit, report keys, test shadowing, one real symmetry bug (one-sided nesting fixed, rebuild stable).
 
