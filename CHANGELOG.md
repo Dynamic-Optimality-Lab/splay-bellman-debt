@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## WP-2 theorem closure (2026-09-22)
+- BD0-02 REVIEWED (theorem_BD2 SHA B3AD40D8...FA48F9) + BD0-03 REVIEWED (theorem_BD3_past_slack SHA 95A15388...99D278), lifecycles preserved; corridor corollary joint in BD0-02 (upper) + BD0-03 (past), pair-state-only with BD0-13 guard.
+- Independent review 6/6 + byte audit green; gate matrix prereg/theorem_gate_matrix.yaml (BD0-01..15, fail-closed consumers); BD0-04..14 remain UNPROVED.
+- Re-ran: phase01 identical, pytest 27/27, stress STRESS_PASS, gate matrix PASS. H1 EMPTY, no WP-3 artifacts.
+
 ## WP-2 (2026-09-22)
 - GATED_PASS: anchor b=2 n=2..7 verified (R exact, maxU/V match, Bellman fixed points green); BELL-SIG 203911 rows + extremal specimens + trajectories; panel 5/2,3,4 solved n=2..6, n=7 skipped (ROBUSTNESS_PANEL_INCOMPLETE); independent dict-core audit PASS n=2..6; BD-01..10 10/10; stress STRESS_PASS. Bugs closed: sparse pair_id sizing, import-scan precision.
 
