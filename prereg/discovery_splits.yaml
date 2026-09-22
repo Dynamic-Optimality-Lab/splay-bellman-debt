@@ -1,0 +1,17 @@
+# discovery_splits.yaml — frozen internal discovery/validation masks (before any target-driven search)
+# No target values were read to produce this file. Any change requires a new plan version.
+TRACK_S:
+  discovery_rows: [n2_all, n3_all, n4_all, n5_all]
+  validation_rows: [n6_all, n7_all]
+  note: selection subsets per search must be sub-masks of discovery_rows declared here before search; never n8/H1
+TRACK_R:
+  discovery_rows: [aug_n2_all, aug_n3_all, aug_n4_all]
+  stretch_rows: [aug_n5_if_certified]
+  validation_rows: [aug_n5_if_certified, H2R_bank_after_freeze_only]
+  note: H2R never in discovery; stretch n5 only if fully certified
+b_panel:
+  anchor: {p: 2, q: 1}
+  robustness: [{p: 5, q: 2}, {p: 3, q: 1}, {p: 4, q: 1}]
+  rule: discoveries at anchor must re-verify on panel without per-b tuning
+seed_policy: deterministic_seeded_stratified
+frozen: true

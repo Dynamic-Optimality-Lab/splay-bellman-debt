@@ -27,6 +27,26 @@
 
 ---
 
+## Audit remediation — WorkPlan v0.2.1 COMPLIANT FROZEN (2026-09-22) ✅ DONE
+
+**Verdict in:** `AUDIT_FAIL_REPAIRABLE` (5 findings; 0 experiments discarded — none started). All fixed, committed, pushed. New stamp: `WORKPLAN_v0.2.1_COMPLIANT_FROZEN`.
+
+**What was done (deep detail, mirrors WorkPlan.md §§1/3/6/7/9/10/11 + SA-01):**
+
+1. **Finding 1 — SPEC BUG, recency-`V` blindness (`WorkPlan.md §1` + `§6` + new `SPLAY_AM_BD_IMPLEMENTATION_SPEC_v0.2.1.md` SA-01.1):** proved `π(A,B,ρX,ρY)=(A,B)` is a cost-preserving bisimulation (same actions, same `(A,B)→(A′,B′)` transitions, same `w_b`), hence `V_b^R(A,B,ρX,ρY)=V_b^R(A,B,ρ′X,ρ′Y)` necessarily. WP-4 scope now asserts `same (A,B) ⟹ same V_2^R` with `RECENCY_V_CANARY_FAIL` on any nonzero spread (implementation failure, never debt evidence); recency value redirected to `U_b^R`, path-specific creation, `Φ` deltas, simplicity. Added BD0-15 gate + `RECENCY_V_CANARY` benchmark. Theorems before shortcuts: BD0-15 PROVED+REVIEWED required.
+2. **Finding 2 — `parent/` contradiction (`WorkPlan.md §3` + SA-01.2):** replaced "create `parent/` + any write raises STOP" with `BOOTSTRAP_PARENT_IMPORT`: populate once → verify → write `parent/BOOTSTRAP_MANIFEST.sha256` → `READ_ONLY_LOCKED`; post-lock mutation fatal (STOP-01/02/03). `import_ledger.json` written only inside bootstrap. Source repo always immutable.
+3. **Finding 3 — transcendental branch (`WorkPlan.md §7` + SA-01.3):** residual evaluator split into `RATIONAL` (exact rational, `>0` rejects per T20, float-sign → STOP-13) and `TRANSCENDENTAL` (certified interval: `≤0` certified / `>0` counterexample / straddles → `SIGN_UNCERTIFIED`, blocks promotion). No epsilon. Benchmarks + WP-6 acceptance updated.
+4. **Finding 4 — STOP wiring (`WorkPlan.md §§5/7/10` + SA-01.4):** `>0` rejection is T20 (not STOP-20); float-sign is STOP-13; STOP-20 is holdout reuse. Corrected WP map (WP-2: 12,15; WP-3: 05–08; WP-4: 09–11,16,19,20; WP-5: 13–15,17–22; WP-6: 23–30; WP-1: 01–04) + new `prereg/stop_control_matrix.yaml`.
+5. **Finding 5 — hardening (`WorkPlan.md §§3/9/10/11`):** new `prereg/threat_control_matrix.yaml` (T01–T50 → controls + phase; WP-6 asserts count==50) + `prereg/discovery_splits.yaml` (internal Track-S/Track-R discovery/validation masks + b-panel + seed policy frozen before any target search; no adaptive held-out choice).
+
+**Files (all created/edited, hashed at commit):** `WorkPlan.md` (v0.2.0 → v0.2.1), `SPLAY_AM_BD_IMPLEMENTATION_SPEC_v0.2.1.md` (SA-01), `prereg/threat_control_matrix.yaml`, `prereg/stop_control_matrix.yaml`, `prereg/discovery_splits.yaml`, `Path.md` (this entry).
+**Code/models/benchmarks:** NONE trained/run (plan-level only); resultant benchmarks are the corrected gates above (canary, bootstrap-lock, two-branch residuals, STOP matrices, count==50 + splits-hash checks).
+**Brutal-testing note:** canary + matrices + splits exist to make future training (WP-3/4/5 kernels/atoms/Phi) face entirely-different benchmarks; no training data touched.
+
+**Follows WorkPlan.md?** YES — this remediation *is* `WorkPlan.md` v0.2.1 (§§1/3/6/7/9/10/11) + SA-01 executed verbatim with evidence above. No deviation. No experiment discarded. Next: WP-1 begins under v0.2.1.
+
+---
+
 ## WP-1 — Foundation: parent seal, literature, contract, prereg, theorem ledger (SPEC PHASE 00) — status: `PENDING`
 
 **Scope per WorkPlan.md §3:** parent clone @ `6de1ca2` + seal verify + history preserve; spec freeze + hash; literature L0–L4 ledger; BD0-01..14 ledger; H1 EMPTY + n8 contaminated; no pre-prereg output. Out: no Bellman/features/kernels/candidates/holdout-reads.

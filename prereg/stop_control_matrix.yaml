@@ -1,0 +1,31 @@
+# stop_control_matrix.yaml — STOP-01..30 → phase + handling (machine-checked)
+STOP-01: {phase: WP-1, meaning: parent commit mismatch, handling: halt, verify remote 6de1ca2}
+STOP-02: {phase: WP-1, meaning: parent manifest mismatch, handling: halt, re-verify seal}
+STOP-03: {phase: WP-1, meaning: parent verifier disagreement, handling: halt, PARENT_SEAL_MISMATCH}
+STOP-04: {phase: WP-1, meaning: prereg hash drift, handling: halt, re-freeze prereg}
+STOP-05: {phase: WP-3, meaning: extractor reads Bellman target, handling: halt, ST-01 fail}
+STOP-06: {phase: WP-3, meaning: kernel target/ID leakage, handling: halt, K-10 fail}
+STOP-07: {phase: WP-3, meaning: quotient implementations disagree, handling: halt, K-02 fail}
+STOP-08: {phase: WP-3, meaning: transport used before BD0-04/05 proof, handling: halt}
+STOP-09: {phase: WP-4, meaning: recency replay mismatch, handling: halt, R-07 fail}
+STOP-10: {phase: WP-4, meaning: augmented state lacks legal parent, handling: halt}
+STOP-11: {phase: WP-4, meaning: unseen tie silently broken, handling: halt, R-11 fail}
+STOP-12: {phase: WP-2, meaning: exact Bellman inequality fails, handling: halt, BD-02/03 fail}
+STOP-13: {phase: WP-5, meaning: residual sign depends on unresolved float, handling: SIGN_UNCERTIFIED block}
+STOP-14: {phase: WP-5, meaning: candidate b changed without new ID, handling: halt, new hypothesis required}
+STOP-15: {phase: WP-5, meaning: wrong-b geometry used, handling: halt, BD-10 fail}
+STOP-16: {phase: WP-4, meaning: n8 called fresh, handling: halt, HLD-01 fail}
+STOP-17: {phase: WP-5, meaning: H1 read before freeze, handling: halt, HLD-02 fail}
+STOP-18: {phase: WP-5, meaning: H2R read before freeze, handling: halt, HLD-05 fail}
+STOP-19: {phase: WP-4, meaning: holdout regenerated after reveal, handling: halt, fail-closed}
+STOP-20: {phase: WP-5, meaning: fresh holdout reused as fresh, handling: halt, new bank required}
+STOP-21: {phase: WP-5, meaning: verifier imports discovery code, handling: halt, SEP-AUDIT fail}
+STOP-22: {phase: WP-5, meaning: counterexample overwritten, handling: halt, append-only violation}
+STOP-23: {phase: WP-6, meaning: fixed-b cycle as DOC disproof, handling: reject claim, NEG-01}
+STOP-24: {phase: WP-6, meaning: finite pattern as asymptotic theorem, handling: reject claim}
+STOP-25: {phase: WP-6, meaning: universal proof has finite premise, handling: reject proof, PR-01}
+STOP-26: {phase: WP-6, meaning: proof omits Splay/recency case, handling: reject proof, PR-02/03}
+STOP-27: {phase: WP-6, meaning: bridge convention mismatch, handling: reject bridge, PR-05}
+STOP-28: {phase: WP-6, meaning: archive manifest incomplete, handling: seal fail, SEAL-02}
+STOP-29: {phase: WP-6, meaning: final claim not recomputable, handling: seal fail, SEAL-04}
+STOP-30: {phase: WP-6, meaning: scientific file deleted for clean seal, handling: seal fail}
