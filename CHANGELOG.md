@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## WP-5 (2026-09-22)
+- GATED_PASS: ERA-BD-A froze PHI-0001/2/3 (b_H=2/1); dev falsification REJECTED all (worst +7/+13/+3, smallest +1 each, analyses preserved); H1/H2R/n8 pristine (empty set committed); clean-room 32/32; adversary NOT_ACTIVATED; D/HLD 8/8 + full 84/84 + STRESS_PASS. Bugs closed: witness ordering, vacuous agreement, stress scoping, dead ternary.
+
 ## WP-4 theorem seal (2026-09-22)
 - BD0-13 REVIEWED (SHA E6F43762...D61771D): pair corridor binds pair-state hypotheses only; Track-R evaluator barred from pair-envelope rejection without lifting theorem; no existence/necessity overclaims.
 - BD0-14 audited, left UNPROVED (owner WP-5; syntactic n-independence at synthesis, theorem consumed at promotion).

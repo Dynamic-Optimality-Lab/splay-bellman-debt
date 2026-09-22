@@ -1,0 +1,10 @@
+{
+  "phase": "PHASE-12",
+  "survivors": [],
+  "verdict": "DEV_FALSIFICATION_COMPLETE",
+  "verdicts": {
+    "PHI-0001": "REJECTED",
+    "PHI-0002": "REJECTED",
+    "PHI-0003": "REJECTED"
+  }
+}

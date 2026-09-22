@@ -1,0 +1,11 @@
+{
+  "b_feasible_all_n": true,
+  "candidates": [
+    "PHI-0001",
+    "PHI-0002",
+    "PHI-0003"
+  ],
+  "era": "ERA-BD-A",
+  "phase": "PHASE-11",
+  "verdict": "SYNTHESIS_FROZEN"
+}

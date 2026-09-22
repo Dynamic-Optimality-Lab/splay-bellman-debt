@@ -1,0 +1,20 @@
+{
+  "b_hypothesis": {
+    "p": "2",
+    "q": "1"
+  },
+  "definition": "Phi(A,B) = sum_k |size_A(k) - size_B(k)| (size_sum_abs, F-subtree atom)",
+  "hypothesis_id": "PHI-0002",
+  "n_specific_parameters": false,
+  "normalization": "Phi(T,T)=0 by zero differences",
+  "ontology_version": "ONTOLOGY-v0.2",
+  "parent_hypothesis": null,
+  "proof_outline": "none (falsification stage)",
+  "range_claim": "RANGE_UNKNOWN (finite maxima recorded, no asymptotic claim)",
+  "status": "REJECTED",
+  "tie_rules": "none required (symmetric sums)",
+  "track": "STATE_ONLY",
+  "uses_UV_lookup": false,
+  "uses_history_beyond_recency": false,
+  "uses_recency": false
+}

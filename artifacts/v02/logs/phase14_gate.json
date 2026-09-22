@@ -1,0 +1,18 @@
+{
+  "agreement": {
+    "PHI-0001": {
+      "agree": 16,
+      "total": 16
+    },
+    "PHI-0002": {
+      "agree": 16,
+      "total": 16
+    }
+  },
+  "campaign": {
+    "reason": "zero development survivors; nothing to attack",
+    "status": "NOT_ACTIVATED"
+  },
+  "phase": "PHASE-14",
+  "verdict": "INDEPENDENT_AGREEMENT_NOT_ACTIVATED_ADVERSARY"
+}

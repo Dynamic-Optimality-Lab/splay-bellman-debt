@@ -1,0 +1,9 @@
+{
+  "b_hypothesis": {
+    "p": "2",
+    "q": "1"
+  },
+  "b_is_universal_candidate": true,
+  "branch": "RATIONAL",
+  "hypothesis_id": "PHI-0003"
+}
